@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GenesisEngine.cpp" />
+    <ClCompile Include="Initialization.cpp">
+      <Filter>Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGameLogic.cpp">
+      <Filter>Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineCode.cpp" />
+    <ClCompile Include="Process.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessManager.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBox.cpp">
+      <Filter>UserInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="MathRandom.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryPool.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorFactory.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Transformation.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform2dComponent.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSLProgram.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="picoPNG.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteBatch.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCache.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Timing.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer2dComponent.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="IOManager.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Errors.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="TestGame.cpp">
+      <Filter>Test Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera2D.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="TestGameView.cpp">
+      <Filter>Test Game</Filter>
+    </ClCompile>
+    <ClCompile Include="HumanView.cpp">
+      <Filter>UserInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Initialization">
+      <UniqueIdentifier>{7c751c85-2bfc-4295-945d-ba936957744b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{82436660-abfe-42be-850b-c5427912c9fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debugger">
+      <UniqueIdentifier>{66fc1666-a530-4bf7-9e23-e77d63fbe220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProcessManager">
+      <UniqueIdentifier>{e0b63581-4c7e-485f-97d5-7e2664b63507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{fc36ccf9-b78e-4391-83a7-9cdd922ff6bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UserInterface">
+      <UniqueIdentifier>{abc82d69-f318-4d93-88ba-77a47e128c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{3a5cbefb-0df7-41ee-9bff-fe991649deb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceCache">
+      <UniqueIdentifier>{3caa697c-eb9c-409e-88dd-08a7e484fe2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{790137e1-b86d-44d3-b645-556f89e66922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{6bfcee02-8f15-4419-8269-bd332053b6d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Multicore">
+      <UniqueIdentifier>{10ee42c4-665a-4a36-8eae-a4c5be5342ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{74bc8491-2eae-49e4-8d82-2810424335d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{9937833d-c1bb-4c5f-9663-749e7c7c7f7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test Game">
+      <UniqueIdentifier>{59052e65-6f93-4b01-8264-9f3610d78775}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{295fd184-3a2c-4662-84c0-4bc4b9e16ba7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Initialization.h">
+      <Filter>Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGameLogic.h">
+      <Filter>Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineCode.h" />
+    <ClInclude Include="Templates.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Process.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessManager.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>UserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBox.h">
+      <Filter>UserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Constraint.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Force.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PointParticle.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PointPart.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryMacros.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorComponent.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorFactory.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform2dComponent.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalSection.h">
+      <Filter>Multicore</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSLProgram.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="picoPNG.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteBatch.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCache.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Timing.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer2dComponent.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Errors.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGame.h">
+      <Filter>Test Game</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGameView.h">
+      <Filter>Test Game</Filter>
+    </ClInclude>
+    <ClInclude Include="HumanView.h">
+      <Filter>UserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera2D.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\colorShading.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\colorShading.frag">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
