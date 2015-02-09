@@ -301,10 +301,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\colorShading.vert">
+    <None Include="..\deps\bin\Shaders\colorShading.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="Shaders\colorShading.frag">
+    <None Include="..\deps\bin\Shaders\colorShading.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

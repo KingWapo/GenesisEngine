@@ -18,9 +18,15 @@ _maxFPS(60.0f)
 
 MainGame::~MainGame()
 {
+	// Prof. B: Cleanly delete all actors (maybe, just trying to get it to exit cleanly)
+	while (!myActorList.empty())
+	{
+		(myActorList.back()).Destroy();
+		myActorList.pop_back();
+	}
 }
 
-void MainGame::AddActor(Actor newActor)
+void MainGame::AddActor(Actor& newActor)
 {
 	myActorList.push_back(newActor);
 }

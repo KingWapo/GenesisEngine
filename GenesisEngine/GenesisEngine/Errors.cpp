@@ -5,11 +5,15 @@
 #include <iostream>
 #include <SDL\SDL.h>
 
+void nonFatalError(std::string errorString) {
+	std::cout << "Warning: " << errorString << std::endl;
+}
+
 void fatalError(std::string errorString) {
-	std::cout << errorString << std::endl;
-	std::cout << "Enter any key to quit...";
-	int tmp;
-	std::cin >> tmp;
+	std::cout << "FATAL ERROR: " << errorString << std::endl;
+	std::cout << "Press enter to exit...";
+	char tmp = std::cin.get();
+
 	SDL_Quit();
 	exit(1);
 }

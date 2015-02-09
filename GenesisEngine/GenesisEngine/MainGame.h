@@ -24,7 +24,7 @@ public:
 	MainGame();
 	~MainGame();
 
-	void AddActor(Actor newActor);
+	void AddActor(Actor& newActor);
 
 	void run();
 

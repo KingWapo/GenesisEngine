@@ -100,8 +100,8 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\colorShading.frag" />
-    <None Include="Shaders\colorShading.vert" />
+    <None Include="..\deps\bin\Shaders\colorShading.frag" />
+    <None Include="..\deps\bin\Shaders\colorShading.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25AA5C2A-614B-4410-B66A-8B709BC3BF28}</ProjectGuid>
@@ -150,12 +150,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;GLEW_STATIC</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)\deps\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);winmm.lib;zlibstat.lib;glew32s.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;opengl32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\deps\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -166,14 +168,16 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

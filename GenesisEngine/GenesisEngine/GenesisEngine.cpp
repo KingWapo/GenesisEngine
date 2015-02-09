@@ -118,21 +118,23 @@ int GenesisEntry(int argc, char *argv[])
 		return FALSE;
 	}
 
-
-	
 	// Main Loop
-	MainGame mainGame;
+	MainGame* mainGame = new MainGame();	// Prof. B: Switched to dynamic allocation so could control when destructor is called
 	Actor freddy(0);
 	Renderer2dComponent renderComp(Vector2(0.0, 0.0), Vector2(100.0, 100.0), "Textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	freddy.AddComponent(pRenderComp);
-	mainGame.AddActor(freddy);
 
-	mainGame.run();
+	mainGame->AddActor(freddy);
+	mainGame->run();
+
+	// Cleanup
+	freddy.Destroy();
+	delete mainGame;	// Prof. B: Force call of destructor BEFORE logger is destroyed
 
 	// Shutdown
-
 	Logger::Destroy();
 
-	return g_pApp->GetExitCode();
+	int exitCode = g_pApp->GetExitCode();
+	return exitCode;
 }
