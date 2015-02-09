@@ -9,7 +9,9 @@ TestGameApp *g_TestGameApp;
 // Main? Call the Engine Code main
 int main(int argc, char *argv[])
 {
-	//cout << "At least I get in here....right?" << endl;
+	cout << "At least I get in here....right?" << endl;
+	cout.flush();
+
 	GenesisEntry(argc, argv);
 
 	return 0;
