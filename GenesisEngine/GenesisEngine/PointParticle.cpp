@@ -255,3 +255,10 @@ Vector2 PointParticle::netForce() {
 bool operator<(const PointParticle &lhs, const PointParticle& rhs){
 	return &lhs < &rhs;
 }
+
+/** ACTOR COMPONENT OVERRIDES **/
+const char* PointParticle::g_Name = "PointParticle";
+
+TiXmlElement* PointParticle::VGenerateXml() {
+	return NULL;
+}
