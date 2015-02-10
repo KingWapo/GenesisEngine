@@ -55,14 +55,30 @@ void Actor::Update(int deltaMs)
 	}
 }
 
+void Actor::Draw()
+{
+	for (ActorComponents::iterator it = m_renderComponents.begin(); it != m_renderComponents.end(); ++it)
+	{
+		it->second->VUpdate(1.0f / 30);
+	}
+}
+
 std::string Actor::ToXML()
 {
 	// set up for xml
 	return "Unknown";
 }
 
-void Actor::AddComponent(StrongActorComponentPtr pComponent)
+void Actor::AddComponent(StrongActorComponentPtr pComponent, bool p_RenderComp)
 {
-	std::pair<ActorComponents::iterator, bool> success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
+	std::pair<ActorComponents::iterator, bool> success;
+	if (p_RenderComp)
+	{
+		success = m_renderComponents.insert(std::make_pair(pComponent->VGetId(), pComponent));
+	}
+	else
+	{
+		success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
+	}
 	GCC_ASSERT(success.second);
 }

@@ -4,9 +4,10 @@
 #include "TestGame.h"
 #include "InputManager.h"
 #include <iostream>
-#include "MainGame.h"
+//#include "MainGame.h"
 #include "Actor.h"
 #include "ActorFactory.h"
+#include "GameInstance.h"
 
 
 #pragma comment(lib, "shell32.lib")
@@ -119,18 +120,21 @@ int GenesisEntry(int argc, char *argv[])
 	}
 
 	// Main Loop
-	MainGame* mainGame = new MainGame();	// Prof. B: Switched to dynamic allocation so could control when destructor is called
+	GameInstance *instance = new GameInstance();	// Prof. B: Switched to dynamic allocation so could control when destructor is called
 	Actor freddy(0);
 	Renderer2dComponent renderComp(Vector2(0.0, 0.0), Vector2(100.0, 100.0), "Textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
-	freddy.AddComponent(pRenderComp);
+	freddy.AddComponent(pRenderComp, true);
 
-	mainGame->AddActor(freddy);
-	mainGame->run();
+	instance->AddActor(freddy);
+	
+	// Runs the instance of a game.
+	// When it passes this line, the game is over.
+	instance->Run();
 
 	// Cleanup
 	freddy.Destroy();
-	delete mainGame;	// Prof. B: Force call of destructor BEFORE logger is destroyed
+	delete instance;	// Prof. B: Force call of destructor BEFORE logger is destroyed
 
 	// Shutdown
 	Logger::Destroy();

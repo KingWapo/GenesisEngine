@@ -15,8 +15,9 @@ public:
 	typedef std::map<ComponentId, StrongActorComponentPtr> ActorComponents;
 
 private:
-	ActorId m_id;					// A unique id for the actor
-	ActorComponents m_components;	// all components for this actor.
+	ActorId m_id;							// A unique id for the actor
+	ActorComponents m_components;			// all components for this actor. Except rendering components
+	ActorComponents m_renderComponents;		// All render components.
 	ActorType m_type;
 
 	// Using Xml?
@@ -30,6 +31,7 @@ public:
 	void PostInit(void);
 	void Destroy(void);
 	void Update(int deltaMs);
+	void Draw();
 
 	// editor functions
 	std::string Actor::ToXML();
@@ -76,5 +78,5 @@ public:
 
 	const ActorComponents *GetComponents() { return &m_components; }
 
-	void AddComponent(StrongActorComponentPtr pComponent);
+	void AddComponent(StrongActorComponentPtr pComponent, bool p_RenderComp);
 };

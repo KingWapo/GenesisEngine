@@ -18,6 +18,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="EngineCode.cpp" />
     <ClCompile Include="Errors.cpp" />
+    <ClCompile Include="GameInstance.cpp" />
     <ClCompile Include="GenesisEngine.cpp" />
     <ClCompile Include="GLSLProgram.cpp" />
     <ClCompile Include="HumanView.cpp" />
@@ -26,7 +27,6 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="MathRandom.cpp" />
     <ClCompile Include="MemoryPool.cpp" />
@@ -61,13 +61,13 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Events.h" />
     <ClInclude Include="Force.h" />
+    <ClInclude Include="GameInstance.h" />
     <ClInclude Include="GLSLProgram.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="HumanView.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
-    <ClInclude Include="MainGame.h" />
     <ClInclude Include="MemoryMacros.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="PointPart.h" />

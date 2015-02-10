@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GenesisEngine.cpp" />
     <ClCompile Include="Initialization.cpp">
       <Filter>Initialization</Filter>
     </ClCompile>
@@ -51,35 +50,29 @@
     <ClCompile Include="Transform2dComponent.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="GLSLProgram.cpp">
-      <Filter>Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="ImageLoader.cpp">
-      <Filter>Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="MainGame.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="picoPNG.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="SpriteBatch.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="TextureCache.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="Timing.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="Renderer2dComponent.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
     <ClCompile Include="IOManager.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Renderer</Filter>
@@ -90,9 +83,6 @@
     <ClCompile Include="TestGame.cpp">
       <Filter>Test Game</Filter>
     </ClCompile>
-    <ClCompile Include="Camera2D.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="TestGameView.cpp">
       <Filter>Test Game</Filter>
     </ClCompile>
@@ -101,6 +91,14 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="GenesisEngine.cpp" />
+    <ClCompile Include="Camera2D.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInstance.cpp" />
+    <ClCompile Include="GLSLProgram.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +135,6 @@
     <Filter Include="Multicore">
       <UniqueIdentifier>{10ee42c4-665a-4a36-8eae-a4c5be5342ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rendering">
-      <UniqueIdentifier>{74bc8491-2eae-49e4-8d82-2810424335d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{9937833d-c1bb-4c5f-9663-749e7c7c7f7f}</UniqueIdentifier>
     </Filter>
@@ -148,6 +143,9 @@
     </Filter>
     <Filter Include="Shaders">
       <UniqueIdentifier>{295fd184-3a2c-4662-84c0-4bc4b9e16ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EriksRenderingStuff">
+      <UniqueIdentifier>{74bc8491-2eae-49e4-8d82-2810424335d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -239,41 +237,32 @@
     <ClInclude Include="CriticalSection.h">
       <Filter>Multicore</Filter>
     </ClInclude>
-    <ClInclude Include="GLSLProgram.h">
-      <Filter>Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="GLTexture.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="ImageLoader.h">
-      <Filter>Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="MainGame.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="picoPNG.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="SpriteBatch.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="TextureCache.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="Timing.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="Renderer2dComponent.h">
       <Filter>Actor</Filter>
     </ClInclude>
     <ClInclude Include="IOManager.h">
-      <Filter>Rendering</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Renderer</Filter>
+      <Filter>EriksRenderingStuff</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Renderer</Filter>
@@ -290,14 +279,21 @@
     <ClInclude Include="HumanView.h">
       <Filter>UserInterface</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Renderer</Filter>
+    <ClInclude Include="InputManager.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Camera2D.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Utilities</Filter>
+    <ClInclude Include="Vertex.h">
+      <Filter>EriksRenderingStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>EriksRenderingStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInstance.h" />
+    <ClInclude Include="GLSLProgram.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,24 +9,20 @@ public:
 	GLSLProgram();
 	~GLSLProgram();
 
-	void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
+	void CompileShaders(const std::string& p_VertexShaderFilePath, const std::string& p_FragmentShaderFilePath);
+	void LinkShaders();
+	void AddAttribute(const std::string& p_AttributeName);
 
-	void linkShaders();
+	GLint GetUniformLocation(const std::string& m_UniformName);
 
-	void addAttribute(const std::string& attributeName);
-
-	GLint getUniformLocation(const std::string& uniformName);
-
-	void use();
-	void unuse();
+	void Use();
+	void Unuse();
 private:
+	void CompileIndShader(const std::string& p_FilePath, GLuint p_Id);
 
-	int _numAttributes;
+	int m_NumAttributes;
 
-	void compileShader(const std::string& filePath, GLuint id);
-
-	GLuint _programID;
-
-	GLuint _vertexShaderID;
-	GLuint _fragmentShaderID;
+	GLuint m_ProgramID;
+	GLuint m_VertexShaderID;
+	GLuint m_FragmentShaderID;
 };

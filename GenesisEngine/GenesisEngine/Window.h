@@ -11,14 +11,14 @@ public:
 	Window();
 	~Window();
 
-	int create(std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
+	int Create(std::string p_WindowName, int p_ScreenWidth, int p_ScreenHeight, unsigned int p_CurrentFlags);
 
-	void swapBuffer();
+	void SwapBuffer();
 
-	int getScreenWidth() { _screenWidth; }
-	int getScreenHeight() { _screenHeight; }
+	int GetScreenWidth() { return m_ScreenWidth; }
+	int GetScreenHeight() { return m_ScreenHeight; }
 
 private:
-	SDL_Window* _sdlWindow;
-	int _screenWidth, _screenHeight;
+	SDL_Window* m_SDLWindow;
+	int m_ScreenWidth, m_ScreenHeight;
 };
