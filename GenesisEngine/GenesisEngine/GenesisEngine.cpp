@@ -4,7 +4,6 @@
 #include "TestGame.h"
 #include "InputManager.h"
 #include <iostream>
-//#include "MainGame.h"
 #include "Actor.h"
 #include "ActorFactory.h"
 #include "GameInstance.h"

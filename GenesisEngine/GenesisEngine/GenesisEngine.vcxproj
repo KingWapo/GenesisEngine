@@ -35,6 +35,7 @@
     <ClCompile Include="PointParticle.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessManager.cpp" />
+    <ClCompile Include="Render.cpp" />
     <ClCompile Include="Renderer2dComponent.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SpriteBatch.cpp" />
@@ -81,9 +82,11 @@
     <ClInclude Include="PointParticle.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessManager.h" />
+    <ClInclude Include="Render.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Renderer2dComponent.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteBatch.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="Templates.h" />

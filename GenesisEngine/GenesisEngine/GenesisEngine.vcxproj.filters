@@ -92,7 +92,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="GenesisEngine.cpp" />
     <ClCompile Include="Camera2D.cpp">
       <Filter>Renderer</Filter>
@@ -100,10 +99,12 @@
     <ClCompile Include="GameInstance.cpp" />
     <ClCompile Include="GLSLProgram.cpp">
       <Filter>Renderer</Filter>
-=======
+    </ClCompile>
     <ClCompile Include="PointParticle.cpp">
       <Filter>Physics</Filter>
->>>>>>> origin/master
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +296,12 @@
     </ClInclude>
     <ClInclude Include="GameInstance.h" />
     <ClInclude Include="GLSLProgram.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
       <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>

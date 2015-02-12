@@ -1,4 +1,5 @@
 #include "GameInstance.h"
+#include "Render.h"
 
 
 GameInstance::GameInstance()

@@ -12,14 +12,14 @@
 
 class Renderer2dComponent : public ActorComponent
 {
-	Vector2 location;
-	Vector2 spriteSize;
-	std::string spriteLocation;
-	SpriteBatch spriteBatch;
+	Vector2 m_location;
+	Vector2 m_spriteSize;
+	std::string m_spriteLocation;
+	SpriteBatch m_spriteBatch;
 
 public:
-	Renderer2dComponent() { location = Vector2(0, 0); spriteSize = Vector2(0, 0); spriteLocation = ""; }
-	Renderer2dComponent(Vector2 pLocation, Vector2 pSpriteSize, std::string pSpriteLocation) { location = pLocation; spriteSize = pSpriteSize; spriteLocation = pSpriteLocation; }
+	Renderer2dComponent() { m_location = Vector2(0, 0); m_spriteSize = Vector2(0, 0); m_spriteLocation = ""; }
+	Renderer2dComponent(Vector2 pLocation, Vector2 pSpriteSize, std::string pSpriteLocation) { m_location = pLocation; m_spriteSize = pSpriteSize; m_spriteLocation = pSpriteLocation; }
 
 	static const char *g_Name;
 	virtual const char *VGetName() const { return g_Name; }
