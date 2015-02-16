@@ -125,6 +125,10 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	freddy.AddComponent(pRenderComp, true);
 
+	InputManager inputComp;
+	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(&inputComp);
+	freddy.AddComponent(pInputComp, false);
+
 	instance->AddActor(freddy);
 	
 	// Runs the instance of a game.

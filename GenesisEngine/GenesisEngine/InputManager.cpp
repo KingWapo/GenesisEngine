@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <iostream>
 
+const char* InputManager::g_Name = "InputManager";
+
 InputManager::InputManager() : _mouseCoords(0.0f)
 {
 }
@@ -16,41 +18,33 @@ void InputManager::setMouseCoords(float x, float y) {
 	_mouseCoords.y = y;
 }
 
+/** CALL EACH UPDATE BEFORE CHECKING KEY STATE **/
+/** ITERATE OVER MAP AND UPDATE ALL EXISTING PAIRS **/
+void InputManager::preUpdate() {
+	std::unordered_map<unsigned int, unsigned char>::iterator iter;
+	for (iter = _keyMap.begin(); iter != _keyMap.end(); ++iter) {
+		unsigned int key = iter->first;
+
+		updateKeyState(key);
+	}
+}
+
+/** RETURN TRUE IF KEY WAS JUST PRESSED **/
 bool InputManager::onKeyDown(unsigned int keyID) {
-	updateKeyState(keyID);
-
-	if ((_keyMap[keyID] & 0x11) == _keyOnDown) {
-		std::cout << (int) _keyMap[keyID] << ": key down" << std::endl;
-		return true;
-	}
-
-	return false;
+	return ((_keyMap[keyID] & 0x11) == _keyOnDown);
 }
 
+/** RETURN TRUE IF KEY WAS JUST RELEASED **/
 bool InputManager::onKeyUp(unsigned int keyID) {
-	updateKeyState(keyID);
-
-	if ((_keyMap[keyID] & 0x11) == _keyOnUp) {
-		std::cout << (int) _keyMap[keyID] << ": key up" << std::endl;
-
-		return true;
-	}
-
-	return false;
+	return ((_keyMap[keyID] & 0x11) == _keyOnUp);
 }
 
+/** RETURN TRUE IF KEY IS HELD **/
 bool InputManager::isKeyPressed(unsigned int keyID) {
-	updateKeyState(keyID);
-
-	if ((_keyMap[keyID] & 0x11) == _keyDown) {
-		std::cout << (int) _keyMap[keyID] << ": key held" << std::endl;
-
-		return true;
-	}
-
-	return false;
+	return ((_keyMap[keyID] & 0x11) == _keyDown);
 }
 
+/** UPDATE STATE OF KEY SPECIFIED IN PARAMETER **/
 void InputManager::updateKeyState(unsigned int keyID) {
 	if (_keyMap[keyID] == _keyOnDown) {
 		// if key was pressed last update
@@ -81,5 +75,30 @@ void InputManager::updateKeyState(unsigned int keyID) {
 
 		// key is in on key up state
 		_keyMap[keyID] = _keyOnUp;
+	}
+}
+
+/** ACTOR COMPONENT OVERRIDES **/
+bool InputManager::VInit(TiXmlElement* pData) {
+	return true;
+}
+
+TiXmlElement* InputManager::VGenerateXml() {
+	return NULL;
+}
+
+void InputManager::VUpdate(int deltaMs) {
+	preUpdate();
+
+	if (onKeyDown(VK_LSHIFT)) {
+		std::cout << (int)_keyMap[VK_LSHIFT] << ": key down" << std::endl;
+	}
+
+	if (onKeyUp(VK_LSHIFT)) {
+		std::cout << (int)_keyMap[VK_LSHIFT] << ": key up" << std::endl;
+	}
+
+	if (isKeyPressed(VK_LSHIFT)) {
+		std::cout << (int)_keyMap[VK_LSHIFT] << ": key held" << std::endl;
 	}
 }

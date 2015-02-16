@@ -5,18 +5,11 @@
 
 using namespace std;
 
-std::unordered_map<unsigned int, unsigned char> InputManager::_keyMap;
 TestGameApp *g_TestGameApp;
 
 // Main? Call the Engine Code main
 int main(int argc, char *argv[])
 {
-	//while (!InputManager::onKeyDown(VK_SPACE)) {
-		//InputManager::onKeyDown(VK_LSHIFT);
-		//InputManager::onKeyUp(VK_LSHIFT);
-		//InputManager::isKeyPressed(VK_LSHIFT);
-	//}
-
 	GenesisEntry(argc, argv);
 
 	return 0;
