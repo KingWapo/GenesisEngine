@@ -49,6 +49,7 @@ int GenesisEntry(int argc, char *argv[])
 		//Vector2(0.0, 0.0), Vector2(100.0, 100.0), "Textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	myScene->addRenderableComponent(pRenderComp);
+	instance->setScene(myScene);
 	freddy.AddComponent(pRenderComp, true);
 
 	InputManager inputComp;

@@ -21,9 +21,10 @@ void Scene::draw()
 	bool somethingClever = false;
 	if (somethingClever)
 	{
-		for (vector<StrongActorComponentPtr>::iterator it = m_renderableComponents.begin(); it != m_renderableComponents.end(); ++it)
+		vector<StrongActorComponentPtr>::iterator iter;
+		for (iter = m_renderableComponents.begin(); iter != m_renderableComponents.end(); ++iter)
 		{
-			(*it)->vDraw();
+			(*iter)->vDraw();
 		}
 	}
 }

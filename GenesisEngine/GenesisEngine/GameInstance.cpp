@@ -11,6 +11,7 @@ GameInstance::GameInstance()
 	m_CurrentGameState = GameState::PLAY;
 	m_MaxFps = 60.0f;
 	m_Fps = 30.0f;
+	m_scene = NULL;
 
 	m_Camera.Init(m_ScreenWidth, m_ScreenHeight);
 }
@@ -23,6 +24,7 @@ GameInstance::GameInstance(int p_ScreenWidth, int p_ScreenHeight)
 	m_CurrentGameState = GameState::PLAY;
 	m_MaxFps = 60.0f;
 	m_Fps = 30.0f;
+	m_scene = NULL;
 
 	m_Camera.Init(m_ScreenWidth, m_ScreenHeight);
 }
@@ -88,7 +90,10 @@ void GameInstance::Update()
 		}
 
 		// Render Everything
-		m_scene->draw();
+		if (m_scene != NULL)
+		{
+			m_scene->draw();
+		}
 	}
 }
 
