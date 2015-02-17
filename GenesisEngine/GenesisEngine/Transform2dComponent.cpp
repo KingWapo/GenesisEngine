@@ -4,14 +4,13 @@
 
 const char *Transform2dComponent::g_Name = "Transform2dComponent";
 
-bool Transform2dComponent::VInit(TiXmlElement *pData)
+bool Transform2dComponent::vInit()
 {
-	// Xml setup
-
 	return true;
 }
-
+/*
 TiXmlElement *Transform2dComponent::VGenerateXml()
 {
 	return NULL;
 }
+*/

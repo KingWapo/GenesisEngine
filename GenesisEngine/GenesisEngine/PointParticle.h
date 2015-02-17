@@ -57,7 +57,7 @@ public:
 
 	// actor component overrides
 	static const char* g_Name;
-	virtual TiXmlElement* VGenerateXml(void) override;
+	//virtual TiXmlElement* VGenerateXml(void) override;
 	virtual const char* VGetName() const { return g_Name; }
 protected:
 private:

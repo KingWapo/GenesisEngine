@@ -26,12 +26,13 @@ void Renderer2dComponent::VUpdate(int deltaMs) {
 	//spriteBatch.renderBatch();
 }
 
-bool Renderer2dComponent::VInit(TiXmlElement *pData)
+bool Renderer2dComponent::vInit()
 {
 	return true;
 }
-
+/*
 TiXmlElement *Renderer2dComponent::VGenerateXml()
 {
 	return NULL;
 }
+*/

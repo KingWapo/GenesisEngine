@@ -1,5 +1,6 @@
 #include "GameInstance.h"
 #include "Render.h"
+#include "Scene.h"
 
 
 GameInstance::GameInstance()
@@ -36,6 +37,7 @@ GameInstance::~GameInstance()
 		(m_ActorList.back()).Destroy();
 		m_ActorList.pop_back();
 	}
+	delete m_Window;
 }
 
 void GameInstance::AddActor(Actor &p_NewActor)
@@ -45,14 +47,19 @@ void GameInstance::AddActor(Actor &p_NewActor)
 
 void GameInstance::Run()
 {
-	Init();
+	if (!isInitialized)
+	{
+		Init();
+	}
 
 	Update();
 }
 
 void GameInstance::Init()
 {
-	m_Window.Create("The Genesis Engine", m_ScreenWidth, m_ScreenHeight, 0);
+	isInitialized = true;
+	m_Window = new Window();
+	m_Window->Create("The Genesis Engine", m_ScreenWidth, m_ScreenHeight, 0);
 
 	InitShaders();
 }
@@ -81,7 +88,7 @@ void GameInstance::Update()
 		}
 
 		// Render Everything
-		Draw();
+		m_scene->draw();
 	}
 }
 
@@ -103,7 +110,7 @@ void GameInstance::Draw()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	m_ColorProgram.Unuse();
 
-	m_Window.SwapBuffer();
+	m_Window->SwapBuffer();
 }
 
 void GameInstance::DrawActors()

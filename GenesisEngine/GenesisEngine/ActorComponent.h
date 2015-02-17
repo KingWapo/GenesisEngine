@@ -17,13 +17,14 @@ public:
 	virtual ~ActorComponent(void) { m_pOwner.reset(); }
 
 	// Override functions by implementation class
-	virtual bool VInit(TiXmlElement *pData) { return true; }
-	virtual void VPostInit(void) { }
-	virtual void VUpdate(int deltaMs) { }
-	virtual void VOnChanged(void) { }
+	virtual bool vInit(void) { return true; }
+	virtual void vPostInit(void) { }
+	virtual void vUpdate(int deltaMs) { }
+	virtual void vOnChanged(void) { }
+	virtual void vDraw(void) { }
 
 	// for the editor
-	virtual TiXmlElement *VGenerateXml(void) = 0;
+	//virtual TiXmlElement *VGenerateXml(void) = 0;
 
 	// Override functions by interface class.
 	virtual ComponentId VGetId(void) const { return GetIdFromName(VGetName()); }

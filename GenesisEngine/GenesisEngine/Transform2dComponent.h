@@ -9,8 +9,8 @@ public:
 	virtual const char *VGetName() const { return g_Name; }
 
 	Transform2dComponent(void) { m_transform = Transformation2d(); }
-	virtual bool VInit(TiXmlElement *pData) override;
-	virtual TiXmlElement *VGenerateXml(void) override;
+	virtual bool vInit() override;
+	//virtual TiXmlElement *VGenerateXml(void) override;
 
 	// Transform functions
 	Transformation2d GetTransform(void) const { return m_transform; }

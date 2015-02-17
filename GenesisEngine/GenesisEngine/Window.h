@@ -18,6 +18,8 @@ public:
 	int GetScreenWidth() { return m_ScreenWidth; }
 	int GetScreenHeight() { return m_ScreenHeight; }
 
+	SDL_Window* getSurface() { return m_SDLWindow; }
+
 private:
 	SDL_Window* m_SDLWindow;
 	int m_ScreenWidth, m_ScreenHeight;

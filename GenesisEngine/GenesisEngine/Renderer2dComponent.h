@@ -24,8 +24,8 @@ public:
 	static const char *g_Name;
 	virtual const char *VGetName() const { return g_Name; }
 
-	virtual bool VInit(TiXmlElement *pData) override;
-	virtual TiXmlElement *VGenerateXml(void) override;
+	virtual bool vInit(void) override;
+	//virtual TiXmlElement *VGenerateXml(void) override;
 
 	virtual void VUpdate(int deltaMs);
 

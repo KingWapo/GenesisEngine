@@ -26,9 +26,13 @@ public:
 	void AddActor(Actor &newActor);
 
 	void Run();
+	void Init();
+
+	Window* getWindow() { return m_Window; }
+
+	void setScene(Scene *p_scene) { m_scene = p_scene; }
 
 private:
-	void Init();
 	void InitShaders();
 	void Update();
 	void Draw();
@@ -39,7 +43,7 @@ private:
 
 	GLSLProgram m_ColorProgram;
 	InputManager m_InputManager;
-	Window m_Window;
+	Window *m_Window;
 	int m_ScreenWidth;
 	int m_ScreenHeight;
 	GameState m_CurrentGameState;
@@ -49,5 +53,9 @@ private:
 	float m_Fps;
 	float m_MaxFps;
 	float m_Time;
+
+	bool isInitialized = false;
+
+	Scene *m_scene;
 };
 
