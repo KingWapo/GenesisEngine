@@ -28,8 +28,8 @@ public:
 	static const char* g_Name;
 	virtual const char* VGetName() const { return g_Name; }
 
-	virtual bool VInit(TiXmlElement* pData) override;
-	virtual TiXmlElement* VGenerateXml(void) override;
+	virtual bool VInit(TiXmlElement* pData);
+	virtual TiXmlElement* VGenerateXml(void);
 
 	virtual void VUpdate(int deltaMs);
 
