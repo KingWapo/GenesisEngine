@@ -3,15 +3,12 @@
 #include "ActorComponent.h"
 
 #include <unordered_map>
-#include <glm\glm.hpp>
 
 class InputManager : public ActorComponent
 {
 public:
 	InputManager();
 	~InputManager();
-
-	void setMouseCoords(float x, float y);
 
 	// called first each update
 	void preUpdate();
@@ -21,17 +18,12 @@ public:
 	bool onKeyUp(unsigned int keyID);
 	bool isKeyPressed(unsigned int keyID);
 
-	//getters
-	glm::vec2 getMouseCoords() const { return _mouseCoords; }
-
 	// component overrides
 	static const char* g_Name;
 	virtual const char* VGetName() const { return g_Name; }
 
-	virtual bool VInit(TiXmlElement* pData);
-	virtual TiXmlElement* VGenerateXml(void);
-
-	virtual void VUpdate(int deltaMs);
+	virtual bool vInit(void) override;
+	virtual void vUpdate(int deltaMs) override;
 
 private:
 	// maintain state of key events
@@ -41,7 +33,6 @@ private:
 	// A represents state during this call, 1 down, 0 up
 	// B represents state during last call, 1 down, 0 up
 	std::unordered_map<unsigned int, unsigned char> _keyMap;
-	glm::vec2 _mouseCoords;
 
 	// key is down now and was last update
 	static const unsigned char _keyDown = 0x11;

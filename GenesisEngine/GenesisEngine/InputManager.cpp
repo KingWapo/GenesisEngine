@@ -4,18 +4,13 @@
 
 const char* InputManager::g_Name = "InputManager";
 
-InputManager::InputManager() : _mouseCoords(0.0f)
+InputManager::InputManager()
 {
 }
 
 
 InputManager::~InputManager()
 {
-}
-
-void InputManager::setMouseCoords(float x, float y) {
-	_mouseCoords.x = x;
-	_mouseCoords.y = y;
 }
 
 /** CALL EACH UPDATE BEFORE CHECKING KEY STATE **/
@@ -79,15 +74,11 @@ void InputManager::updateKeyState(unsigned int keyID) {
 }
 
 /** ACTOR COMPONENT OVERRIDES **/
-bool InputManager::VInit(TiXmlElement* pData) {
+bool InputManager::vInit() {
 	return true;
 }
 
-TiXmlElement* InputManager::VGenerateXml() {
-	return NULL;
-}
-
-void InputManager::VUpdate(int deltaMs) {
+void InputManager::vUpdate(int deltaMs) {
 	preUpdate();
 
 	if (onKeyDown(VK_LSHIFT)) {
