@@ -70,7 +70,7 @@ void GameInstance::Init()
 // Need to create dynamic shader use
 void GameInstance::InitShaders()
 {
-	m_ColorProgram.CompileShaders("Shaders\\colorShading.vert", "Shaders\\colorShading.frag");
+	m_ColorProgram.CompileShaders("Shaders/colorShading.vert", "Shaders/colorShading.frag");
 	m_ColorProgram.LinkShaders();
 }
 
