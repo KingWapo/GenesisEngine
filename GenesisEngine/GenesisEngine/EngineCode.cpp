@@ -94,14 +94,13 @@ bool EngineApp::InitInstance(/*HINSTANCE hInstance, LPWSTR lpCmdLine, HWND hWnd,
 	VRegisterGameEvents();
 
 	// Initialize the ResCache
-
-	extern shared_ptr<IResourceLoader> CreateWAVResourceLoader();
+/*	extern shared_ptr<IResourceLoader> CreateWAVResourceLoader();
 	extern shared_ptr<IResourceLoader> CreateOGGResourceLoader();
 	extern shared_ptr<IResourceLoader> CreateDDSResourceLoader();
 	extern shared_ptr<IResourceLoader> CreateJPGResourceLoader();
 	extern shared_ptr<IResourceLoader> CreateXmlResourceLoader();
 	extern shared_ptr<IResourceLoader> CreateSdkMeshResourceLoader();
-	extern shared_ptr<IResourceLoader> CreateScriptResourceLoader();
+	extern shared_ptr<IResourceLoader> CreateScriptResourceLoader(); */
 
 	// Register from least to most important
 	// Register the m_ResCache
