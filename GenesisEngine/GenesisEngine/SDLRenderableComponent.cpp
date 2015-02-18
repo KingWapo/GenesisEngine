@@ -3,53 +3,66 @@
 
 //const char *RenderableComponent::g_Name = "SDLRenderableComponent";
 
-SDLRenderableComponent::SDLRenderableComponent()
+SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
 {
-	m_spriteLocation = "";
+	/* No, let the parent initialize these (less code duplication)
+	m_spriteFileLocation = "";
 	m_location = Vector2(0, 0);
 	m_size = Vector2(0, 0);
 	m_cell = Vector2(0, 0);
+	*/
 
-	m_source.x = m_cell.x;
-	m_source.y = m_cell.y;
-	m_source.w = m_size.x;
-	m_source.h = m_size.y;
+	m_window = NULL;
+	m_screen = NULL;
+	m_sprite = NULL;
 
-	m_position.x = m_location.x;
-	m_position.y = m_location.y;
-	m_position.w = m_size.x;
-	m_position.h = m_size.y;
+	m_source.x = m_cell.x();
+	m_source.y = m_cell.y();
+	m_source.w = m_size.x();
+	m_source.h = m_size.y();
+
+	m_position.x = m_location.x();
+	m_position.y = m_location.y();
+	m_position.w = m_size.x();
+	m_position.h = m_size.y();
 }
 
-SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Vector2 p_location, Vector2 p_size, Vector2 p_cell, Window* p_window)
+SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point2D p_location, Point2D p_size, Point2D p_cell, Window* p_window)
+	: RenderableComponent(p_fileLocation, p_location, p_size, p_cell)
 {
-	m_spriteLocation = p_fileLocation;
+	/* Ditto to above
+	m_spriteFileLocation = p_fileLocation;
 	m_location = p_location;
 	m_size = p_size;
 	m_cell = p_cell;
-
-	m_source.x = m_cell.x;
-	m_source.y = m_cell.y;
-	m_source.w = m_size.x;
-	m_source.h = m_size.y;
-
-	m_position.x = m_location.x;
-	m_position.y = m_location.y;
-	m_position.w = m_size.x;
-	m_position.h = m_size.y;
+	*/
 
 	m_window = p_window->getSurface();
 	m_screen = SDL_GetWindowSurface(m_window);
+	m_sprite = NULL;
+
+	m_source.x = m_cell.x();
+	m_source.y = m_cell.y();
+	m_source.w = m_size.x();
+	m_source.h = m_size.y();
+
+	m_position.x = m_location.x();
+	m_position.y = m_location.y();
+	m_position.w = m_size.x();
+	m_position.h = m_size.y();
 }
 
 SDLRenderableComponent::~SDLRenderableComponent()
 {
 	SDL_FreeSurface(m_sprite);
-	SDL_Quit();
+	//SDL_Quit();
 }
 
 bool SDLRenderableComponent::vInit()
 {
+	// SDL should not be initialized at the component level.
+	// These calls (and subsequent calls to SDL_Quit) should be happening at the application level.
+
 	if (!RenderableComponent::vInit())
 	{
 		return false;
@@ -67,7 +80,7 @@ bool SDLRenderableComponent::vInit()
 		return false;
 	}
 
-	m_sprite = IMG_Load(m_spriteLocation);
+	m_sprite = IMG_Load(m_spriteFileLocation);
 	if (m_sprite == NULL)
 	{
 		SDL_Quit();

@@ -70,6 +70,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="MemoryPool.h" />
     <ClInclude Include="MessageBox.h" />
+    <ClInclude Include="Point2D.h" />
     <ClInclude Include="PointParticle.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessManager.h" />

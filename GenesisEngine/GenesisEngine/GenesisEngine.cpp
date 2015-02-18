@@ -41,31 +41,31 @@ int GenesisEntry(int argc, char *argv[])
 	}
 
 	// Main Loop
-	GameInstance *instance = new GameInstance();	// Prof. B: Switched to dynamic allocation so could control when destructor is called
-	instance->Init();
+	GameInstance instance;
+	instance.Init();
 	Actor freddy(0);
 	Scene* myScene = new Scene();
-	SDLRenderableComponent renderComp("Textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png",Vector2(100.0,100.0), Vector2(73.0, 79.0), Vector2(0.0, 0.0), instance->getWindow());
-		//Vector2(0.0, 0.0), Vector2(100.0, 100.0), "Textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
+	SDLRenderableComponent renderComp("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
+		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), instance.getWindow());
+
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	myScene->addRenderableComponent(pRenderComp);
-	instance->setScene(myScene);
+	instance.setScene(myScene);
 	freddy.AddComponent(pRenderComp, true);
 
 	InputManager inputComp;
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(&inputComp);
 	freddy.AddComponent(pInputComp, false);
 
-	instance->AddActor(freddy);
+	instance.AddActor(freddy);
 	
 	// Runs the instance of a game.
 	// When it passes this line, the game is over.
-	instance->Run();
+	instance.Run();
 
 	// Cleanup
 	freddy.Destroy();
 	delete myScene;
-	delete instance;	// Prof. B: Force call of destructor BEFORE logger is destroyed
 
 	// Shutdown
 	Logger::Destroy();

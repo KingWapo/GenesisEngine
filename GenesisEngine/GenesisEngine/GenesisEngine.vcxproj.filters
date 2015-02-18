@@ -262,6 +262,9 @@
     <ClInclude Include="Scene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Point2D.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">
