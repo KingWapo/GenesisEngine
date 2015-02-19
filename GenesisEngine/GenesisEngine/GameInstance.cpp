@@ -151,6 +151,13 @@ void GameInstance::Draw()
 	m_ColorProgram.Use();
 	glActiveTexture(GL_TEXTURE0);
 
+	//glMatrixMode(GL_PROJECTION); glLoadIdentity();
+	//if (m_Window != NULL) {
+	//	glOrtho(0.0, m_Window->GetScreenWidth(), 0.0, m_Window->GetScreenHeight(), 0.0, 1.0);
+	//}
+
+	//glMatrixMode(GL_MODELVIEW); glLoadIdentity();
+
 	GLuint pLocation = m_ColorProgram.GetUniformLocation("P");
 	glm::mat4 cameraMatrix = m_Camera.GetCameraMatrix();
 

@@ -69,23 +69,22 @@ bool SDLRenderableComponent::vInit()
 	{
 		return false;
 	}
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		SDL_Quit();
-		return false;
-	}
+
+	//if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	//{
+	//	printf("SDL Error: %s\n", SDL_GetError()); fflush(stdout);
+	//	return false;
+	//}
 
 	int imgFlags = IMG_INIT_PNG;
 	if (!(IMG_Init(imgFlags) & imgFlags))
 	{
-		SDL_Quit();
 		return false;
 	}
 
 	SDL_Surface* imageSurface = IMG_Load(m_spriteFileLocation);
 	if (imageSurface == NULL)
 	{
-		SDL_Quit();
 		return false;
 	}
 
@@ -94,9 +93,10 @@ bool SDLRenderableComponent::vInit()
 	{
 		printf("Texture creation failed.\n"); fflush(stdout);
 		SDL_FreeSurface(imageSurface);
-		SDL_Quit();
 		return false;
 	}
+
+	printf("Texture creation and loaded.\n"); fflush(stdout);
 
 	SDL_FreeSurface(imageSurface);
 	return true;
@@ -121,7 +121,7 @@ void SDLRenderableComponent::vOnChanged()
 void SDLRenderableComponent::vDraw()
 {
 	printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
-	if (isDrawable())
+//	if (isDrawable())
 	{
 		SDL_GL_BindTexture(m_sprite, NULL, NULL);
 		glBegin(GL_QUADS);
