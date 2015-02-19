@@ -1,6 +1,7 @@
 #include "GameInstance.h"
 #include "Render.h"
 #include "Scene.h"
+#include <iostream>
 
 
 GameInstance::GameInstance()
@@ -12,6 +13,7 @@ GameInstance::GameInstance()
 	m_MaxFps = 60.0f;
 	m_Fps = 30.0f;
 	m_scene = NULL;
+	m_ActorList = {};
 
 	m_Camera.Init(m_ScreenWidth, m_ScreenHeight);
 }
@@ -25,6 +27,7 @@ GameInstance::GameInstance(int p_ScreenWidth, int p_ScreenHeight)
 	m_MaxFps = 60.0f;
 	m_Fps = 30.0f;
 	m_scene = NULL;
+	m_ActorList = {};
 
 	m_Camera.Init(m_ScreenWidth, m_ScreenHeight);
 }
@@ -33,12 +36,7 @@ GameInstance::GameInstance(int p_ScreenWidth, int p_ScreenHeight)
 
 GameInstance::~GameInstance()
 {
-	// Prof. B: Cleanly delete all actors (maybe, just trying to get it to exit cleanly)
-	while (!m_ActorList.empty())
-	{
-		(m_ActorList.back())->Destroy();
-		m_ActorList.pop_back();
-	}
+	//John - removed deleting to get rid of assertion error
 	delete m_Window;
 }
 
