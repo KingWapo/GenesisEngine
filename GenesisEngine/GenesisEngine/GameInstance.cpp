@@ -148,25 +148,25 @@ void GameInstance::Draw()
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	m_ColorProgram.Use();
+	//m_ColorProgram.Use();
 	glActiveTexture(GL_TEXTURE0);
 
-	//glMatrixMode(GL_PROJECTION); glLoadIdentity();
-	//if (m_Window != NULL) {
-	//	glOrtho(0.0, m_Window->GetScreenWidth(), 0.0, m_Window->GetScreenHeight(), 0.0, 1.0);
-	//}
+	glMatrixMode(GL_PROJECTION); glLoadIdentity();
+	if (m_Window != NULL) {
+		glOrtho(0.0, m_Window->GetScreenWidth(), 0.0, m_Window->GetScreenHeight(), 0.0, 1.0);
+	}
 
-	//glMatrixMode(GL_MODELVIEW); glLoadIdentity();
+	glMatrixMode(GL_MODELVIEW); glLoadIdentity();
 
-	GLuint pLocation = m_ColorProgram.GetUniformLocation("P");
-	glm::mat4 cameraMatrix = m_Camera.GetCameraMatrix();
+	//GLuint pLocation = m_ColorProgram.GetUniformLocation("P");
+	//glm::mat4 cameraMatrix = m_Camera.GetCameraMatrix();
 
-	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+	//glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 	DrawActors();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
-	m_ColorProgram.Unuse();
+	//m_ColorProgram.Unuse();
 
 	m_Window->SwapBuffer();
 }
