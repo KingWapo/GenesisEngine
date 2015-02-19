@@ -1,8 +1,6 @@
 #include "GameInstance.h"
 #include "Render.h"
 #include "Scene.h"
-#include <iostream>
-
 
 GameInstance::GameInstance()
 {
