@@ -12,6 +12,7 @@ SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
 	m_cell = Vector2(0, 0);
 	*/
 
+	m_renderer = NULL;
 	m_window = NULL;
 	m_screen = NULL;
 	m_sprite = NULL;
@@ -38,6 +39,7 @@ SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point
 	*/
 
 	m_window = p_window->getSurface();
+	m_renderer = p_window->getRenderer();
 	m_screen = SDL_GetWindowSurface(m_window);
 	m_sprite = NULL;
 
@@ -54,7 +56,7 @@ SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point
 
 SDLRenderableComponent::~SDLRenderableComponent()
 {
-	SDL_FreeSurface(m_sprite);
+	SDL_DestroyTexture(m_sprite);
 	//SDL_Quit();
 }
 
@@ -80,13 +82,23 @@ bool SDLRenderableComponent::vInit()
 		return false;
 	}
 
-	m_sprite = IMG_Load(m_spriteFileLocation);
-	if (m_sprite == NULL)
+	SDL_Surface* imageSurface = IMG_Load(m_spriteFileLocation);
+	if (imageSurface == NULL)
 	{
 		SDL_Quit();
 		return false;
 	}
-	
+
+	m_sprite = SDL_CreateTextureFromSurface(m_renderer, imageSurface);
+	if (m_sprite == NULL)
+	{
+		printf("Texture creation failed.\n"); fflush(stdout);
+		SDL_FreeSurface(imageSurface);
+		SDL_Quit();
+		return false;
+	}
+
+	SDL_FreeSurface(imageSurface);
 	return true;
 }
 
@@ -108,8 +120,15 @@ void SDLRenderableComponent::vOnChanged()
 
 void SDLRenderableComponent::vDraw()
 {
+	printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
 	if (isDrawable())
 	{
-		SDL_BlitSurface(m_sprite, &m_source, m_screen, &m_position);
+		SDL_GL_BindTexture(m_sprite, NULL, NULL);
+		glBegin(GL_QUADS);
+			glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
+			glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
+			glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
+			glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
+		glEnd();
 	}
 }

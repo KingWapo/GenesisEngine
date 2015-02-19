@@ -37,7 +37,7 @@ private:
 	void Update();
 	void Draw();
 
-	void UpdateActors();
+	bool UpdateActors();
 	void DrawActors();
 
 	void CalculateFPS();

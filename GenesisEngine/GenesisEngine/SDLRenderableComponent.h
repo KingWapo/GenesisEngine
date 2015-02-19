@@ -7,9 +7,10 @@
 class SDLRenderableComponent : public RenderableComponent
 {
 private:
-	SDL_Surface* m_sprite;
+	SDL_Texture* m_sprite;
 	SDL_Surface* m_screen;
 	SDL_Window* m_window;
+	SDL_Renderer* m_renderer;
 
 	SDL_Rect m_source;
 	SDL_Rect m_position;
@@ -28,4 +29,3 @@ public:
 
 	void SetWindowSurface(Window* p_window) { m_window = p_window->getSurface(); m_screen = SDL_GetWindowSurface(m_window); }
 };
-

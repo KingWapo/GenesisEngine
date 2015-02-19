@@ -116,7 +116,7 @@ void GameInstance::Update()
 		}
 
 		// Update components
-		UpdateActors();
+		refreshRender = refreshRender | UpdateActors();
 
 		// Render Everything (forcing a redraw for now, SDL events are not firing right)
 		if (m_scene != NULL) // && refreshRender)
@@ -127,18 +127,20 @@ void GameInstance::Update()
 	}
 }
 
-void GameInstance::UpdateActors()
+bool GameInstance::UpdateActors()
 {
 	bool stateChanged = false;
 
 	// These update function should return a boolean that indicates if something actually
 	// changed or not.  If not, you don't need to re-render the screen.
-	stateChanged = stateChanged || m_Camera.Update();
+	stateChanged = stateChanged | m_Camera.Update();
 
 	for (ActorList::iterator actor = m_ActorList.begin(); actor != m_ActorList.end(); ++actor)
 	{
-		(*actor)->Update(1.0 / m_Fps);
+		stateChanged = stateChanged | (*actor)->Update(1.0 / m_Fps);
 	}
+
+	return stateChanged;
 }
 
 void GameInstance::Draw()

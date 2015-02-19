@@ -38,6 +38,11 @@ int Window::Create(std::string windowName, int screenWidth, int screenHeight, un
 		fatalError("SDL_GL Context could not be created!");
 	}
 
+	m_SDLRenderer = SDL_CreateRenderer(m_SDLWindow, -1, SDL_RENDERER_ACCELERATED);
+	if (m_SDLRenderer == nullptr) {
+		fatalError("SDL_GL Renderer could not be created!");
+	}
+
 	GLenum error = glewInit();
 	if (error != GLEW_OK) {
 		fatalError("Could not initialize glew!");

@@ -53,7 +53,7 @@ bool Actor::Update(int deltaMs)
 	bool changed = false;
 	for (ActorComponents::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
-		changed = changed || it->second->vUpdate(deltaMs);
+		changed = changed | it->second->vUpdate(deltaMs);
 	}
 	return changed;
 }
@@ -62,7 +62,7 @@ void Actor::Draw()
 {
 	for (ActorComponents::iterator it = m_renderComponents.begin(); it != m_renderComponents.end(); ++it)
 	{
-		it->second->vUpdate(1.0f / 30);
+		it->second->vDraw();
 	}
 }
 
@@ -74,7 +74,14 @@ std::string Actor::ToXML()
 
 void Actor::AddComponent(StrongActorComponentPtr pComponent, bool p_RenderComp)
 {
-	std::pair<ActorComponents::iterator, bool> success;
-	success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
-	GCC_ASSERT(success.second);
+	if (p_RenderComp) {
+		std::pair<ActorComponents::iterator, bool> success;
+		success = m_renderComponents.insert(std::make_pair(pComponent->VGetId(), pComponent));
+		GCC_ASSERT(success.second);
+	}
+	else {
+		std::pair<ActorComponents::iterator, bool> success;
+		success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
+		GCC_ASSERT(success.second);
+	}
 }
