@@ -44,15 +44,18 @@ void Actor::PostInit(void)
 
 void Actor::Destroy(void)
 {
+	// Something is wrong here?
 	m_components.clear();
 }
 
-void Actor::Update(int deltaMs)
+bool Actor::Update(int deltaMs)
 {
+	bool changed = false;
 	for (ActorComponents::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
-		it->second->vUpdate(deltaMs);
+		changed = changed || it->second->vUpdate(deltaMs);
 	}
+	return changed;
 }
 
 void Actor::Draw()

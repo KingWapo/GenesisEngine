@@ -43,7 +43,7 @@ int GenesisEntry(int argc, char *argv[])
 	// Main Loop
 	GameInstance instance;
 	instance.Init();
-	Actor freddy(0);
+	Actor* freddy = new Actor(0);
 	Scene* myScene = new Scene();
 	SDLRenderableComponent renderComp("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
 		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), instance.getWindow());
@@ -51,11 +51,11 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	myScene->addRenderableComponent(pRenderComp);
 	instance.setScene(myScene);
-	freddy.AddComponent(pRenderComp, true);
+	freddy->AddComponent(pRenderComp, true);
 
 	InputManager inputComp;
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(&inputComp);
-	freddy.AddComponent(pInputComp, false);
+	freddy->AddComponent(pInputComp, false);
 
 	instance.AddActor(freddy);
 	
@@ -64,11 +64,10 @@ int GenesisEntry(int argc, char *argv[])
 	instance.Run();
 
 	// Cleanup
-	freddy.Destroy();
 	delete myScene;
 
 	// Shutdown
-	Logger::Destroy();
+//	Logger::Destroy();
 
 	int exitCode = g_pApp->GetExitCode();
 	return exitCode;

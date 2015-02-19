@@ -23,7 +23,7 @@ public:
 	virtual const char* VGetName() const { return g_Name; }
 
 	virtual bool vInit(void) override;
-	virtual void vUpdate(int deltaMs) override;
+	virtual bool vUpdate(int deltaMs) override;
 
 private:
 	// maintain state of key events

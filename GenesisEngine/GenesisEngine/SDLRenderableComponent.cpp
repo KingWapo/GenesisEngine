@@ -95,9 +95,10 @@ void SDLRenderableComponent::vPostInit()
 
 }
 
-void SDLRenderableComponent::vUpdate(int deltaMs)
+bool SDLRenderableComponent::vUpdate(int deltaMs)
 {
 	// Reset position
+	return false;
 }
 
 void SDLRenderableComponent::vOnChanged()

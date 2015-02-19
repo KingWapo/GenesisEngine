@@ -30,7 +30,7 @@ public:
 	bool Init(TiXmlElement *pData);
 	void PostInit(void);
 	void Destroy(void);
-	void Update(int deltaMs);
+	bool Update(int deltaMs);
 	void Draw();
 
 	// editor functions

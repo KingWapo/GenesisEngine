@@ -23,7 +23,7 @@ public:
 
 	void Init();
 	void Init(int p_ScreenWidth, int p_ScreenHeight);
-	void Update();
+	bool Update();
 
 	Vector2 ConvertScreenToWorld(Vector2 p_ScreenCoords);
 

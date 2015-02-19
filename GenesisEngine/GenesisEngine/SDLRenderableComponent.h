@@ -21,7 +21,7 @@ public:
 
 	virtual bool vInit(void) override;
 	virtual void vPostInit(void) override;
-	virtual void vUpdate(int deltaMs) override;
+	virtual bool vUpdate(int deltaMs) override;
 	virtual void vOnChanged(void) override;
 
 	virtual void vDraw(void) override;

@@ -19,7 +19,7 @@ public:
 	// Override functions by implementation class
 	virtual bool vInit(void) { return true; }
 	virtual void vPostInit(void) { }
-	virtual void vUpdate(int deltaMs) { }
+	virtual bool vUpdate(int deltaMs) { return false; }
 	virtual void vOnChanged(void) { }
 	virtual void vDraw(void) { }
 

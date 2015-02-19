@@ -36,13 +36,13 @@ GameInstance::~GameInstance()
 	// Prof. B: Cleanly delete all actors (maybe, just trying to get it to exit cleanly)
 	while (!m_ActorList.empty())
 	{
-		(m_ActorList.back()).Destroy();
+		(m_ActorList.back())->Destroy();
 		m_ActorList.pop_back();
 	}
 	delete m_Window;
 }
 
-void GameInstance::AddActor(Actor &p_NewActor)
+void GameInstance::AddActor(Actor* p_NewActor)
 {
 	m_ActorList.push_back(p_NewActor);
 }
@@ -76,24 +76,72 @@ void GameInstance::InitShaders()
 
 void GameInstance::Update()
 {
+	// Start with an initial refresh
+	bool refreshRender = true;
+	bool refreshInput = true;
+	bool processMotion = true;
+
+	SDL_Event e;
 	while (m_CurrentGameState != GameState::EXIT)
 	{
+		SDL_PollEvent(&e);
+		switch (e.type)
+		{
+			// Queue to quit
+			case SDL_QUIT: m_CurrentGameState = GameState::EXIT; break;
+
+			// Queue a render refresh
+			case SDL_WINDOWEVENT: case SDL_SYSWMEVENT:
+				refreshRender = true;
+			break;
+
+			// Queue a keyboard or input event
+			case SDL_KEYDOWN: case SDL_KEYUP:
+			case SDL_JOYBUTTONDOWN: case SDL_JOYBUTTONUP:
+			case SDL_CONTROLLERBUTTONDOWN: case SDL_CONTROLLERBUTTONUP:
+			case SDL_MOUSEBUTTONDOWN: case SDL_MOUSEBUTTONUP:
+			case SDL_FINGERDOWN: case SDL_FINGERUP:
+				refreshInput = true;
+			break;
+
+			// Queue a motion event
+			case SDL_MOUSEMOTION:
+			case SDL_CONTROLLERAXISMOTION:
+			case SDL_FINGERMOTION:
+				processMotion = true;
+			break;
+		}
+
 		// Process Input
-		// InputManager.Update() or such
-
-		// Update Everything
-		m_Camera.Update();
-		
-		for (ActorList::iterator actor = m_ActorList.begin(); actor != m_ActorList.end(); ++actor)
+		if (refreshInput || processMotion)
 		{
-			(*actor).Update(1.0 / m_Fps);
+			// InputManager.Update() or such
+			refreshInput = processMotion = false;
 		}
 
-		// Render Everything
-		if (m_scene != NULL)
+		// Update components
+		UpdateActors();
+
+		// Render Everything (forcing a redraw for now, SDL events are not firing right)
+		if (m_scene != NULL) // && refreshRender)
 		{
-			m_scene->draw();
+			Draw();
+			refreshRender = false;
 		}
+	}
+}
+
+void GameInstance::UpdateActors()
+{
+	bool stateChanged = false;
+
+	// These update function should return a boolean that indicates if something actually
+	// changed or not.  If not, you don't need to re-render the screen.
+	stateChanged = stateChanged || m_Camera.Update();
+
+	for (ActorList::iterator actor = m_ActorList.begin(); actor != m_ActorList.end(); ++actor)
+	{
+		(*actor)->Update(1.0 / m_Fps);
 	}
 }
 
@@ -122,6 +170,6 @@ void GameInstance::DrawActors()
 {
 	for (ActorList::iterator it = m_ActorList.begin(); it != m_ActorList.end(); ++it)
 	{
-		(*it).Draw();
+		(*it)->Draw();
 	}
 }

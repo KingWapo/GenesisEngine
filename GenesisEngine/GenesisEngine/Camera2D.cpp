@@ -40,7 +40,7 @@ void Camera2D::Init(int p_ScreenWidth, int p_ScreenHeight)
 	Init();
 }
 
-void Camera2D::Update()
+bool Camera2D::Update()
 {
 	if (m_NeedsMatrixUpdate)
 	{
@@ -50,7 +50,10 @@ void Camera2D::Update()
 		glm::vec3 scale(m_Scale, m_Scale, 0.0f);
 		m_CameraMatrix = glm::scale(glm::mat4(1.0f), scale) * m_CameraMatrix;
 		m_NeedsMatrixUpdate = false;
+		return true;
 	}
+
+	return false;
 }
 
 Vector2 Camera2D::ConvertScreenToWorld(Vector2 p_ScreenCoords)

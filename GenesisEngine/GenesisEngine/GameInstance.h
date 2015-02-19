@@ -14,7 +14,7 @@
 
 enum class GameState { PLAY, EXIT };
 
-typedef std::list<Actor> ActorList;
+typedef std::list<Actor*> ActorList;
 
 class GameInstance
 {
@@ -23,7 +23,7 @@ public:
 	GameInstance(int p_ScreenWidth, int p_ScreenHeight);
 	~GameInstance();
 
-	void AddActor(Actor &newActor);
+	void AddActor(Actor* newActor);
 
 	void Run();
 	void Init();
@@ -36,7 +36,10 @@ private:
 	void InitShaders();
 	void Update();
 	void Draw();
+
+	void UpdateActors();
 	void DrawActors();
+
 	void CalculateFPS();
 
 	ActorList m_ActorList;

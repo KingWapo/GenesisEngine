@@ -78,18 +78,24 @@ bool InputManager::vInit() {
 	return true;
 }
 
-void InputManager::vUpdate(int deltaMs) {
+bool InputManager::vUpdate(int deltaMs) {
+	bool changed = false;
 	preUpdate();
 
 	if (onKeyDown(VK_LSHIFT)) {
 		std::cout << (int)_keyMap[VK_LSHIFT] << ": key down" << std::endl;
+		changed = true;
 	}
 
 	if (onKeyUp(VK_LSHIFT)) {
 		std::cout << (int)_keyMap[VK_LSHIFT] << ": key up" << std::endl;
+		changed = true;
 	}
 
 	if (isKeyPressed(VK_LSHIFT)) {
 		std::cout << (int)_keyMap[VK_LSHIFT] << ": key held" << std::endl;
+		changed = true;
 	}
+
+	return changed;
 }
