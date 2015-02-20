@@ -4,6 +4,7 @@
 #include "TestGame.h"
 #include "InputManager.h"
 #include "CustomScript.h"
+#include "Transform2dComponent.h"
 #include <iostream>
 #include "Actor.h"
 #include "ActorFactory.h"
@@ -46,6 +47,11 @@ int GenesisEntry(int argc, char *argv[])
 	instance.Init();
 	Actor* freddy = new Actor(0);
 	Scene* myScene = new Scene();
+
+	Transform2dComponent transformComp;
+	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(&transformComp);
+	freddy->AddComponent(pTransformComp, false);
+
 	SDLRenderableComponent renderComp("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
 		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), instance.getWindow());
 
