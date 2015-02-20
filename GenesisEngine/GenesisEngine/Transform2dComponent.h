@@ -1,8 +1,11 @@
+#pragma once
+
 #include "ActorComponent.h"
-#include "Transformation.h"
+#include "Transformation2d.h"
 
 class Transform2dComponent : public ActorComponent
 {
+private:
 	Transformation2d m_transform;
 public:
 	static const char *g_Name;

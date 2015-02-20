@@ -1,4 +1,4 @@
-#include "Transformation.h"
+#include "Transformation2d.h"
 
 /*
 	Transformation::Transformation
@@ -27,6 +27,10 @@ Transformation2d::Transformation2d(Vector2 pLocation, float pRotation)
 	{
 		rotation -= 360;
 	}
+}
+
+Transformation2d::~Transformation2d() {
+
 }
 
 /* 

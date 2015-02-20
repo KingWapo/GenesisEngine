@@ -44,9 +44,6 @@
     <ClCompile Include="ActorFactory.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Transformation.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Transform2dComponent.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
@@ -92,6 +89,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="CustomScript.cpp" />
+    <ClCompile Include="Transformation2d.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -211,9 +211,6 @@
     <ClInclude Include="Transform2dComponent.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Transformation.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Events.h">
       <Filter>EventManager</Filter>
     </ClInclude>
@@ -267,6 +264,9 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="CustomScript.h" />
+    <ClInclude Include="Transformation2d.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">

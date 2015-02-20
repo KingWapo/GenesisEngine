@@ -42,6 +42,10 @@ float Vector2::mag2() {
 	return (pow(x, 2) + pow(y, 2));
 }
 
+std::string Vector2::toString(){
+	return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
+}
+
 //===================================
 // OPERATORS
 //===================================

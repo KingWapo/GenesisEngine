@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class Vector2 {
 public:
 	// constructors
@@ -15,6 +17,9 @@ public:
 	Vector2 norm();
 	float mag();
 	float mag2();
+
+	// information
+	std::string toString();
 
 	// operators
 

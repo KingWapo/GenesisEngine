@@ -41,7 +41,7 @@
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="TestGameView.cpp" />
     <ClCompile Include="Transform2dComponent.cpp" />
-    <ClCompile Include="Transformation.cpp" />
+    <ClCompile Include="Transformation2d.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -85,7 +85,7 @@
     <ClInclude Include="Templates.h" />
     <ClInclude Include="TestGame.h" />
     <ClInclude Include="TestGameView.h" />
-    <ClInclude Include="Transformation.h" />
+    <ClInclude Include="Transformation2d.h" />
     <ClInclude Include="Transform2dComponent.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="UserInterface.h" />
