@@ -9,6 +9,7 @@ class TiXmlElement;
 class ActorComponent
 {
 	friend class ActorFactory;
+	friend class Actor;
 
 protected:
 	StrongActorPtr m_pOwner;

@@ -11,7 +11,7 @@ public:
 	~InputManager();
 
 	// called first each update
-	void preUpdate();
+	bool preUpdate();
 
 	// key calls
 	bool onKeyDown(unsigned int keyID);
@@ -28,6 +28,8 @@ public:
 private:
 	// maintain state of key events
 	void updateKeyState(unsigned int keyID);
+
+	void checkNewKey(unsigned int keyID);
 
 	// map stores char in this format, 0xAB
 	// A represents state during this call, 1 down, 0 up

@@ -91,6 +91,7 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -265,6 +266,7 @@
     <ClInclude Include="Point2D.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="CustomScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">

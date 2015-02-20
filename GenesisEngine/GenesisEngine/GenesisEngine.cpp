@@ -3,6 +3,7 @@
 #include "EngineCode.h"
 #include "TestGame.h"
 #include "InputManager.h"
+#include "CustomScript.h"
 #include <iostream>
 #include "Actor.h"
 #include "ActorFactory.h"
@@ -47,7 +48,6 @@ int GenesisEntry(int argc, char *argv[])
 	Scene* myScene = new Scene();
 	SDLRenderableComponent renderComp("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
 		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), instance.getWindow());
-	renderComp.vInit();
 
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	myScene->addRenderableComponent(pRenderComp);
@@ -57,6 +57,10 @@ int GenesisEntry(int argc, char *argv[])
 	InputManager inputComp;
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(&inputComp);
 	freddy->AddComponent(pInputComp, false);
+
+	CustomScript customScript;
+	StrongActorComponentPtr pCustomScript = StrongActorComponentPtr(&customScript);
+	freddy->AddComponent(pCustomScript, false);
 
 	instance.AddActor(freddy);
 	

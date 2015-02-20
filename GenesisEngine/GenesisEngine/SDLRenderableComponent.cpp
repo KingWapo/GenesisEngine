@@ -120,7 +120,7 @@ void SDLRenderableComponent::vOnChanged()
 
 void SDLRenderableComponent::vDraw()
 {
-	printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
+	//printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
 //	if (isDrawable())
 	{
 		SDL_GL_BindTexture(m_sprite, NULL, NULL);

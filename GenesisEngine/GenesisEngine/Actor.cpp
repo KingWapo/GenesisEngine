@@ -74,6 +74,10 @@ std::string Actor::ToXML()
 
 void Actor::AddComponent(StrongActorComponentPtr pComponent, bool p_RenderComp)
 {
+	// Prof. B: Maybe it should not always take ownership?
+	(*pComponent).SetOwner(StrongActorPtr(this));
+	(*pComponent).vInit();
+
 	if (p_RenderComp) {
 		std::pair<ActorComponents::iterator, bool> success;
 		success = m_renderComponents.insert(std::make_pair(pComponent->VGetId(), pComponent));

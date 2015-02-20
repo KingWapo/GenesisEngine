@@ -1,6 +1,7 @@
 #include "InputManager.h"
 #include <Windows.h>
 #include <iostream>
+#include <utility>
 
 const char* InputManager::g_Name = "InputManager";
 
@@ -15,27 +16,44 @@ InputManager::~InputManager()
 
 /** CALL EACH UPDATE BEFORE CHECKING KEY STATE **/
 /** ITERATE OVER MAP AND UPDATE ALL EXISTING PAIRS **/
-void InputManager::preUpdate() {
+bool InputManager::preUpdate() {
 	std::unordered_map<unsigned int, unsigned char>::iterator iter;
 	for (iter = _keyMap.begin(); iter != _keyMap.end(); ++iter) {
 		unsigned int key = iter->first;
 
 		updateKeyState(key);
 	}
+
+	// add check that key was updated
+	return true;
+}
+
+/** IF KEY IS NOT IN MAP, ADD IT **/
+void InputManager::checkNewKey(unsigned int keyID) {
+	if (_keyMap.count(keyID) == 0) {
+		std::pair<unsigned int, unsigned char> key = std::make_pair(keyID, 0);
+		_keyMap.insert(key);
+	}
 }
 
 /** RETURN TRUE IF KEY WAS JUST PRESSED **/
 bool InputManager::onKeyDown(unsigned int keyID) {
+	checkNewKey(keyID);
+
 	return ((_keyMap[keyID] & 0x11) == _keyOnDown);
 }
 
 /** RETURN TRUE IF KEY WAS JUST RELEASED **/
 bool InputManager::onKeyUp(unsigned int keyID) {
+	checkNewKey(keyID);
+
 	return ((_keyMap[keyID] & 0x11) == _keyOnUp);
 }
 
 /** RETURN TRUE IF KEY IS HELD **/
 bool InputManager::isKeyPressed(unsigned int keyID) {
+	checkNewKey(keyID);
+
 	return ((_keyMap[keyID] & 0x11) == _keyDown);
 }
 
@@ -79,23 +97,5 @@ bool InputManager::vInit() {
 }
 
 bool InputManager::vUpdate(int deltaMs) {
-	bool changed = false;
-	preUpdate();
-
-	if (onKeyDown(VK_LSHIFT)) {
-		std::cout << (int)_keyMap[VK_LSHIFT] << ": key down" << std::endl;
-		changed = true;
-	}
-
-	if (onKeyUp(VK_LSHIFT)) {
-		std::cout << (int)_keyMap[VK_LSHIFT] << ": key up" << std::endl;
-		changed = true;
-	}
-
-	if (isKeyPressed(VK_LSHIFT)) {
-		std::cout << (int)_keyMap[VK_LSHIFT] << ": key held" << std::endl;
-		changed = true;
-	}
-
-	return changed;
+	return preUpdate();
 }

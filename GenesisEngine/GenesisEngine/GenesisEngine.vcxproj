@@ -16,6 +16,7 @@
     <ClCompile Include="BaseGameLogic.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CustomScript.cpp" />
     <ClCompile Include="EngineCode.cpp" />
     <ClCompile Include="Errors.cpp" />
     <ClCompile Include="GameInstance.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Constraint.h" />
     <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="CustomScript.h" />
     <ClInclude Include="EngineCode.h" />
     <ClInclude Include="Errors.h" />
     <ClInclude Include="EventManager.h" />
