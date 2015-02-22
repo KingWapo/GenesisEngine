@@ -1,5 +1,7 @@
 #pragma once
 #include "RenderableComponent.h"
+#include "Transform2dComponent.h"
+#include "Actor.h"
 #include "Window.h"
 
 #include "SDL\SDL.h"
@@ -14,6 +16,8 @@ private:
 
 	SDL_Rect m_source;
 	SDL_Rect m_position;
+
+	shared_ptr<Transform2dComponent> m_transform;
 
 public:
 	SDLRenderableComponent();

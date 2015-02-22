@@ -137,7 +137,7 @@ bool GameInstance::UpdateActors()
 
 	for (ActorList::iterator actor = m_ActorList.begin(); actor != m_ActorList.end(); ++actor)
 	{
-		stateChanged = stateChanged | (*actor)->Update(1.0 / m_Fps);
+		stateChanged = stateChanged | (*actor)->Update((1.0 / m_Fps) * 1000);
 	}
 
 	return stateChanged;

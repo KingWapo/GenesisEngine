@@ -3,6 +3,7 @@
 #include "ActorComponent.h"
 #include "InputManager.h"
 #include "Transform2dComponent.h"
+#include "PhysicsComponent.h"
 
 class CustomScript : public ActorComponent
 {
@@ -19,5 +20,6 @@ public:
 private:
 	shared_ptr<InputManager> m_input;
 	shared_ptr<Transform2dComponent> m_transform;
+	shared_ptr<PhysicsComponent> m_physics;
 };
 

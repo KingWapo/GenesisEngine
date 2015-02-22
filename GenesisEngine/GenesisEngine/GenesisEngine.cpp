@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
+#include "PhysicsComponent.h"
 #include <iostream>
 #include "Actor.h"
 #include "ActorFactory.h"
@@ -54,11 +55,14 @@ int GenesisEntry(int argc, char *argv[])
 
 	SDLRenderableComponent renderComp("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
 		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), instance.getWindow());
-
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
 	myScene->addRenderableComponent(pRenderComp);
 	instance.setScene(myScene);
 	freddy->AddComponent(pRenderComp, true);
+
+	/*PhysicsComponent physicsComp;
+	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);
+	freddy->AddComponent(pPhysicsComp, false);*/
 
 	InputManager inputComp;
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(&inputComp);

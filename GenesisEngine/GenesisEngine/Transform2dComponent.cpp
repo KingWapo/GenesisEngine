@@ -8,9 +8,8 @@ bool Transform2dComponent::vInit()
 {
 	return true;
 }
-/*
-TiXmlElement *Transform2dComponent::VGenerateXml()
-{
-	return NULL;
+
+void Transform2dComponent::move(float deltaH, float deltaV) {
+	Vector2 loc = m_transform.GetLocation();
+	m_transform.SetLocation(Vector2(loc.x + deltaH, loc.y + deltaV));
 }
-*/

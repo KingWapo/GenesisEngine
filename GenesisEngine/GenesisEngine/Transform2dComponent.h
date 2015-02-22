@@ -22,4 +22,6 @@ public:
 	void SetLocation(const Vector2 newLocation) { m_transform.SetLocation(newLocation); }
 	float GetRotation(void) const { return m_transform.GetRotation(); }
 	void SetRotation(const float newRotation) { m_transform.SetRotation(newRotation); }
+
+	void move(float deltaH, float deltaV);
 };

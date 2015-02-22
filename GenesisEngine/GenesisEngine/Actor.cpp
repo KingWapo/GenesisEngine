@@ -60,7 +60,7 @@ bool Actor::Update(int deltaMs)
 
 void Actor::Draw()
 {
-	for (ActorComponents::iterator it = m_renderComponents.begin(); it != m_renderComponents.end(); ++it)
+	for (ActorComponents::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
 		it->second->vDraw();
 	}
@@ -78,14 +78,7 @@ void Actor::AddComponent(StrongActorComponentPtr pComponent, bool p_RenderComp)
 	(*pComponent).SetOwner(StrongActorPtr(this));
 	(*pComponent).vInit();
 
-	if (p_RenderComp) {
-		std::pair<ActorComponents::iterator, bool> success;
-		success = m_renderComponents.insert(std::make_pair(pComponent->VGetId(), pComponent));
-		GCC_ASSERT(success.second);
-	}
-	else {
-		std::pair<ActorComponents::iterator, bool> success;
-		success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
-		GCC_ASSERT(success.second);
-	}
+	std::pair<ActorComponents::iterator, bool> success;
+	success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
+	GCC_ASSERT(success.second);
 }

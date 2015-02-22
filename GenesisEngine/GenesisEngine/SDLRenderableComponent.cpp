@@ -1,6 +1,8 @@
 #include "SDLRenderableComponent.h"
 #include "SDL\SDL_image.h"
 
+#include "Vector2.h"
+
 //const char *RenderableComponent::g_Name = "SDLRenderableComponent";
 
 SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
@@ -62,6 +64,12 @@ SDLRenderableComponent::~SDLRenderableComponent()
 
 bool SDLRenderableComponent::vInit()
 {
+	GCC_ASSERT(m_pOwner.get() != NULL);
+
+	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
+
+	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent").lock();
+
 	// SDL should not be initialized at the component level.
 	// These calls (and subsequent calls to SDL_Quit) should be happening at the application level.
 
@@ -110,6 +118,9 @@ void SDLRenderableComponent::vPostInit()
 bool SDLRenderableComponent::vUpdate(int deltaMs)
 {
 	// Reset position
+	Vector2 loc = m_transform->GetLocation();
+	m_location = Point2D(loc.x, loc.y);
+
 	return false;
 }
 

@@ -32,9 +32,6 @@
     <ClCompile Include="String.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
@@ -73,9 +70,6 @@
     <ClCompile Include="GLSLProgram.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="PointParticle.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Render.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -88,9 +82,14 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="CustomScript.cpp" />
     <ClCompile Include="Transformation2d.cpp">
       <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponent.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScript.cpp">
+      <Filter>Test Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,18 +180,6 @@
     <ClInclude Include="String.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Constraint.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Force.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="PointParticle.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Physics</Filter>
     </ClInclude>
@@ -263,9 +250,14 @@
     <ClInclude Include="Point2D.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="CustomScript.h" />
     <ClInclude Include="Transformation2d.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponent.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScript.h">
+      <Filter>Test Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

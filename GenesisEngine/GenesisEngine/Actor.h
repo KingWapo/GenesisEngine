@@ -17,7 +17,7 @@ public:
 private:
 	ActorId m_id;							// A unique id for the actor
 	ActorComponents m_components;			// all components for this actor. Except rendering components
-	ActorComponents m_renderComponents;		// All render components.
+
 	ActorType m_type;
 
 	// Using Xml?

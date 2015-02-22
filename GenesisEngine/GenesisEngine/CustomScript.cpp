@@ -23,6 +23,7 @@ bool CustomScript::vInit() {
 
 	m_input = l_owner->GetComponent<InputManager>("InputManager").lock();
 	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent").lock();
+	//m_physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent").lock();
 
 	return true;
 }
@@ -30,15 +31,13 @@ bool CustomScript::vInit() {
 bool CustomScript::vUpdate(int deltaMs) {
 	GCC_ASSERT(m_input.get() != NULL);
 	GCC_ASSERT(m_transform.get() != NULL);
+	//GCC_ASSERT(m_physics.get() != NULL);
 
 	if (m_input->onKeyDown(VK_SPACE)) {
-		std::cout << "Space pressed" << std::endl;
-		std::cout << m_transform->GetLocation().toString() << std::endl;
+		//m_physics->addForce(Vector2(1.0, -0.5));
 	}
 
-	if (m_input->onKeyUp(VK_SPACE)) {
-		std::cout << "Space released" << std::endl;
-	}
+	m_transform->move(m_input->horizontalAxis() * 1.0f, m_input->verticalAxis() * 1.0f);
 
 	return true;
 }
