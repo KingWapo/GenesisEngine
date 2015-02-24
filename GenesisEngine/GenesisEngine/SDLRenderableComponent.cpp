@@ -30,6 +30,7 @@ SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
 	m_position.h = m_size.y();
 }
 
+
 SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point2D p_location, Point2D p_size, Point2D p_cell, Window* p_window)
 	: RenderableComponent(p_fileLocation, p_location, p_size, p_cell)
 {
@@ -96,13 +97,29 @@ bool SDLRenderableComponent::vInit()
 		return false;
 	}
 
-	m_sprite = SDL_CreateTextureFromSurface(m_renderer, imageSurface);
-	if (m_sprite == NULL)
+	//m_sprite = SDL_CreateTextureFromSurface(m_renderer, imageSurface);
+
+	glEnable(GL_TEXTURE_2D);
+	glGenTextures(1, &TextureID);
+	glBindTexture(GL_TEXTURE_2D, TextureID);
+
+	int Mode = GL_RGB;
+
+	if (imageSurface->format->BytesPerPixel == 4) {
+		Mode = GL_RGBA;
+	}
+
+	glTexImage2D(GL_TEXTURE_2D, 0, Mode, imageSurface->w, imageSurface->h, 0, Mode, GL_UNSIGNED_BYTE, imageSurface->pixels);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	/*if (m_sprite == NULL)
 	{
 		printf("Texture creation failed.\n"); fflush(stdout);
 		SDL_FreeSurface(imageSurface);
 		return false;
-	}
+	}*/
 
 	printf("Texture creation and loaded.\n"); fflush(stdout);
 
@@ -134,12 +151,17 @@ void SDLRenderableComponent::vDraw()
 	//printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
 //	if (isDrawable())
 	{
-		SDL_GL_BindTexture(m_sprite, NULL, NULL);
+		//SDL_GL_BindTexture(m_sprite, NULL, NULL);		
+		glBindTexture(GL_TEXTURE_2D, TextureID);
+
 		glBegin(GL_QUADS);
-			glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
-			glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
-			glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
-			glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
+			glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
+			glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
+			glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
+			glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
 		glEnd();
+
+		SDL_RenderCopy(m_renderer, m_sprite, NULL, NULL);
+		SDL_RenderPresent(m_renderer);
 	}
 }

@@ -17,6 +17,8 @@ private:
 	SDL_Rect m_source;
 	SDL_Rect m_position;
 
+	GLuint TextureID;
+
 	shared_ptr<Transform2dComponent> m_transform;
 
 public:
