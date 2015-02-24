@@ -97,8 +97,9 @@ bool SDLRenderableComponent::vInit()
 		return false;
 	}
 
-	//m_sprite = SDL_CreateTextureFromSurface(m_renderer, imageSurface);
+	//John - replacing generation of SDL Texture to generation of openGL texture
 
+	//John - conversion of SDL surface to openGL texture
 	glEnable(GL_TEXTURE_2D);
 	glGenTextures(1, &TextureID);
 	glBindTexture(GL_TEXTURE_2D, TextureID);
@@ -114,15 +115,10 @@ bool SDLRenderableComponent::vInit()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	/*if (m_sprite == NULL)
-	{
-		printf("Texture creation failed.\n"); fflush(stdout);
-		SDL_FreeSurface(imageSurface);
-		return false;
-	}*/
-
+	//John - debug stating texture is created and loaded
 	printf("Texture creation and loaded.\n"); fflush(stdout);
 
+	//John - free sdl surface
 	SDL_FreeSurface(imageSurface);
 	return true;
 }
@@ -151,8 +147,10 @@ void SDLRenderableComponent::vDraw()
 	//printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
 //	if (isDrawable())
 	{
+		//John - binds texture to rect
 		glBindTexture(GL_TEXTURE_2D, TextureID);
 
+		//John - draws rect
 		glBegin(GL_QUADS);
 			glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
 			glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right

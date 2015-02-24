@@ -18,7 +18,7 @@ Actor::Actor(ActorId id)
 
 Actor::~Actor(void)
 {
-	cout << "Actor id: " + m_id << endl;
+	cout << "Actor id: " << m_id << endl;
 	GCC_LOG("Actor", std::string("Destroying Actor ") + ToStr(m_id));
 	GCC_ASSERT(m_components.empty()); // If this assert fires, the actor was destroyed without calling Actor::Destroy()
 	
