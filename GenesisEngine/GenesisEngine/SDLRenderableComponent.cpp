@@ -151,7 +151,6 @@ void SDLRenderableComponent::vDraw()
 	//printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
 //	if (isDrawable())
 	{
-		//SDL_GL_BindTexture(m_sprite, NULL, NULL);		
 		glBindTexture(GL_TEXTURE_2D, TextureID);
 
 		glBegin(GL_QUADS);
@@ -160,8 +159,5 @@ void SDLRenderableComponent::vDraw()
 			glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
 			glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
 		glEnd();
-
-		SDL_RenderCopy(m_renderer, m_sprite, NULL, NULL);
-		SDL_RenderPresent(m_renderer);
 	}
 }
