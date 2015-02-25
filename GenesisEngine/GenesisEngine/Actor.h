@@ -42,24 +42,24 @@ public:
 
 	// template function for retrieving components
 	template <class ComponentType>
-	weak_ptr<ComponentType> GetComponent(ComponentId id)
+	shared_ptr<ComponentType> GetComponent(ComponentId id)
 	{
 		ActorComponents::iterator findIt = m_components.find(id);
 		if (findIt != m_components.end())
 		{
 			StrongActorComponentPtr pBase(findIt->second);
 			shared_ptr<ComponentType> pSub(static_pointer_cast<ComponentType>(pBase)); // cast to subclass version of the pointer
-			weak_ptr<ComponentType> pWeakSub(pSub); // convert strong pointer to weak pointer
-			return pWeakSub;	// Return the weak pointer
+			//weak_ptr<ComponentType> pWeakSub(pSub); // convert strong pointer to weak pointer
+			return pSub;	// Return the weak pointer
 		}
 		else
 		{
-			return weak_ptr<ComponentType>();
+			return shared_ptr<ComponentType>();
 		}
 	}
 
 	template <class ComponentType>
-	weak_ptr<ComponentType> GetComponent(const char *name)
+	shared_ptr<ComponentType> GetComponent(const char *name)
 	{
 		ComponentId id = ActorComponent::GetIdFromName(name);
 		ActorComponents::iterator findIt = m_components.find(id);
@@ -67,12 +67,12 @@ public:
 		{
 			StrongActorComponentPtr pBase(findIt->second);
 			shared_ptr<ComponentType> pSub(static_pointer_cast<ComponentType>(pBase));
-			weak_ptr<ComponentType> pWeakSub(pSub);
-			return pWeakSub;
+			//weak_ptr<ComponentType> pWeakSub(pSub);
+			return pSub;
 		}
 		else
 		{
-			return weak_ptr<ComponentType>();
+			return shared_ptr<ComponentType>();
 		}
 	}
 

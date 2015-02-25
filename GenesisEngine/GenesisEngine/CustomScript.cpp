@@ -21,9 +21,9 @@ bool CustomScript::vInit() {
 
 	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
 
-	m_input = l_owner->GetComponent<InputManager>("InputManager").lock();
-	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent").lock();
-	//m_physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent").lock();
+	m_input = l_owner->GetComponent<InputManager>("InputManager");
+	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
+	//m_physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent");
 
 	return true;
 }

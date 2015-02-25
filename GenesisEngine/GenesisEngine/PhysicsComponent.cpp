@@ -78,7 +78,7 @@ bool PhysicsComponent::vInit() {
 
 	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
 
-	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent").lock();
+	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
 
 	return true;
 }

@@ -12,7 +12,7 @@ Scene::~Scene()
 	while (!m_renderableComponents.empty())
 	{
 		//(m_renderableComponents.back()).Destroy();
-		m_renderableComponents.pop_back();
+		(m_renderableComponents.pop_back());
 	}
 }
 

@@ -21,7 +21,6 @@ Actor::~Actor(void)
 	cout << "Actor id: " << m_id << endl;
 	GCC_LOG("Actor", std::string("Destroying Actor ") + ToStr(m_id));
 	GCC_ASSERT(m_components.empty()); // If this assert fires, the actor was destroyed without calling Actor::Destroy()
-	
 }
 
 bool Actor::Init(TiXmlElement *pData)
@@ -44,8 +43,19 @@ void Actor::PostInit(void)
 
 void Actor::Destroy(void)
 {
-	// Something is wrong here?
-	m_components.clear();
+	// Adam - Something is wrong here?
+	// map.clear() function not doing what expected and causing issues.
+	//m_components.clear();
+	while (!m_components.empty())
+	{
+		ActorComponents::iterator it = m_components.begin();
+		m_components.erase(it);
+	}
+	/*for (ActorComponents::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		//delete &it->second;
+		m_components.erase(it);
+	}*/
 }
 
 bool Actor::Update(int deltaMs)

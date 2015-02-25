@@ -44,42 +44,43 @@ int GenesisEntry(int argc, char *argv[])
 	}
 
 	// Main Loop
-	GameInstance instance;
-	instance.Init();
+	GameInstance *p_instance = new GameInstance();
+	p_instance->Init();
 	Actor* freddy = new Actor(0);
 	Scene* myScene = new Scene();
 
-	Transform2dComponent transformComp;
-	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(&transformComp);
+	Transform2dComponent *p_transformComp = new Transform2dComponent();
+	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(p_transformComp);
 	freddy->AddComponent(pTransformComp, false);
 
-	SDLRenderableComponent renderComp("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
-		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), instance.getWindow());
-	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(&renderComp);
+	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
+		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), p_instance->getWindow());
+	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(p_renderComp);
 	myScene->addRenderableComponent(pRenderComp);
-	instance.setScene(myScene);
+	p_instance->setScene(myScene);
 	freddy->AddComponent(pRenderComp, true);
 
 	/*PhysicsComponent physicsComp;
 	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);
 	freddy->AddComponent(pPhysicsComp, false);*/
 
-	InputManager inputComp;
-	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(&inputComp);
+	InputManager *p_inputComp = new InputManager();
+	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(p_inputComp);
 	freddy->AddComponent(pInputComp, false);
 
-	CustomScript customScript;
-	StrongActorComponentPtr pCustomScript = StrongActorComponentPtr(&customScript);
+	CustomScript *p_customScript = new CustomScript();
+	StrongActorComponentPtr pCustomScript = StrongActorComponentPtr(p_customScript);
 	freddy->AddComponent(pCustomScript, false);
 
-	instance.AddActor(freddy);
+	p_instance->AddActor(freddy);
 	
 	// Runs the instance of a game.
 	// When it passes this line, the game is over.
-	instance.Run();
+	p_instance->Run();
 
 	// Cleanup
 	delete myScene;
+	delete p_instance;
 
 	// Shutdown
 //	Logger::Destroy();

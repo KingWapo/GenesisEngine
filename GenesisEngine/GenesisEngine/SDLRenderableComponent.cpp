@@ -69,7 +69,7 @@ bool SDLRenderableComponent::vInit()
 
 	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
 
-	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent").lock();
+	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
 
 	// SDL should not be initialized at the component level.
 	// These calls (and subsequent calls to SDL_Quit) should be happening at the application level.
