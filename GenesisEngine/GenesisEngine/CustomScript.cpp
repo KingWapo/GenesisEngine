@@ -23,7 +23,7 @@ bool CustomScript::vInit() {
 
 	m_input = l_owner->GetComponent<InputManager>("InputManager");
 	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
-	//m_physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent");
+	m_physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent");
 
 	return true;
 }
@@ -31,13 +31,16 @@ bool CustomScript::vInit() {
 bool CustomScript::vUpdate(int deltaMs) {
 	GCC_ASSERT(m_input.get() != NULL);
 	GCC_ASSERT(m_transform.get() != NULL);
-	//GCC_ASSERT(m_physics.get() != NULL);
+	GCC_ASSERT(m_physics.get() != NULL);
 
+	if (m_input->onKeyDown(KeyCode::W)) {
+		m_physics->addForce(Vector2(0.0f, -0.1f));
+	}
 	if (m_input->onKeyDown(VK_SPACE)) {
-		//m_physics->addForce(Vector2(1.0, -0.5));
+		m_physics->accelerate(Vector2(0.0f, 0.5f));
 	}
 
-	m_transform->move(m_input->horizontalAxis() * 1.0f, m_input->verticalAxis() * 1.0f);
+	m_physics->setVelocity(Vector2(m_input->horizontalAxis() * .2f, m_physics->getVelocity().y));
 
 	return true;
 }

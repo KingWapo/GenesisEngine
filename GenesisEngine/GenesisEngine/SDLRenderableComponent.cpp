@@ -19,6 +19,7 @@ SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
 	m_screen = NULL;
 	m_sprite = NULL;
 
+	/*
 	m_source.x = m_cell.x();
 	m_source.y = m_cell.y();
 	m_source.w = m_size.x();
@@ -28,10 +29,11 @@ SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
 	m_position.y = m_location.y();
 	m_position.w = m_size.x();
 	m_position.h = m_size.y();
+	*/
 }
 
 
-SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point2D p_location, Point2D p_size, Point2D p_cell, Window* p_window)
+SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window)
 	: RenderableComponent(p_fileLocation, p_location, p_size, p_cell)
 {
 	/* Ditto to above
@@ -46,6 +48,7 @@ SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point
 	m_screen = SDL_GetWindowSurface(m_window);
 	m_sprite = NULL;
 
+	/*
 	m_source.x = m_cell.x();
 	m_source.y = m_cell.y();
 	m_source.w = m_size.x();
@@ -55,6 +58,7 @@ SDLRenderableComponent::SDLRenderableComponent(const char* p_fileLocation, Point
 	m_position.y = m_location.y();
 	m_position.w = m_size.x();
 	m_position.h = m_size.y();
+	*/
 }
 
 SDLRenderableComponent::~SDLRenderableComponent()
@@ -132,7 +136,7 @@ bool SDLRenderableComponent::vUpdate(int deltaMs)
 {
 	// Reset position
 	Vector2 loc = m_transform->GetLocation();
-	m_location = Point2D(loc.x, loc.y);
+	m_location = Point2DF(loc.x, loc.y);
 
 	return false;
 }

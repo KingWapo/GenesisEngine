@@ -24,18 +24,18 @@ public:
 	// operators
 
 	// addition
-	friend Vector2 operator+(Vector2 lhs, const Vector2 &rhs);
-	friend Vector2 operator+=(Vector2 lhs, const Vector2 &rhs);
+	friend Vector2 operator+(const Vector2& lhs, const Vector2 &rhs);
+	friend Vector2& operator+=(Vector2& lhs, const Vector2 &rhs);
 	// subtraction
-	friend Vector2 operator-(Vector2 lhs, const Vector2 &rhs);
-	friend Vector2 operator-=(Vector2 lhs, const Vector2 &rhs);
+	friend Vector2 operator-(const Vector2& lhs, const Vector2 &rhs);
+	friend Vector2& operator-=(Vector2& lhs, const Vector2 &rhs);
 	// multiplication
-	friend Vector2 operator*(Vector2 lhs, const float &rhs);
-	friend Vector2 operator*(const float &lhs, Vector2 rhs);
-	friend Vector2 operator*=(Vector2 lhs, const float &rhs);
+	friend Vector2 operator*(const Vector2& lhs, const float &rhs);
+	friend Vector2 operator*(const float &lhs, const Vector2& rhs);
+	friend Vector2& operator*=(Vector2& lhs, const float &rhs);
 	// division
-	friend Vector2 operator/(Vector2 lhs, const float &rhs);
-	friend Vector2 operator/=(Vector2 lhs, const float &rhs);
+	friend Vector2 operator/(const Vector2& lhs, const float &rhs);
+	friend Vector2& operator/=(Vector2& lhs, const float &rhs);
 	// comparators
 	friend bool operator==(const Vector2 &lhs, const Vector2 &rhs);
 	friend bool operator!=(const Vector2 &lhs, const Vector2 &rhs);

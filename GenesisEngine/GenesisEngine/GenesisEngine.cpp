@@ -54,15 +54,15 @@ int GenesisEntry(int argc, char *argv[])
 	freddy->AddComponent(pTransformComp, false);
 
 	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
-		Point2D(100, 100), Point2D(73, 79), Point2D(0, 0), p_instance->getWindow());
+		Point2DF(.100f, .100f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(p_renderComp);
 	myScene->addRenderableComponent(pRenderComp);
 	p_instance->setScene(myScene);
 	freddy->AddComponent(pRenderComp, true);
 
-	/*PhysicsComponent physicsComp;
+	PhysicsComponent physicsComp;
 	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);
-	freddy->AddComponent(pPhysicsComp, false);*/
+	freddy->AddComponent(pPhysicsComp, false);
 
 	InputManager *p_inputComp = new InputManager();
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(p_inputComp);

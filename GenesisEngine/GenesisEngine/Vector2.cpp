@@ -51,7 +51,7 @@ std::string Vector2::toString(){
 //===================================
 
 /** ADDITION **/
-Vector2 operator+(Vector2 lhs, const Vector2 &rhs) {
+Vector2 operator+(const Vector2& lhs, const Vector2 &rhs) {
 	Vector2 out = Vector2();
 	out.x = lhs.x + rhs.x;
 	out.y = lhs.y + rhs.y;
@@ -59,14 +59,14 @@ Vector2 operator+(Vector2 lhs, const Vector2 &rhs) {
 	return out;
 }
 
-Vector2 operator+=(Vector2 lhs, const Vector2 &rhs) {
-	Vector2 out = lhs + rhs;
-
-	return out;
+Vector2& operator+=(Vector2& lhs, const Vector2 &rhs) {
+	lhs.x += rhs.x;
+	lhs.y += rhs.y;
+	return lhs;
 }
 
 /** SUBTRACTION **/
-Vector2 operator-(Vector2 lhs, const Vector2 &rhs) {
+Vector2 operator-(const Vector2& lhs, const Vector2 &rhs) {
 	Vector2 out = Vector2();
 	out.x = lhs.x - rhs.x;
 	out.y = lhs.y - rhs.y;
@@ -74,14 +74,15 @@ Vector2 operator-(Vector2 lhs, const Vector2 &rhs) {
 	return out;
 }
 
-Vector2 operator-=(Vector2 lhs, const Vector2 &rhs) {
-	Vector2 out = lhs - rhs;
+Vector2& operator-=(Vector2& lhs, const Vector2 &rhs) {
+	lhs.x -= rhs.x;
+	lhs.y -= rhs.y;
 
-	return out;
+	return lhs;
 }
 
 /** MULTIPLICATION **/
-Vector2 operator*(Vector2 lhs, const float &rhs) {
+Vector2 operator*(const Vector2& lhs, const float &rhs) {
 	Vector2 out = Vector2();
 	out.x = lhs.x * rhs;
 	out.y = lhs.y * rhs;
@@ -89,18 +90,23 @@ Vector2 operator*(Vector2 lhs, const float &rhs) {
 	return out;
 }
 
-Vector2 operator*(const float &lhs, Vector2 rhs) {
-	return rhs * lhs;
-}
-
-Vector2 operator*=(Vector2 lhs, const float &rhs) {
-	Vector2 out = lhs * rhs;
+Vector2 operator*(const float &lhs, const Vector2& rhs) {
+	Vector2 out = Vector2();
+	out.x = lhs * rhs.x;
+	out.y = lhs * rhs.y;
 
 	return out;
 }
 
+Vector2& operator*=(Vector2& lhs, const float &rhs) {
+	lhs.x *= rhs;
+	lhs.y *= rhs;
+
+	return lhs;
+}
+
 /** DIVISION **/
-Vector2 operator/(Vector2 lhs, const float &rhs) {
+Vector2 operator/(const Vector2& lhs, const float &rhs) {
 	Vector2 out = Vector2();
 	out.x = lhs.x / rhs;
 	out.y = lhs.y / rhs;
@@ -108,14 +114,15 @@ Vector2 operator/(Vector2 lhs, const float &rhs) {
 	return out;
 }
 
-Vector2 operator/=(Vector2 lhs, const float &rhs) {
-	Vector2 out = lhs / rhs;
+Vector2& operator/=(Vector2& lhs, const float &rhs) {
+	lhs.x /= rhs;
+	lhs.y /= rhs;
 
-	return out;
+	return lhs;
 }
 
 /** COMPARATORS **/
-bool operator==(const Vector2 &lhs, const Vector2 &rhs) {
+inline bool operator==(const Vector2 &lhs, const Vector2 &rhs) {
 	return ((lhs.x == rhs.x) && (lhs.y == rhs.y));
 }
 

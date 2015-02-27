@@ -25,8 +25,8 @@ PhysicsComponent::~PhysicsComponent() {
 Vector2 PhysicsComponent::netForce() {
 	Vector2 netForce = Vector2();
 
-	for each (Vector2 force in forceQueue) {
-		netForce += force;
+	for (int i = 0; i < forceQueue.size(); i++) {
+		netForce += forceQueue[i];
 	}
 
 	return netForce;
@@ -64,8 +64,8 @@ bool PhysicsComponent::vUpdate(int deltaMs) {
 
 	Vector2 net = netForce();
 
-	float deltaTime = deltaMs * 1.0f;
-	printf("DeltaTime: %f\n", deltaTime); fflush(stdout);
+	float deltaTime = deltaMs / 1000.0f;
+	//printf("DeltaTime: %f\n", deltaTime); fflush(stdout);
 
 	euler(net, deltaTime);
 

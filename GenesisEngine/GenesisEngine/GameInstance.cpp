@@ -169,7 +169,8 @@ void GameInstance::Draw()
 
 	glMatrixMode(GL_PROJECTION); glLoadIdentity();
 	if (m_Window != NULL) {
-		glOrtho(0.0, m_Window->GetScreenWidth(), 0.0, m_Window->GetScreenHeight(), 0.0, 1.0);
+		float ratio = m_Window->GetScreenWidth() / (float)m_Window->GetScreenHeight();
+		glOrtho(0.0, ratio, 0.0, 1.0, 0.0, 1.0);
 	}
 
 	glMatrixMode(GL_MODELVIEW); glLoadIdentity();

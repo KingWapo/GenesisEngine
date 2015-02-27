@@ -8,7 +8,7 @@ RenderableComponent::RenderableComponent()
 	m_spriteFileLocation = "";
 }
 
-RenderableComponent::RenderableComponent(const char* p_fileLocation, Point2D p_location, Point2D p_size, Point2D p_cell)
+RenderableComponent::RenderableComponent(const char* p_fileLocation, Point2DF p_location, Point2DF p_size, Point2DF p_cell)
 {
 	m_drawable = false;
 
@@ -18,7 +18,7 @@ RenderableComponent::RenderableComponent(const char* p_fileLocation, Point2D p_l
 	m_cell = p_cell;
 }
 
-void RenderableComponent::setDrawInformation(const char* p_fileLocation, Point2D p_location, Point2D p_size, Point2D p_cell)
+void RenderableComponent::setDrawInformation(const char* p_fileLocation, Point2DF p_location, Point2DF p_size, Point2DF p_cell)
 {
 	m_spriteFileLocation = p_fileLocation;
 	m_location = p_location;

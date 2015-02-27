@@ -23,7 +23,7 @@ private:
 
 public:
 	SDLRenderableComponent();
-	SDLRenderableComponent(const char* p_fileLocation, Point2D p_location, Point2D p_size, Point2D p_cell, Window* p_window);
+	SDLRenderableComponent(const char* p_fileLocation, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window);
 	~SDLRenderableComponent();
 
 	virtual bool vInit(void) override;

@@ -15,3 +15,19 @@ public:
 private:
 	int mX, mY;
 };
+
+class Point2DF
+{
+public:
+	Point2DF(float pX = 0, float pY = 0) { mX = pX; mY = pY; }
+	~Point2DF() {}
+
+	float x() { return mX; }
+	float y() { return mY; }
+
+	float& rx() { return mX; }
+	float& ry() { return mY; }
+
+private:
+	float mX, mY;
+};
