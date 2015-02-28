@@ -98,7 +98,7 @@ public:
 	float setLocation(float p_x, float p_y) { m_x = p_x; m_y = p_y; }
 	float setRadius(float p_r) { m_r = p_r; }
 
-	float setCirc(float p_x, float p_y, float p_r)
+	void setCirc(float p_x, float p_y, float p_r)
 	{
 		m_x = p_x;
 		m_y = p_y;
