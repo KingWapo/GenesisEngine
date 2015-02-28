@@ -41,9 +41,6 @@
     <ClCompile Include="ActorFactory.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Transform2dComponent.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -73,12 +70,6 @@
     <ClCompile Include="Render.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="RenderableComponent.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLRenderableComponent.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -91,6 +82,19 @@
     <ClCompile Include="CustomScript.cpp">
       <Filter>Test Game</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLRenderableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform2dComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RectCollidableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CircCollidableComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -134,6 +138,9 @@
     </Filter>
     <Filter Include="Shaders">
       <UniqueIdentifier>{295fd184-3a2c-4662-84c0-4bc4b9e16ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Components">
+      <UniqueIdentifier>{43df2136-19e3-492d-aa67-a4ef404aa9fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -195,9 +202,6 @@
     <ClInclude Include="ActorFactory.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Transform2dComponent.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Events.h">
       <Filter>EventManager</Filter>
     </ClInclude>
@@ -238,12 +242,6 @@
     <ClInclude Include="Render.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="RenderableComponent.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLRenderableComponent.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -259,6 +257,22 @@
     <ClInclude Include="CustomScript.h">
       <Filter>Test Game</Filter>
     </ClInclude>
+    <ClInclude Include="RenderableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLRenderableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform2dComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CollidableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RectCollidableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CircCollidableComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">

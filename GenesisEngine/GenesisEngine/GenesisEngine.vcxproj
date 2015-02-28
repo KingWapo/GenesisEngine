@@ -15,6 +15,7 @@
     <ClCompile Include="ActorFactory.cpp" />
     <ClCompile Include="BaseGameLogic.cpp" />
     <ClCompile Include="Camera2D.cpp" />
+    <ClCompile Include="CircCollidableComponent.cpp" />
     <ClCompile Include="CustomScript.cpp" />
     <ClCompile Include="EngineCode.cpp" />
     <ClCompile Include="Errors.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessManager.cpp" />
+    <ClCompile Include="RectCollidableComponent.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="RenderableComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -50,6 +52,8 @@
     <ClInclude Include="ActorFactory.h" />
     <ClInclude Include="BaseGameLogic.h" />
     <ClInclude Include="Camera2D.h" />
+    <ClInclude Include="CircCollidableComponent.h" />
+    <ClInclude Include="CollidableComponent.h" />
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CustomScript.h" />
     <ClInclude Include="EngineCode.h" />
@@ -72,6 +76,7 @@
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcessManager.h" />
+    <ClInclude Include="RectCollidableComponent.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="RenderableComponent.h" />
     <ClInclude Include="Scene.h" />

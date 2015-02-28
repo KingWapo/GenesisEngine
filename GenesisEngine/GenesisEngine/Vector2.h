@@ -42,3 +42,71 @@ public:
 protected:
 private:
 };
+
+class Rect2D {
+public:
+	Rect2D() { m_x = 0.0f; m_y = 0.0f; m_w = 0.0f; m_h = 0.0f; }
+	Rect2D(float p_x, float p_y, float p_w, float p_h) 
+	{
+		m_x = p_x;
+		m_y = p_y;
+		m_w = p_w;
+		m_h = p_h;
+	}
+
+	~Rect2D() { }
+
+	float x() { return m_x; }
+	float y() { return m_y; }
+	float w() { return m_w; }
+	float h() { return m_h; }
+
+	void setLocation(float p_x, float p_y) { m_x = p_x; m_y = p_y; }
+	void setDimensions(float p_w, float p_h) { m_w = p_w; m_h = p_h; }
+
+	void setRect(float p_x, float p_y, float p_w, float p_h)
+	{
+		m_x = p_x;
+		m_y = p_y;
+		m_w = p_w;
+		m_h = p_h;
+	}
+
+private:
+	float m_x;
+	float m_y;
+	float m_w;
+	float m_h;
+};
+
+class Circ2D {
+public:
+	Circ2D() { m_x = 0.0f; m_y = 0.0f; m_r = 0.0f; }
+	Circ2D(float p_x, float p_y, float p_r)
+	{
+		m_x = p_x;
+		m_y = p_y;
+		m_r = p_r;
+	}
+
+	~Circ2D() { }
+
+	float x() { return m_x; }
+	float y() { return m_y; }
+	float r() { return m_r; }
+
+	float setLocation(float p_x, float p_y) { m_x = p_x; m_y = p_y; }
+	float setRadius(float p_r) { m_r = p_r; }
+
+	float setCirc(float p_x, float p_y, float p_r)
+	{
+		m_x = p_x;
+		m_y = p_y;
+		m_r = p_r;
+	}
+
+private:
+	float m_x;
+	float m_y;
+	float m_r;
+};
