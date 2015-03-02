@@ -11,7 +11,6 @@ public:
 	CircCollidableComponent(Vector2 p_offset, float p_r);
 	~CircCollidableComponent();
 
-	virtual bool vInit(void);
 	virtual bool vUpdate(int deltaMs);
 	virtual void vOnChanged(void);
 
@@ -32,7 +31,6 @@ public:
 	void setOffset(Vector2 p_offset) { m_offset = p_offset; }
 
 private:
-	shared_ptr<Transform2dComponent> p_transformation;
 	float m_radius;
 	Vector2 m_offset;
 };

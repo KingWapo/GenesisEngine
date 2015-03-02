@@ -13,9 +13,11 @@ public:
 
 	~RectCollidableComponent() { }
 
-	virtual bool vInit(void);
 	virtual bool vUpdate(int deltaMs);
 	virtual void vOnChanged(void);
+
+	//virtual bool isColliding(RectCollidableComponent other) override;
+	//virtual void resolveCollision(RectCollidableComponent other) override;
 
 	// Collidable interface
 	virtual void onCollision() {}
@@ -36,7 +38,6 @@ public:
 	void setOffset(Vector2 p_offset);
 
 private:
-	shared_ptr<Transform2dComponent> p_transformation;
 	Vector2 m_offset;
 	float height;
 	float width;

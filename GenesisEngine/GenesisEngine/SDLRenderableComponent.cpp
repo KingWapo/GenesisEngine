@@ -135,7 +135,7 @@ void SDLRenderableComponent::vPostInit()
 bool SDLRenderableComponent::vUpdate(int deltaMs)
 {
 	// Reset position
-	Vector2 loc = m_transform->GetLocation();
+	Vector2 loc = m_transform->GetTranslation();
 	m_location = Point2DF(loc.x, loc.y);
 
 	return false;

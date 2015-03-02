@@ -21,21 +21,6 @@ RectCollidableComponent::RectCollidableComponent(Vector2 p_offset, float p_width
 	height = p_height;
 }
 
-
-bool RectCollidableComponent::vInit()
-{
-	if (m_pOwner != nullptr)
-	{
-		Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
-		p_transformation = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
-		if (p_transformation.get() != NULL)
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
 bool RectCollidableComponent::vUpdate(int deltaMs)
 {
 
@@ -47,13 +32,17 @@ void RectCollidableComponent::vOnChanged()
 
 }
 
+/*bool RectCollidableComponent::isColliding(RectCollidableComponent other) {
+	return ((m_transformation->get()))
+}*/
+
 Rect2D RectCollidableComponent::getRect()
 {
 	Rect2D tempRect(0, 0, 0, 0);
-	if (p_transformation.get() != NULL)
+	if (m_transformation.get() != NULL)
 	{
-		tempRect.setRect(p_transformation->GetLocation().x + m_offset.x,
-			p_transformation->GetLocation().y + m_offset.y,
+		tempRect.setRect(m_transformation->GetTranslation().x + m_offset.x,
+			m_transformation->GetTranslation().y + m_offset.y,
 			width, height);
 	}
 	return tempRect;

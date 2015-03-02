@@ -33,7 +33,7 @@ Vector2 PhysicsComponent::netForce() {
 }
 
 void PhysicsComponent::move(Vector2 deltaPos) {
-	m_position += deltaPos;
+	m_transform->SetTranslation(m_transform->GetTranslation() + deltaPos);
 }
 
 void PhysicsComponent::accelerate(Vector2 deltaVel) {
@@ -69,7 +69,7 @@ bool PhysicsComponent::vUpdate(int deltaMs) {
 
 	euler(net, deltaTime);
 
-	m_transform->SetLocation(m_position);
+	//m_transform->SetTranslation(m_position);
 	return true;
 }
 

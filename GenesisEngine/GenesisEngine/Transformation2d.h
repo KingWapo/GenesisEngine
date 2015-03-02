@@ -26,7 +26,7 @@ public:
 	float GetRotation() const { return rotation; }
 	void SetRotation(float newRotation);
 
-	Vector2 getTranslation() { return translation; }
+	Vector2 getTranslation() const { return translation; }
 	void setTranslation(Vector2 p_translation) { translation = p_translation; }
 	void setTranslation(float p_tX, float p_tY) { setTranslation(Vector2(p_tX, p_tY)); }
 

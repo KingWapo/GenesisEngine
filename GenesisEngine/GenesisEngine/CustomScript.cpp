@@ -37,7 +37,7 @@ bool CustomScript::vUpdate(int deltaMs) {
 		m_physics->addForce(Vector2(0.0f, -0.1f));
 	}
 	if (m_input->onKeyDown(VK_SPACE)) {
-		m_physics->accelerate(Vector2(0.0f, 0.5f));
+		m_physics->accelerate(Vector2(0.0f, 0.3f));
 	}
 
 	m_physics->setVelocity(Vector2(m_input->horizontalAxis() * .2f, m_physics->getVelocity().y));
