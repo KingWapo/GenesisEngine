@@ -37,6 +37,9 @@ public:
 	virtual void onOverlap() = 0;
 	virtual void onOverlapBegin() = 0;
 	virtual void onOverlapEnd() = 0;
+
+	static const char* g_Name;
+	virtual const char* VGetName() const { return g_Name; }
 protected:
 	shared_ptr<Transform2dComponent> m_transformation;
 };

@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
+#include "RectCollidableComponent.h"
 #include "PhysicsComponent.h"
 #include <iostream>
 #include "Actor.h"
@@ -64,6 +65,10 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);
 	freddy->AddComponent(pPhysicsComp, false);
 
+	RectCollidableComponent rectColComp(.073f, .079f);
+	StrongActorComponentPtr pRectColComp = StrongActorComponentPtr(&rectColComp);
+	freddy->AddComponent(pRectColComp, false);
+
 	InputManager *p_inputComp = new InputManager();
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(p_inputComp);
 	freddy->AddComponent(pInputComp, false);
@@ -73,6 +78,25 @@ int GenesisEntry(int argc, char *argv[])
 	freddy->AddComponent(pCustomScript, false);
 
 	p_instance->AddActor(freddy);
+
+	Actor* rock = new Actor(1);
+
+	Transform2dComponent *p_rockTransform = new Transform2dComponent();
+	p_rockTransform->SetTranslation(Vector2(.4f, .4f));
+	StrongActorComponentPtr pRockTransform = StrongActorComponentPtr(p_rockTransform);
+	rock->AddComponent(pRockTransform, false);
+
+	SDLRenderableComponent *p_rockRender = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
+		Point2DF(.400f, .400f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
+	StrongActorComponentPtr pRockRender = StrongActorComponentPtr(p_rockRender);
+	myScene->addRenderableComponent(pRockRender);
+	rock->AddComponent(pRockRender, false);
+
+	RectCollidableComponent rockRectCol(.073f, .079f);
+	StrongActorComponentPtr pRockRectCol = StrongActorComponentPtr(&rockRectCol);
+	rock->AddComponent(pRockRectCol, false);
+
+	p_instance->AddActor(rock);
 	
 	// Runs the instance of a game.
 	// When it passes this line, the game is over.
