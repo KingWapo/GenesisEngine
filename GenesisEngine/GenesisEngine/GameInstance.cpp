@@ -164,7 +164,7 @@ bool GameInstance::UpdateActors()
 				if (colliderOther.get() != NULL) {
 					if (collider->isColliding(*colliderOther.get())) {
 						printf("object collision\n %s \n", collider->getTransform().GetTranslation().toString().c_str()); fflush(stdout);
-						//collider->resolveCollision(colliderOther);
+						collider->resolveCollision(*colliderOther.get());
 					}
 				}
 			}

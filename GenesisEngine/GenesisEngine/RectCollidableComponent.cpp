@@ -1,4 +1,5 @@
 #include "RectCollidableComponent.h"
+#include "PhysicsComponent.h"
 
 const char *RectCollidableComponent::g_Name = "RectCollidableComponent";
 
@@ -9,18 +10,20 @@ RectCollidableComponent::RectCollidableComponent()
 	height = 0.0f;
 }
 
-RectCollidableComponent::RectCollidableComponent(float p_width, float p_height)
+RectCollidableComponent::RectCollidableComponent(float p_width, float p_height, bool p_static)
 {
 	m_offset = Vector2(0, 0);
 	width = p_width;
 	height = p_height;
+	isStatic = p_static;
 }
 
-RectCollidableComponent::RectCollidableComponent(Vector2 p_offset, float p_width, float p_height)
+RectCollidableComponent::RectCollidableComponent(Vector2 p_offset, float p_width, float p_height, bool p_static)
 {
 	m_offset = p_offset;
 	width = p_width;
 	height = p_height;
+	isStatic = p_static;
 }
 
 bool RectCollidableComponent::vUpdate(int deltaMs)
@@ -48,6 +51,37 @@ bool RectCollidableComponent::isColliding(RectCollidableComponent &other) {
 		(thisY + height > otherY && thisY < otherY);
 
 	return insideX && insideY;
+}
+
+void RectCollidableComponent::resolveCollision(RectCollidableComponent &other) {
+	Vector2 dist = m_transformation->GetTranslation() - other.m_transformation->GetTranslation();
+
+	if (!isStatic) {
+		Vector2 newPos = m_transformation->GetTranslation();
+
+		if (abs(dist.x) > abs(dist.y)) {
+			if (dist.x < 0) {
+				newPos.x += (abs(dist.x) - width);
+			}
+			else {
+				newPos.x -= (abs(dist.x) - other.width);
+			}
+		} else {
+			if (dist.y < 0) {
+				newPos.y += (abs(dist.y) - height);
+			}
+			else {
+				newPos.y -= (abs(dist.y) - other.height);
+			}
+
+			shared_ptr<PhysicsComponent> physics = m_pOwner->GetComponent<PhysicsComponent>("PhysicsComponent");
+			if (physics != NULL) {
+				physics->setVelocity(Vector2(physics->getVelocity().x, 0.0f));
+			}
+		}
+
+		m_transformation->SetTranslation(newPos);
+	}
 }
 
 Rect2D RectCollidableComponent::getRect()
