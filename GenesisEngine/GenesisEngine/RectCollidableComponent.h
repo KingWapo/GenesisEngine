@@ -1,6 +1,6 @@
 #pragma once
 #include "CollidableComponent.h"
-#include "ActorComponent.h"
+#include "Transform2dComponent.h"
 #include "Vector2.h"
 
 class RectCollidableComponent : public CollidableComponent
@@ -8,8 +8,8 @@ class RectCollidableComponent : public CollidableComponent
 public:
 	// Constructors
 	RectCollidableComponent();
-	RectCollidableComponent(float p_width, float p_height, bool p_static);
-	RectCollidableComponent(Vector2 p_offset, float p_width, float p_height, bool p_static);
+	RectCollidableComponent(float p_width, float p_height);
+	RectCollidableComponent(Vector2 p_offset, float p_width, float p_height);
 
 	~RectCollidableComponent() { }
 
@@ -17,7 +17,7 @@ public:
 	virtual void vOnChanged(void);
 
 	virtual bool isColliding(RectCollidableComponent &other);
-	virtual void resolveCollision(RectCollidableComponent &other);
+	//virtual void resolveCollision(RectCollidableComponent other) override;
 
 	// Collidable interface
 	virtual void onCollision() {}
@@ -42,9 +42,5 @@ private:
 	Vector2 m_offset;
 	float height;
 	float width;
-
-	bool isStatic;
-
-protected:
 };
 

@@ -65,7 +65,7 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);
 	freddy->AddComponent(pPhysicsComp, false);
 
-	RectCollidableComponent rectColComp(.073f, .079f, false);
+	RectCollidableComponent rectColComp(.073f, .079f);
 	StrongActorComponentPtr pRectColComp = StrongActorComponentPtr(&rectColComp);
 	freddy->AddComponent(pRectColComp, false);
 
@@ -92,7 +92,7 @@ int GenesisEntry(int argc, char *argv[])
 	myScene->addRenderableComponent(pRockRender);
 	rock->AddComponent(pRockRender, false);
 
-	RectCollidableComponent rockRectCol(.073f, .079f, true);
+	RectCollidableComponent rockRectCol(.073f, .079f);
 	StrongActorComponentPtr pRockRectCol = StrongActorComponentPtr(&rockRectCol);
 	rock->AddComponent(pRockRectCol, false);
 
