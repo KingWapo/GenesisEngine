@@ -1,5 +1,4 @@
 #include "Vector2.h"
-#include <iostream>
 #include <math.h>
 
 //===================================
@@ -44,9 +43,7 @@ float Vector2::mag2() {
 }
 
 std::string Vector2::toString(){
-	std::string vector = "x: " + std::to_string(x) + ", y: " + std::to_string(y);
-
-	return vector;
+	return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
 }
 
 //===================================

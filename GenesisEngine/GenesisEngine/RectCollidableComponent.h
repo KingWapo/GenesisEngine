@@ -16,7 +16,7 @@ public:
 	virtual bool vUpdate(int deltaMs);
 	virtual void vOnChanged(void);
 
-	virtual bool isColliding(RectCollidableComponent &other);
+	//virtual bool isColliding(RectCollidableComponent other) override;
 	//virtual void resolveCollision(RectCollidableComponent other) override;
 
 	// Collidable interface
@@ -31,7 +31,6 @@ public:
 	Rect2D getRect();
 	Vector2 getSize();
 	Vector2 getOffset();
-	Transform2dComponent getTransform();
 
 	void setWidth(float p_w);
 	void setHeight(float p_h);
