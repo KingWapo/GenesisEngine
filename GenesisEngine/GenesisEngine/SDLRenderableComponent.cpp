@@ -3,7 +3,42 @@
 
 #include "Vector2.h"
 
+#include <iostream>
+
 //const char *RenderableComponent::g_Name = "SDLRenderableComponent";
+
+//dumping a bunch of sprite sheet animation crap here for now
+int totalFrames = 10;
+int numberColumns = 5;
+int numberRows = totalFrames / numberColumns;
+int currentFrame = 0; // [0,totalFrames-1]
+int frameCol = (currentFrame) % numberColumns;
+int frameRow = ceil(currentFrame / numberColumns);
+double frameX = (0.0 + frameCol) / numberColumns;
+double frameX2 = (1.0 + frameCol) / numberColumns;
+double frameY = (0.0 + frameRow) / numberRows;
+double frameY2 = (1.0 + frameRow) / numberRows;
+
+int rightStandStart = 0;
+int rightStandEnd = 0;
+int rightMoveStart = 1;
+int rightMoveEnd = 3;
+int rightJumpStart = 4;
+int rightJumpEnd = 4;
+
+int leftStandStart = 5;
+int leftStandEnd = 5;
+int leftMoveStart = 6;
+int leftMoveEnd = 8;
+int leftJumpStart = 9;
+int leftJumpEnd = 9;
+
+float preLocationX;
+float preLocationY;
+
+boolean left = 0;
+boolean right = 1;
+
 
 SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
 {
@@ -148,18 +183,72 @@ void SDLRenderableComponent::vOnChanged()
 
 void SDLRenderableComponent::vDraw()
 {
+
+
+
 	//printf("In vDraw SDLCoimponent.\n"); fflush(stdout);
-//	if (isDrawable())
+	//	if (isDrawable())
 	{
 		//John - binds texture to rect
 		glBindTexture(GL_TEXTURE_2D, TextureID);
 
+		//dumping a bunch of sprite sheet animation crap here for now
+
+		if (preLocationX < m_location.x()) {
+			right = 1;
+			left = 0;
+		}
+		else if (preLocationX > m_location.x()) {
+			left = 1;
+			right = 0;
+		}
+
+		if (right) {
+			if (preLocationY < m_location.y() || preLocationY > m_location.y()) {
+				currentFrame = rightJumpStart;
+			}
+			else if (preLocationX < m_location.x())	{
+				currentFrame = rightMoveStart;
+			}
+			else {
+				currentFrame = rightStandStart;
+			}
+		}
+		else if (left) {
+			if (preLocationY < m_location.y() || preLocationY > m_location.y()) {
+				currentFrame = leftJumpStart;
+			}
+			else if (preLocationX > m_location.x())	{
+				currentFrame = leftMoveStart;
+			}
+			else {
+				currentFrame = leftStandStart;
+			}
+		}
+
+		preLocationX = m_location.x();
+		preLocationY = m_location.y();
+
+		frameCol = (currentFrame) % numberColumns;
+		frameRow = floor(currentFrame / numberColumns);
+		frameX = (0.0 + frameCol) / numberColumns;
+		frameX2 = (1.0 + frameCol) / numberColumns;
+		frameY = (0.0 + frameRow) / numberRows;
+		frameY2 = (1.0 + frameRow) / numberRows;
+
 		//John - draws rect
 		glBegin(GL_QUADS);
-			glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
-			glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
-			glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
-			glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
+		glTexCoord2f(frameX, frameY2); glVertex2f(m_location.x(), m_location.y()); //Bottom left
+		glTexCoord2f(frameX2, frameY2); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
+		glTexCoord2f(frameX2, frameY); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
+		glTexCoord2f(frameX, frameY); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
 		glEnd();
+
+		/*glBegin(GL_QUADS);
+		glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
+		glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
+		glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
+		glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
+		glEnd();*/
 	}
 }

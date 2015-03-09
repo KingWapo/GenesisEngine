@@ -54,7 +54,7 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(p_transformComp);
 	freddy->AddComponent(pTransformComp, false);
 
-	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
+	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/robotSpriteSheet.png",
 		Point2DF(.100f, .100f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(p_renderComp);
 	myScene->addRenderableComponent(pRenderComp);
