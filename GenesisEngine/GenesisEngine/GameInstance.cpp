@@ -1,7 +1,7 @@
 #include "GameInstance.h"
 #include "Render.h"
 #include "Scene.h"
-#include "CollidableComponent.h"
+#include "RectCollidableComponent.h"
 
 GameInstance::GameInstance()
 {
@@ -156,7 +156,6 @@ bool GameInstance::UpdateActors()
 	{
 		stateChanged = stateChanged | (*actor)->Update((1.0 / m_Fps) * 1000);
 
-		/*
 		shared_ptr<RectCollidableComponent> collider = (*actor)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
 		if (collider.get() != NULL) {
 			for (ActorList::iterator actorOther = m_ActorList.begin(); actorOther != m_ActorList.end(); ++actorOther) {
@@ -170,7 +169,6 @@ bool GameInstance::UpdateActors()
 				}
 			}
 		}
-		*/
 	}
 
 	return stateChanged;

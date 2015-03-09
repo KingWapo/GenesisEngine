@@ -31,6 +31,7 @@ public:
 	Rect2D getRect();
 	Vector2 getSize();
 	Vector2 getOffset();
+	Transform2dComponent getTransform();
 
 	void setWidth(float p_w);
 	void setHeight(float p_h);

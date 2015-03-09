@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
+#include "RectCollidableComponent.h"
 #include "PhysicsComponent.h"
 #include <iostream>
 #include "Actor.h"
