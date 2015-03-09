@@ -163,8 +163,9 @@ bool GameInstance::UpdateActors()
 				shared_ptr<RectCollidableComponent> colliderOther = (*actorOther)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
 
 				if (colliderOther.get() != NULL) {
-					if (collider->isColliding(colliderOther) {
-						collider->resolveCollision(colliderOther);
+					if (collider->isColliding(*colliderOther.get())) {
+						printf("object collision\n %s \n", collider->getTransform().GetTranslation().toString().c_str()); fflush(stdout);
+						collider->resolveCollision(*colliderOther.get());
 					}
 				}
 			}
