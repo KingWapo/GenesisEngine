@@ -273,13 +273,14 @@ void SDLRenderableComponent::vDraw()
 		glEnd();
 
 		//Matt - sprite sheet animation crap ends
+		*/
 
 		//John - draws rect
-		/*glBegin(GL_QUADS);
+		glBegin(GL_QUADS);
 		glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
 		glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
 		glTexCoord2f(1.f, 0.f); glVertex2f(m_location.x() + m_size.x(), m_location.y() + m_size.y()); //Top right
 		glTexCoord2f(0.f, 0.f); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
-		glEnd();*/
+		glEnd();
 	}
 }
