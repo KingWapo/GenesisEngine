@@ -33,6 +33,7 @@ public:
 
 	// add forces
 	void addForce(Vector2 force);
+	void clearForces();
 
 	// actor overrides
 	static const char* g_Name;

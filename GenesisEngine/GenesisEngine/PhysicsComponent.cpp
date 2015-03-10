@@ -47,6 +47,10 @@ void PhysicsComponent::addForce(Vector2 force) {
 	forceQueue.push_back(force);
 }
 
+void PhysicsComponent::clearForces() {
+	forceQueue.clear();
+}
+
 float PhysicsComponent::kineticEnergy() {
 	float speed = getVelocity().mag();
 

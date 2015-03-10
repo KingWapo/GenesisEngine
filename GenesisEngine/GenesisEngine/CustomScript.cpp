@@ -33,9 +33,14 @@ bool CustomScript::vUpdate(int deltaMs) {
 	GCC_ASSERT(m_transform.get() != NULL);
 	GCC_ASSERT(m_physics.get() != NULL);
 
-	if (m_input->onKeyDown(KeyCode::W)) {
+	if (m_input->onKeyDown(KeyCode::F)) {
 		m_physics->addForce(Vector2(0.0f, -0.1f));
 	}
+
+	if (m_input->onKeyDown(KeyCode::G)) {
+		m_physics->clearForces();
+	}
+
 	if (m_input->onKeyDown(VK_SPACE)) {
 		m_physics->accelerate(Vector2(0.0f, 0.3f));
 	}
