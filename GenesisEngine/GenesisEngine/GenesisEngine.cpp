@@ -51,6 +51,7 @@ int GenesisEntry(int argc, char *argv[])
 	Scene* myScene = new Scene();
 
 	Transform2dComponent *p_transformComp = new Transform2dComponent();
+	p_transformComp->SetTranslation(Vector2(.2f, .4f));
 	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(p_transformComp);
 	freddy->AddComponent(pTransformComp, false);
 
@@ -79,20 +80,25 @@ int GenesisEntry(int argc, char *argv[])
 
 	p_instance->AddActor(freddy);
 
+	float x = .4f;
+	float y = .4f;
+	float w = .052f;
+	float h = .052f;
+
 	Actor* rock = new Actor(1);
 
 	Transform2dComponent *p_rockTransform = new Transform2dComponent();
-	p_rockTransform->SetTranslation(Vector2(.4f, .4f));
+	p_rockTransform->SetTranslation(Vector2(x, y));
 	StrongActorComponentPtr pRockTransform = StrongActorComponentPtr(p_rockTransform);
 	rock->AddComponent(pRockTransform, false);
 
-	SDLRenderableComponent *p_rockRender = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
-		Point2DF(.400f, .400f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
+	SDLRenderableComponent *p_rockRender = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png",
+		Point2DF(x, y), Point2DF(w, h), Point2DF(0, 0), p_instance->getWindow());
 	StrongActorComponentPtr pRockRender = StrongActorComponentPtr(p_rockRender);
 	myScene->addRenderableComponent(pRockRender);
 	rock->AddComponent(pRockRender, false);
 
-	RectCollidableComponent rockRectCol(.073f, .079f, true);
+	RectCollidableComponent rockRectCol(w, h, true);
 	StrongActorComponentPtr pRockRectCol = StrongActorComponentPtr(&rockRectCol);
 	rock->AddComponent(pRockRectCol, false);
 

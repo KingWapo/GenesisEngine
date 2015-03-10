@@ -66,6 +66,11 @@ void RectCollidableComponent::resolveCollision(RectCollidableComponent &other) {
 			else {
 				newPos.x -= (abs(dist.x) - other.width);
 			}
+
+			shared_ptr<PhysicsComponent> physics = m_pOwner->GetComponent<PhysicsComponent>("PhysicsComponent");
+			if (physics != NULL) {
+				physics->setVelocity(Vector2(0.0f, physics->getVelocity().y));
+			}
 		} else {
 			if (dist.y < 0) {
 				newPos.y += (abs(dist.y) - height);

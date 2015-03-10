@@ -25,7 +25,7 @@ PhysicsComponent::~PhysicsComponent() {
 Vector2 PhysicsComponent::netForce() {
 	Vector2 netForce = Vector2();
 
-	for (int i = 0; i < forceQueue.size(); i++) {
+	for (unsigned int i = 0; i < forceQueue.size(); i++) {
 		netForce += forceQueue[i];
 	}
 
@@ -33,7 +33,10 @@ Vector2 PhysicsComponent::netForce() {
 }
 
 void PhysicsComponent::move(Vector2 deltaPos) {
-	m_transform->SetTranslation(m_transform->GetTranslation() + deltaPos);
+	Vector2 newPos = m_transform->GetTranslation() + deltaPos;
+	newPos.x = max(0.0f, min(1.0f, newPos.x));
+	newPos.y = max(0.0f, min(.921f, newPos.y));
+	m_transform->SetTranslation(newPos);
 }
 
 void PhysicsComponent::accelerate(Vector2 deltaVel) {
