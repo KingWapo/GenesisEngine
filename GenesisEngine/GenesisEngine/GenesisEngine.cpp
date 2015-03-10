@@ -47,7 +47,7 @@ int GenesisEntry(int argc, char *argv[])
 	// Main Loop
 	GameInstance *p_instance = new GameInstance();
 	p_instance->Init();
-	Actor* freddy = new Actor(0);
+	StrongActorPtr freddy(new Actor(0));
 	Scene* myScene = new Scene();
 
 	Transform2dComponent *p_transformComp = new Transform2dComponent();
@@ -77,9 +77,9 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pCustomScript = StrongActorComponentPtr(p_customScript);
 	freddy->AddComponent(pCustomScript, false);
 
-	p_instance->AddActor(freddy);
+	p_instance->AddActor(freddy.get());
 
-	Actor* rock = new Actor(1);
+	StrongActorPtr rock(new Actor(1));
 
 	Transform2dComponent *p_rockTransform = new Transform2dComponent();
 	p_rockTransform->SetTranslation(Vector2(.4f, .4f));
@@ -96,7 +96,7 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pRockRectCol = StrongActorComponentPtr(&rockRectCol);
 	rock->AddComponent(pRockRectCol, false);
 
-	p_instance->AddActor(rock);
+	p_instance->AddActor(rock.get());
 	
 	// Runs the instance of a game.
 	// When it passes this line, the game is over.

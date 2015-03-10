@@ -17,9 +17,10 @@ CustomScript::~CustomScript()
 }
 
 bool CustomScript::vInit() {
-	GCC_ASSERT(m_pOwner.get() != NULL);
+	GCC_ASSERT(m_pOwner.use_count() != 0);
 
-	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
+	StrongActorPtr l_ownerPtr = m_pOwner.lock();
+	Actor* l_owner = static_cast<Actor*>(l_ownerPtr.get());
 
 	m_input = l_owner->GetComponent<InputManager>("InputManager");
 	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");

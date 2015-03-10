@@ -7,7 +7,7 @@ class TiXmlElement;
 typedef std::string ActorType;
 
 // Actor Class
-class Actor
+class Actor : public std::tr1::enable_shared_from_this<Actor>
 {
 	friend class ActorFactory;
 

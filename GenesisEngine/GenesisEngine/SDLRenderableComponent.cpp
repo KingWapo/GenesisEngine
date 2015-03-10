@@ -13,7 +13,7 @@ int numberColumns = 5;
 int numberRows = totalFrames / numberColumns;
 int currentFrame = 0; // [0,totalFrames-1]
 int frameCol = (currentFrame) % numberColumns;
-int frameRow = ceil(currentFrame / numberColumns);
+int frameRow = (int)ceil(currentFrame / numberColumns);
 double frameX = (0.0 + frameCol) / numberColumns;
 double frameX2 = (1.0 + frameCol) / numberColumns;
 double frameY = (0.0 + frameRow) / numberRows;
@@ -38,6 +38,7 @@ float preLocationY;
 
 boolean left = 0;
 boolean right = 1;
+//sprite sheet animation crap ends
 
 
 SDLRenderableComponent::SDLRenderableComponent() : RenderableComponent()
@@ -104,9 +105,10 @@ SDLRenderableComponent::~SDLRenderableComponent()
 
 bool SDLRenderableComponent::vInit()
 {
-	GCC_ASSERT(m_pOwner.get() != NULL);
+	GCC_ASSERT(m_pOwner.use_count() != 0);
 
-	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
+	StrongActorPtr l_ownerPtr = m_pOwner.lock();
+	Actor* l_owner = static_cast<Actor*>(l_ownerPtr.get());
 
 	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
 
@@ -192,7 +194,7 @@ void SDLRenderableComponent::vDraw()
 		//John - binds texture to rect
 		glBindTexture(GL_TEXTURE_2D, TextureID);
 
-		//dumping a bunch of sprite sheet animation crap here for now
+		//Matt - dumping a bunch of sprite sheet animation crap here for now
 
 		if (preLocationX < m_location.x()) {
 			right = 1;
@@ -230,13 +232,12 @@ void SDLRenderableComponent::vDraw()
 		preLocationY = m_location.y();
 
 		frameCol = (currentFrame) % numberColumns;
-		frameRow = floor(currentFrame / numberColumns);
+		frameRow = (int)floor(currentFrame / numberColumns);
 		frameX = (0.0 + frameCol) / numberColumns;
 		frameX2 = (1.0 + frameCol) / numberColumns;
 		frameY = (0.0 + frameRow) / numberRows;
 		frameY2 = (1.0 + frameRow) / numberRows;
 
-		//John - draws rect
 		glBegin(GL_QUADS);
 		glTexCoord2f(frameX, frameY2); glVertex2f(m_location.x(), m_location.y()); //Bottom left
 		glTexCoord2f(frameX2, frameY2); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right
@@ -244,6 +245,9 @@ void SDLRenderableComponent::vDraw()
 		glTexCoord2f(frameX, frameY); glVertex2f(m_location.x(), m_location.y() + m_size.y()); //Top left
 		glEnd();
 
+		//Matt - sprite sheet animation crap ends
+
+		//John - draws rect
 		/*glBegin(GL_QUADS);
 		glTexCoord2f(0.f, 1.f); glVertex2f(m_location.x(), m_location.y()); //Bottom left
 		glTexCoord2f(1.f, 1.f); glVertex2f(m_location.x() + m_size.x(), m_location.y()); //Bottom right

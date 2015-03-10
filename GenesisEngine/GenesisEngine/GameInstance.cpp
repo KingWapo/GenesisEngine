@@ -35,29 +35,27 @@ GameInstance::GameInstance(int p_ScreenWidth, int p_ScreenHeight)
 
 GameInstance::~GameInstance()
 {
-	while (!m_ActorList.empty())
-	{
-		Actor *p_temp = m_ActorList.back();
-		m_ActorList.pop_back();
-		if (p_temp != NULL)
-		{
-			p_temp->Destroy();
-		}
-		delete p_temp;
-		
-	}
-	/*for (ActorList::iterator it = m_ActorList.begin(); it != m_ActorList.end(); ++it)
+	//while (!m_ActorList.empty())
+	//{
+	//	Actor *p_temp = m_ActorList.back().get();
+	//	if (p_temp != NULL)
+	//	{
+	//		p_temp->Destroy();
+	//	}
+	//	m_ActorList.pop_back();
+	//}
+    for (ActorList::iterator it = m_ActorList.begin(); it != m_ActorList.end(); ++it)
 	{
 		(*it)->Destroy();
 
-	}*/
+	}
 	//John - removed deleting to get rid of assertion error
 	delete m_Window;
 }
 
 void GameInstance::AddActor(Actor* p_NewActor)
 {
-	m_ActorList.push_back(p_NewActor);
+	m_ActorList.push_back(StrongActorPtr(p_NewActor));
 }
 
 void GameInstance::Run()

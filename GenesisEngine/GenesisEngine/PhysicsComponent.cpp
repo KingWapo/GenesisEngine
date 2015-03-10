@@ -25,7 +25,7 @@ PhysicsComponent::~PhysicsComponent() {
 Vector2 PhysicsComponent::netForce() {
 	Vector2 netForce = Vector2();
 
-	for (int i = 0; i < forceQueue.size(); i++) {
+	for (unsigned int i = 0; i < forceQueue.size(); i++) {
 		netForce += forceQueue[i];
 	}
 
@@ -74,9 +74,10 @@ bool PhysicsComponent::vUpdate(int deltaMs) {
 }
 
 bool PhysicsComponent::vInit() {
-	GCC_ASSERT(m_pOwner.get() != NULL);
+	GCC_ASSERT(m_pOwner.use_count() != 0);
 
-	Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
+	StrongActorPtr l_ownerPtr = m_pOwner.lock();
+	Actor* l_owner = static_cast<Actor*>(l_ownerPtr.get());
 
 	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
 

@@ -10,9 +10,10 @@ public:
 	~CollidableComponent() { }
 
 	virtual bool vInit(void) {
-		if (m_pOwner != nullptr)
+		if (m_pOwner.use_count() != 0)
 		{
-			Actor* l_owner = static_cast<Actor*>(m_pOwner.get());
+			StrongActorPtr l_ownerPtr = m_pOwner.lock();
+			Actor* l_owner = static_cast<Actor*>(l_ownerPtr.get());
 			m_transformation = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
 			if (m_transformation.get() != NULL)
 			{

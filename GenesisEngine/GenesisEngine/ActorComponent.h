@@ -12,13 +12,14 @@ class ActorComponent
 	friend class Actor;
 
 protected:
-	StrongActorPtr m_pOwner;
+	WeakActorPtr m_pOwner;
 
 public:
-	virtual ~ActorComponent(void) { m_pOwner.reset(); }
+	ActorComponent() : m_pOwner() { printf("ActorComponent constructor.\n"); fflush(stdout); }
+	virtual ~ActorComponent(void) { }
 
 	// Override functions by implementation class
-	virtual bool vInit(void) { return true; }
+	virtual bool vInit(void)  { return true; }
 	virtual void vPostInit(void) { }
 	virtual bool vUpdate(int deltaMs) { return false; }
 	virtual void vOnChanged(void) { }
@@ -37,5 +38,5 @@ public:
 	}
 
 private:
-	void SetOwner(StrongActorPtr pOwner) { m_pOwner = pOwner; }
+	void SetOwner(WeakActorPtr pOwner) { m_pOwner = pOwner; }
 };

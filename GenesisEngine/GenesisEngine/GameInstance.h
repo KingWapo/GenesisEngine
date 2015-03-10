@@ -14,7 +14,7 @@
 
 enum class GameState { PLAY, EXIT };
 
-typedef std::list<Actor*> ActorList;
+typedef std::list<StrongActorPtr> ActorList;
 
 class GameInstance
 {

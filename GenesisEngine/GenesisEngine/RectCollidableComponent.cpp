@@ -74,7 +74,9 @@ void RectCollidableComponent::resolveCollision(RectCollidableComponent &other) {
 				newPos.y -= (abs(dist.y) - other.height);
 			}
 
-			shared_ptr<PhysicsComponent> physics = m_pOwner->GetComponent<PhysicsComponent>("PhysicsComponent");
+			StrongActorPtr l_ownerPtr = m_pOwner.lock();
+			Actor* l_owner = static_cast<Actor*>(l_ownerPtr.get());
+			shared_ptr<PhysicsComponent> physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent");
 			if (physics != NULL) {
 				physics->setVelocity(Vector2(physics->getVelocity().x, 0.0f));
 			}
