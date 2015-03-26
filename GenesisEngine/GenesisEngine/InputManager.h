@@ -54,13 +54,14 @@ public:
 	int verticalAxis();
 
 	// component overrides
-	static const char* g_Name;
 	virtual const char* VGetName() const { return g_Name; }
 
 	virtual bool vInit(void) override;
 	virtual bool vUpdate(int deltaMs) override;
 
 private:
+	static const char *g_Name;
+
 	// maintain state of key events
 	void updateKeyState(unsigned int keyID);
 

@@ -43,6 +43,14 @@ float Vector2::mag2() {
 	return (pow(x, 2) + pow(y, 2));
 }
 
+//===================================
+// INFORMATION
+//===================================
+Point2DF Vector2::toPoint2DF()
+{
+	return Point2DF(x, y);
+}
+
 std::string Vector2::toString(){
 	std::string vector = "x: " + std::to_string(x) + ", y: " + std::to_string(y);
 

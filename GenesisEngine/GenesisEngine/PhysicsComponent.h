@@ -36,12 +36,13 @@ public:
 	void clearForces();
 
 	// actor overrides
-	static const char* g_Name;
 	virtual const char* VGetName() const { return g_Name; }
 	virtual bool vInit() override;
 	virtual bool vUpdate(int deltaMs) override;
 
 private:
+	static const char *g_Name;
+
 	// properties
 	Vector2 m_position;
 	Vector2 m_velocity;

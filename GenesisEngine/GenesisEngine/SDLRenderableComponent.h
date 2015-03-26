@@ -9,6 +9,8 @@
 class SDLRenderableComponent : public RenderableComponent
 {
 private:
+	static const char *g_Name;
+
 	SDL_Texture* m_sprite;
 	SDL_Surface* m_screen;
 	SDL_Window* m_window;

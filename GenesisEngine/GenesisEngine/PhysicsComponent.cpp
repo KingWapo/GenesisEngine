@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-const char* PhysicsComponent::g_Name = "PhysicsComponent";
+const char *PhysicsComponent::g_Name = "PhysicsComponent";
 
 PhysicsComponent::PhysicsComponent() {
 	setPosition(Vector2(0.0, 0.0));

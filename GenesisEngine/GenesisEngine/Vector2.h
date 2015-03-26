@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Point2D.h"
 #include <string>
 
 class Vector2 {
@@ -19,6 +20,7 @@ public:
 	float mag2();
 
 	// information
+	Point2DF toPoint2DF();
 	std::string toString();
 
 	// operators

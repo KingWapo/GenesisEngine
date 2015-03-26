@@ -1,6 +1,6 @@
 #include "RenderableComponent.h"
 
-const char *RenderableComponent::g_Name = "RenderableComponent";
+//const char *RenderableComponent::g_Name = "RenderableComponent";
 
 RenderableComponent::RenderableComponent()
 {

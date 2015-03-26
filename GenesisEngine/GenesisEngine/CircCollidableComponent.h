@@ -31,6 +31,7 @@ public:
 	void setOffset(Vector2 p_offset) { m_offset = p_offset; }
 
 private:
+	static const char *g_Name;
 	float m_radius;
 	Vector2 m_offset;
 };

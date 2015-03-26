@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-//const char *RenderableComponent::g_Name = "SDLRenderableComponent";
+const char *RenderableComponent::g_Name = "SDLRenderableComponent";
 
 //Matt - dumping a bunch of sprite sheet animation crap here for now
 /*

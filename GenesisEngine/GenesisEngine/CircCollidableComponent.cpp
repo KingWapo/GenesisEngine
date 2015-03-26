@@ -1,5 +1,6 @@
 #include "CircCollidableComponent.h"
 
+const char *CircCollidableComponent::g_Name = "CircCollidableComponent";
 
 CircCollidableComponent::CircCollidableComponent()
 {
