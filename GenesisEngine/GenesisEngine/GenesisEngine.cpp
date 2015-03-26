@@ -7,6 +7,7 @@
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
 #include "PhysicsComponent.h"
+#include "AnimationComponent.h"
 #include <iostream>
 #include "Actor.h"
 #include "ActorFactory.h"
@@ -55,12 +56,20 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(p_transformComp);
 	freddy->AddComponent(pTransformComp, false);
 
-	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png",
+	//John - using animation component instead for player character
+	/*SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/linkSpriteSheet.png",
 		Point2DF(.100f, .100f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
 	StrongActorComponentPtr pRenderComp = StrongActorComponentPtr(p_renderComp);
 	myScene->addRenderableComponent(pRenderComp);
 	p_instance->setScene(myScene);
-	freddy->AddComponent(pRenderComp, true);
+	freddy->AddComponent(pRenderComp, true);*/
+
+	AnimationComponent *p_animComp = new AnimationComponent("Textures/linkSpriteSheet.png",
+		Point2DF(.100f, .100f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
+	StrongActorComponentPtr pAnimComp = StrongActorComponentPtr(p_animComp);
+	myScene->addRenderableComponent(pAnimComp);
+	p_instance->setScene(myScene);
+	freddy->AddComponent(pAnimComp, true);
 
 	PhysicsComponent physicsComp;
 	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);

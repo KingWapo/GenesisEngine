@@ -95,6 +95,9 @@
       <Filter>Actor\Components</Filter>
     </ClCompile>
     <ClCompile Include="CircCollidableComponent.cpp" />
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -273,6 +276,9 @@
       <Filter>Actor\Components</Filter>
     </ClInclude>
     <ClInclude Include="CircCollidableComponent.h" />
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">
