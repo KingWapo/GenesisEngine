@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorFactory.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="BaseGameLogic.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="CircCollidableComponent.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorComponent.h" />
     <ClInclude Include="ActorFactory.h" />
+    <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="BaseGameLogic.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="CircCollidableComponent.h" />
