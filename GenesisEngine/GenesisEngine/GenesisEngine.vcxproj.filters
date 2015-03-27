@@ -94,19 +94,15 @@
     <ClCompile Include="RectCollidableComponent.cpp">
       <Filter>Actor\Components</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="CircCollidableComponent.cpp">
       <Filter>Actor\Components</Filter>
     </ClCompile>
     <ClCompile Include="EngineController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
-=======
-    <ClCompile Include="CircCollidableComponent.cpp" />
     <ClCompile Include="AnimationComponent.cpp">
       <Filter>Actor\Components</Filter>
     </ClCompile>
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -287,19 +283,15 @@
     <ClInclude Include="RectCollidableComponent.h">
       <Filter>Actor\Components</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="CircCollidableComponent.h">
       <Filter>Actor\Components</Filter>
     </ClInclude>
     <ClInclude Include="EngineController.h">
       <Filter>Controller</Filter>
     </ClInclude>
-=======
-    <ClInclude Include="CircCollidableComponent.h" />
     <ClInclude Include="AnimationComponent.h">
       <Filter>Actor\Components</Filter>
     </ClInclude>
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">
