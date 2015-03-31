@@ -12,6 +12,7 @@
 #include "GameInstance.h"
 #include "SDLRenderableComponent.h"
 #include "Scene.h"
+#include "AnimationComponent.h"
 
 
 class EngineController
@@ -28,8 +29,11 @@ public:
 	EngineController();
 	~EngineController();
 
+	void run();
+
 	void addActor();
 	void selectActor(int actorId);
+	void setActorTranslation(Vector2 newLocation);
 
 	bool addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
 	bool addCircCollidable();
@@ -37,5 +41,6 @@ public:
 	bool addPhysics();
 	bool addInputManager();
 	bool addCustomScript();
+	bool addAnimation(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
 };
 

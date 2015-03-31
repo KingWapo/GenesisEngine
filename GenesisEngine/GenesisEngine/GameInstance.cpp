@@ -53,9 +53,9 @@ GameInstance::~GameInstance()
 	delete m_Window;
 }
 
-void GameInstance::AddActor(Actor* p_NewActor)
+void GameInstance::AddActor(StrongActorPtr newActor)
 {
-	m_ActorList.push_back(StrongActorPtr(p_NewActor));
+	m_ActorList.push_back(newActor);
 }
 
 void GameInstance::Run()
@@ -134,11 +134,11 @@ void GameInstance::Update()
 		refreshRender = refreshRender | UpdateActors();
 
 		// Render Everything (forcing a redraw for now, SDL events are not firing right)
-		if (m_scene != NULL) // && refreshRender)
-		{
+		//if (m_scene != NULL) // && refreshRender)
+		//{
 			Draw();
 			refreshRender = false;
-		}
+		//}
 	}
 }
 

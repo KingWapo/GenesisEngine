@@ -18,6 +18,11 @@ EngineController::~EngineController()
 	delete p_instance;
 }
 
+void EngineController::run()
+{
+	p_instance->Run();
+}
+
 void EngineController::addActor()
 {
 	StrongActorPtr tempActor(new Actor(actorIndex));
@@ -28,6 +33,8 @@ void EngineController::addActor()
 	tempActor->AddComponent(pTransformComp, false);
 
 	gameActors.push_back(tempActor);
+
+	p_instance->AddActor(tempActor);
 
 	selectedActor = tempActor;
 }
@@ -44,15 +51,33 @@ void EngineController::selectActor(int actorId)
 	}
 }
 
+void EngineController::setActorTranslation(Vector2 newLocation)
+{
+	selectedActor->GetComponent<Transform2dComponent>("Transform2dComponent")->SetTranslation(newLocation);
+}
+
 bool EngineController::addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell)
 {
 	Point2DF location = selectedActor->GetComponent<Transform2dComponent>("Transform2dComponent")->GetTranslation().toPoint2DF();
-	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png",
+	SDLRenderableComponent *p_renderComp = new SDLRenderableComponent(p_fileLocation,
 		location, p_size, p_cell, p_instance->getWindow());
 	StrongActorComponentPtr renderCompStrong = StrongActorComponentPtr(p_renderComp);
 	selectedActor->AddComponent(renderCompStrong, false);
 
 	p_gameScene->addRenderableComponent(renderCompStrong);
+
+	return true;
+}
+
+bool EngineController::addAnimation(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell)
+{
+	Point2DF location = selectedActor->GetComponent<Transform2dComponent>("Transform2dComponent")->GetTranslation().toPoint2DF();
+	AnimationComponent *p_animComp = new AnimationComponent(p_fileLocation,
+		location, p_size, p_cell, p_instance->getWindow());
+	StrongActorComponentPtr pAnimComp = StrongActorComponentPtr(p_animComp);
+	selectedActor->AddComponent(pAnimComp, true);
+
+	p_gameScene->addRenderableComponent(pAnimComp);
 
 	return true;
 }

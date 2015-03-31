@@ -14,6 +14,7 @@
 #include "GameInstance.h"
 #include "SDLRenderableComponent.h"
 #include "Scene.h"
+#include "EngineController.h"
 
 using namespace std;
 
@@ -46,6 +47,59 @@ int GenesisEntry(int argc, char *argv[])
 	}
 
 	// Main Loop
+
+	//			Adam - Testing Controller
+	// Creates instance and scene within the controller
+	EngineController *p_controller = new EngineController();
+
+	// Creates new Actor, and sets it as selectedActor
+	p_controller->addActor();
+
+	// Set actor location
+	p_controller->setActorTranslation(Vector2(.2f, .4f)); //
+
+	// Add on required components
+
+		// Animation
+	p_controller->addAnimation("Textures/linkSpriteSheet.png", Point2DF(0.073f, 0.079f), Point2DF(0, 0));
+		//
+		// Physics
+	p_controller->addPhysics(); //
+
+		// Rect Collider
+	//p_controller->addRectCollidable(0.073f, 0.079f, false);
+
+		// Input Manager
+	p_controller->addInputManager(); //
+
+		// Custom Script
+	p_controller->addCustomScript(); //
+
+	float x = .4f;
+	float y = .4f;
+	float w = .052f;
+	float h = .052f;
+
+	// Add second actor and set it to selectedActor
+	p_controller->addActor();
+	p_controller->setActorTranslation(Vector2(x, y));
+
+	// Add components to selectedActor
+
+		// SDL Render
+	p_controller->addSDLRenderable("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png", Point2DF(w, h), Point2DF(0, 0));
+
+		// Rect Collidable
+	//p_controller->addRectCollidable(w, h, true);
+
+	// Run the controller
+	p_controller->run();
+
+	// Clean up
+	delete p_controller;
+
+
+	/*
 	GameInstance *p_instance = new GameInstance();
 	p_instance->Init();
 	StrongActorPtr freddy(new Actor(0));
@@ -54,7 +108,7 @@ int GenesisEntry(int argc, char *argv[])
 	Transform2dComponent *p_transformComp = new Transform2dComponent();
 	p_transformComp->SetTranslation(Vector2(.2f, .4f));
 	StrongActorComponentPtr pTransformComp = StrongActorComponentPtr(p_transformComp);
-	freddy->AddComponent(pTransformComp, false);
+	freddy->AddComponent(pTransformComp, false);*/
 
 	//John - using animation component instead for player character
 	/*SDLRenderableComponent *p_renderComp = new SDLRenderableComponent("Textures/linkSpriteSheet.png",
@@ -64,13 +118,15 @@ int GenesisEntry(int argc, char *argv[])
 	p_instance->setScene(myScene);
 	freddy->AddComponent(pRenderComp, true);*/
 
+	/*
 	AnimationComponent *p_animComp = new AnimationComponent("Textures/linkSpriteSheet.png",
 		Point2DF(.100f, .100f), Point2DF(.073f, .079f), Point2DF(0, 0), p_instance->getWindow());
 	StrongActorComponentPtr pAnimComp = StrongActorComponentPtr(p_animComp);
 	myScene->addRenderableComponent(pAnimComp);
 	p_instance->setScene(myScene);
-	freddy->AddComponent(pAnimComp, true);
+	freddy->AddComponent(pAnimComp, true);*/
 
+	/*
 	PhysicsComponent physicsComp;
 	StrongActorComponentPtr pPhysicsComp = StrongActorComponentPtr(&physicsComp);
 	freddy->AddComponent(pPhysicsComp, false);
@@ -87,13 +143,9 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pCustomScript = StrongActorComponentPtr(p_customScript);
 	freddy->AddComponent(pCustomScript, false);
 
-	p_instance->AddActor(freddy.get());
+	p_instance->AddActor(freddy.get());*/
 
-	float x = .4f;
-	float y = .4f;
-	float w = .052f;
-	float h = .052f;
-
+	/*
 	StrongActorPtr rock(new Actor(1));
 
 	Transform2dComponent *p_rockTransform = new Transform2dComponent();
@@ -111,15 +163,15 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pRockRectCol = StrongActorComponentPtr(&rockRectCol);
 	rock->AddComponent(pRockRectCol, false);
 
-	p_instance->AddActor(rock.get());
+	p_instance->AddActor(rock.get());*/
 	
 	// Runs the instance of a game.
 	// When it passes this line, the game is over.
-	p_instance->Run();
+	//p_instance->Run();
 
 	// Cleanup
-	delete myScene;
-	delete p_instance;
+	//delete myScene;
+	//delete p_instance;
 
 	// Shutdown
 //	Logger::Destroy();

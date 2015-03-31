@@ -23,7 +23,7 @@ public:
 	GameInstance(int p_ScreenWidth, int p_ScreenHeight);
 	~GameInstance();
 
-	void AddActor(Actor* newActor);
+	void AddActor(StrongActorPtr newActor);
 
 	void Run();
 	void Init();
