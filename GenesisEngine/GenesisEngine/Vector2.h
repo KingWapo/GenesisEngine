@@ -47,38 +47,38 @@ private:
 
 class Rect2D {
 public:
-	Rect2D() { m_A = Vector2(); m_B = Vector2(); m_C = Vector2(); m_D = Vector2(); }
-	Rect2D(Vector2 p_A, Vector2 p_B, Vector2 p_C, Vector2 p_D) 
+	Rect2D() { m_C = Vector2(); m_W = 0f; m_H = 0f; }
+	Rect2D(Vector2 p_C, float p_W, float p_H) 
 	{
-		m_A = p_A;
-		m_B = p_B;
 		m_C = p_C;
-		m_D = p_D;
+		m_W = p_W;
+		m_H = p_H;
 	}
 
 	~Rect2D() { }
 
-	Vector2 A() { return m_A; }
-	Vector2 B() { return m_B; }
-	Vector2 C() { return m_C; }
-	Vector2 D() { return m_D; }
+	Vector2 getCenter() { return m_C; }
+	float getWidth() { return m_W; }
+	float getHeight() { return m_H; }
 
-	void setRect(Vector2 p_A, Vector2 p_B, Vector2 p_C, Vector2 p_D)
+	void setRect(Vector2 p_C, float p_W, float p_H)
 	{
-		m_A = p_A;
-		m_B = p_B;
 		m_C = p_C;
-		m_D = p_D;
+		m_W = p_W;
+		m_H = p_H;
 	}
 
 private:
-	Vector2 m_A;
-	Vector2 m_B;
 	Vector2 m_C;
+<<<<<<< HEAD
 	Vector2 m_D;
 
 	float width;
 	float height;
+=======
+	float m_H;
+	float m_H;
+>>>>>>> origin/CollisionEnhancement
 };
 
 class Circ2D {
