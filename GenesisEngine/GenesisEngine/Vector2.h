@@ -47,7 +47,7 @@ private:
 
 class Rect2D {
 public:
-	Rect2D() { m_C = Vector2(); m_W = 0f; m_H = 0f; }
+	Rect2D() { m_C = Vector2(); m_W = 0.0f; m_H = 0.0f; }
 	Rect2D(Vector2 p_C, float p_W, float p_H) 
 	{
 		m_C = p_C;
@@ -70,15 +70,8 @@ public:
 
 private:
 	Vector2 m_C;
-<<<<<<< HEAD
-	Vector2 m_D;
-
-	float width;
-	float height;
-=======
+	float m_W;
 	float m_H;
-	float m_H;
->>>>>>> origin/CollisionEnhancement
 };
 
 class Circ2D {
