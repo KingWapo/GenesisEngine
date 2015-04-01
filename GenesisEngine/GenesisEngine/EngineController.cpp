@@ -87,12 +87,9 @@ bool EngineController::addCircCollidable()
 	return false;
 }
 
-bool EngineController::addRectCollidable(float width, float height, bool isStatic)
+bool EngineController::addRectCollidable()
 {
-	RectCollidableComponent rectColComp(width, height, isStatic);
-	StrongActorComponentPtr pRectColComp = StrongActorComponentPtr(&rectColComp);
-	selectedActor->AddComponent(pRectColComp, false);
-	return true;
+	return false;
 }
 
 bool EngineController::addPhysics()

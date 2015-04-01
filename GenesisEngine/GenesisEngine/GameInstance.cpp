@@ -154,7 +154,7 @@ bool GameInstance::UpdateActors()
 	{
 		stateChanged = stateChanged | (*actor)->Update((1.0 / m_Fps) * 1000);
 
-		shared_ptr<RectCollidableComponent> collider = (*actor)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
+		/*shared_ptr<RectCollidableComponent> collider = (*actor)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
 		if (collider.get() != NULL) {
 			for (ActorList::iterator actorOther = m_ActorList.begin(); actorOther != m_ActorList.end(); ++actorOther) {
 				shared_ptr<RectCollidableComponent> colliderOther = (*actorOther)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
@@ -166,7 +166,7 @@ bool GameInstance::UpdateActors()
 					}
 				}
 			}
-		}
+		}*/
 	}
 
 	return stateChanged;

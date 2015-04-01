@@ -17,6 +17,7 @@
     <ClCompile Include="BaseGameLogic.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="CircCollidableComponent.cpp" />
+    <ClCompile Include="CollidableComponent.cpp" />
     <ClCompile Include="CustomScript.cpp" />
     <ClCompile Include="EngineCode.cpp" />
     <ClCompile Include="EngineController.cpp" />

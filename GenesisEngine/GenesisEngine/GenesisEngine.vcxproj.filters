@@ -103,6 +103,9 @@
     <ClCompile Include="AnimationComponent.cpp">
       <Filter>Actor\Components</Filter>
     </ClCompile>
+    <ClCompile Include="CollidableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">

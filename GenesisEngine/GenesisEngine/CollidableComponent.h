@@ -41,7 +41,11 @@ public:
 
 	static const char* g_Name;
 	virtual const char* VGetName() const { return g_Name; }
+
+	shared_ptr<Transform2dComponent> getTransform() { return m_transformation; }
+	bool isStatic() { return m_isStatic; }
 protected:
 	shared_ptr<Transform2dComponent> m_transformation;
+	bool m_isStatic;
 };
 

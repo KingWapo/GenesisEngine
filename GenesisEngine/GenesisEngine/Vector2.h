@@ -47,68 +47,61 @@ private:
 
 class Rect2D {
 public:
-	Rect2D() { m_x = 0.0f; m_y = 0.0f; m_w = 0.0f; m_h = 0.0f; }
-	Rect2D(float p_x, float p_y, float p_w, float p_h) 
+	Rect2D() { m_A = Vector2(); m_B = Vector2(); m_C = Vector2(); m_D = Vector2(); }
+	Rect2D(Vector2 p_A, Vector2 p_B, Vector2 p_C, Vector2 p_D) 
 	{
-		m_x = p_x;
-		m_y = p_y;
-		m_w = p_w;
-		m_h = p_h;
+		m_A = p_A;
+		m_B = p_B;
+		m_C = p_C;
+		m_D = p_D;
 	}
 
 	~Rect2D() { }
 
-	float x() { return m_x; }
-	float y() { return m_y; }
-	float w() { return m_w; }
-	float h() { return m_h; }
+	Vector2 A() { return m_A; }
+	Vector2 B() { return m_B; }
+	Vector2 C() { return m_C; }
+	Vector2 D() { return m_D; }
 
-	void setLocation(float p_x, float p_y) { m_x = p_x; m_y = p_y; }
-	void setDimensions(float p_w, float p_h) { m_w = p_w; m_h = p_h; }
-
-	void setRect(float p_x, float p_y, float p_w, float p_h)
+	void setRect(Vector2 p_A, Vector2 p_B, Vector2 p_C, Vector2 p_D)
 	{
-		m_x = p_x;
-		m_y = p_y;
-		m_w = p_w;
-		m_h = p_h;
+		m_A = p_A;
+		m_B = p_B;
+		m_C = p_C;
+		m_D = p_D;
 	}
 
 private:
-	float m_x;
-	float m_y;
-	float m_w;
-	float m_h;
+	Vector2 m_A;
+	Vector2 m_B;
+	Vector2 m_C;
+	Vector2 m_D;
 };
 
 class Circ2D {
 public:
-	Circ2D() { m_x = 0.0f; m_y = 0.0f; m_r = 0.0f; }
-	Circ2D(float p_x, float p_y, float p_r)
+	Circ2D() { m_C = Vector2(); m_R = 0.0f; }
+	Circ2D(Vector2 p_C, float p_R)
 	{
-		m_x = p_x;
-		m_y = p_y;
-		m_r = p_r;
+		m_C = p_C;
+		m_R = p_R;
 	}
 
 	~Circ2D() { }
 
-	float x() { return m_x; }
-	float y() { return m_y; }
-	float r() { return m_r; }
+	Vector2 C() { return m_C; }
+	float R() { return m_R; }
 
-	float setLocation(float p_x, float p_y) { m_x = p_x; m_y = p_y; }
-	float setRadius(float p_r) { m_r = p_r; }
+	void setLocation(Vector2 p_C) { m_C = p_C; }
+	void setRadius(float p_R) { m_R = p_R; }
 
-	void setCirc(float p_x, float p_y, float p_r)
+	void setCirc(Vector2 p_C, float p_R)
 	{
-		m_x = p_x;
-		m_y = p_y;
-		m_r = p_r;
+		m_C = p_C;
+		m_R = p_R;
 	}
 
 private:
-	float m_x;
-	float m_y;
-	float m_r;
+	Vector2 m_C;
+	float m_R;
 };

@@ -8,16 +8,12 @@ class RectCollidableComponent : public CollidableComponent
 public:
 	// Constructors
 	RectCollidableComponent();
-	RectCollidableComponent(float p_width, float p_height, bool p_static);
-	RectCollidableComponent(Vector2 p_offset, float p_width, float p_height, bool p_static);
+	RectCollidableComponent(Rect2D p_rect, bool p_static);
 
 	~RectCollidableComponent() { }
 
 	virtual bool vUpdate(int deltaMs);
 	virtual void vOnChanged(void);
-
-	virtual bool isColliding(RectCollidableComponent &other);
-	virtual void resolveCollision(RectCollidableComponent &other);
 
 	// Collidable interface
 	virtual void onCollision() {}
@@ -28,22 +24,13 @@ public:
 	virtual void onOverlapBegin() {}
 	virtual void onOverlapEnd() {}
 
-	Rect2D getRect();
-	Vector2 getSize();
-	Vector2 getOffset();
+	Rect2D getRect() { return m_rect; }
 	Transform2dComponent getTransform();
 
-	void setWidth(float p_w);
-	void setHeight(float p_h);
-	void setSize(float p_w, float p_h);
-	void setOffset(Vector2 p_offset);
+	void setRect(Rect2D p_rect){ m_rect = p_rect; }
 
 private:
-	Vector2 m_offset;
-	float height;
-	float width;
-
-	bool isStatic;
+	Rect2D m_rect;
 
 protected:
 };
