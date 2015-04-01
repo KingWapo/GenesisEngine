@@ -18,6 +18,7 @@
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="CircCollidableComponent.cpp" />
     <ClCompile Include="CollidableComponent.cpp" />
+    <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="CustomScript.cpp" />
     <ClCompile Include="EngineCode.cpp" />
     <ClCompile Include="EngineController.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="CircCollidableComponent.h" />
     <ClInclude Include="CollidableComponent.h" />
+    <ClInclude Include="Collisions.h" />
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CustomScript.h" />
     <ClInclude Include="EngineCode.h" />

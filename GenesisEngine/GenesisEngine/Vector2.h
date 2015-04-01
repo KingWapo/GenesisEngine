@@ -76,6 +76,9 @@ private:
 	Vector2 m_B;
 	Vector2 m_C;
 	Vector2 m_D;
+
+	float width;
+	float height;
 };
 
 class Circ2D {
