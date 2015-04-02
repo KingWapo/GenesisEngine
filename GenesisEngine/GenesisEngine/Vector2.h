@@ -47,13 +47,10 @@ private:
 
 class Rect2D {
 public:
-	Rect2D() { m_center = Vector2(); width = 0.0f; height = 0.0f; setVerts(); }
+	Rect2D() { setRect(Vector2(), 0.0f, 0.0f); }
 	Rect2D(Vector2 p_center, float p_width, float p_height)
 	{
-		m_center = p_center;
-		width = p_width;
-		height = p_height;
-		setVerts();
+		setRect(p_center, p_width, p_height);
 	}
 
 	~Rect2D() { }
@@ -79,6 +76,8 @@ public:
 		m_center = p_center;
 		width = p_width;
 		height = p_height;
+		halfW = width / 2;
+		halfH = height / 2;
 		setVerts();
 	}
 
