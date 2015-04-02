@@ -10,9 +10,56 @@ Collisions::~Collisions()
 {
 }
 
+bool Collisions::hasCollision(CollidableComponent *colA, CollidableComponent *colB) {
+	RectCollidableComponent *rectA, *rectB;
+	CircCollidableComponent *circA, *circB;
+
+	printf("\n\t"); fflush(stdout);
+
+	switch (colA->getColType()) {
+	case ColliderType::Rect:
+		rectA = dynamic_cast<RectCollidableComponent*>(colA);
+
+		switch (colB->getColType()) {
+		case ColliderType::Rect:
+			printf("===RECT RECT==="); fflush(stdout);
+			rectB = dynamic_cast<RectCollidableComponent*>(colB);
+			return hasCollision(rectA->getRect(), rectB->getRect());
+			break;
+		case ColliderType::Circ:
+			printf("===RECT CIRC==="); fflush(stdout);
+			circB = dynamic_cast<CircCollidableComponent*>(colB);
+			return hasCollision(rectA->getRect(), circB->getCirc());
+			break;
+		}
+
+		break;
+	case ColliderType::Circ:
+		circA = dynamic_cast<CircCollidableComponent*>(colA);
+
+		switch (colB->getColType()) {
+		case ColliderType::Rect:
+			printf("===RECT CIRC==="); fflush(stdout);
+			rectB = static_cast<RectCollidableComponent*>(colB);
+			return hasCollision(rectB->getRect(), circA->getCirc());
+			break;
+		case ColliderType::Circ:
+			printf("===CIRC CIRC==="); fflush(stdout);
+			circB = static_cast<CircCollidableComponent*>(colB);
+			return hasCollision(circA->getCirc(), circB->getCirc());
+			break;
+		}
+
+		break;
+	}
+
+	printf("===NO COLLIDER==="); fflush(stdout);
+	return false;
+}
+
 bool Collisions::hasCollision(Rect2D RectA, Rect2D RectB)
 {
-
+	return false;
 }
 
 bool Collisions::hasCollision(Rect2D RectA, Circ2D CircB)
@@ -160,11 +207,6 @@ bool Collisions::hasCollision(Rect2D RectA, Circ2D CircB)
 	return true;
 }
 
-bool Collisions::hasCollision(Circ2D CircA, Rect2D RectB)
-{
-	hasCollision(RectB, CircA);
-}
-
 bool Collisions::hasCollision(Circ2D CircA, Circ2D CircB)
 {
 	float distance = (CircA.C() - CircB.C()).mag();
@@ -173,7 +215,36 @@ bool Collisions::hasCollision(Circ2D CircA, Circ2D CircB)
 
 bool Collisions::checkIntersection(Circ2D CircA, Vector2 EndpointB, Vector2 EndpointC)
 {
+	Vector2 endToEnd = EndpointB - EndpointC;
+	Vector2 circToEnd = EndpointB - CircA.C();
 
+	float a = endToEnd.dot(endToEnd);
+	float b = 2 * circToEnd.dot(endToEnd);
+	float c = circToEnd.dot(circToEnd) - CircA.R() * CircA.R();
+
+	float discriminant = b * b - 4 * a * c;
+
+	if (discriminant < 0){
+		// no intersection
+	}
+
+	discriminant = sqrt(discriminant);
+
+	float t1 = (-b - discriminant) / (2 * a);
+	float t2 = (-b + discriminant) / (2 * a);
+
+	if (t1 >= 0 && t1 <= 1) {
+		// impale, poke
+		return true;
+	}
+
+	if (t2 >= 0 && t2 <= 1) {
+		// exit wound
+		return true;
+	}
+
+	// fall short, past, completely inside
+	return false;
 }
 
 bool Collisions::checkContains(Circ2D CircA, Vector2 VertB)

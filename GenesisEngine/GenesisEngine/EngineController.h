@@ -5,6 +5,7 @@
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
+#include "CircCollidableComponent.h"
 #include "PhysicsComponent.h"
 #include <iostream>
 #include "Actor.h"
@@ -37,7 +38,7 @@ public:
 
 	bool addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
 	bool addCircCollidable();
-	bool addRectCollidable();
+	bool addRectCollidable(float w, float h, bool isStatic);
 	bool addPhysics();
 	bool addInputManager();
 	bool addCustomScript();

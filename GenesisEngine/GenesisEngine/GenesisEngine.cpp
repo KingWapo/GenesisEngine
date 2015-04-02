@@ -67,7 +67,7 @@ int GenesisEntry(int argc, char *argv[])
 	p_controller->addPhysics(); //
 
 		// Rect Collider
-	//p_controller->addRectCollidable(0.073f, 0.079f, false);
+	p_controller->addRectCollidable(0.073f, 0.079f, false);
 
 		// Input Manager
 	p_controller->addInputManager(); //
@@ -90,7 +90,7 @@ int GenesisEntry(int argc, char *argv[])
 	p_controller->addSDLRenderable("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png", Point2DF(w, h), Point2DF(0, 0));
 
 		// Rect Collidable
-	//p_controller->addRectCollidable(w, h, true);
+	p_controller->addRectCollidable(w, h, true);
 
 	// Run the controller
 	p_controller->run();

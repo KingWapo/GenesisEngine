@@ -3,6 +3,8 @@
 #include "ActorComponent.h"
 #include "Transform2dComponent.h"
 
+enum ColliderType { Rect, Circ };
+
 class CollidableComponent :	public ActorComponent
 {
 public:
@@ -44,8 +46,10 @@ public:
 
 	shared_ptr<Transform2dComponent> getTransform() { return m_transformation; }
 	bool isStatic() { return m_isStatic; }
+	ColliderType getColType() { return colType; }
 protected:
 	shared_ptr<Transform2dComponent> m_transformation;
 	bool m_isStatic;
+	ColliderType colType;
 };
 

@@ -76,6 +76,7 @@ public:
 		m_center = p_center;
 		width = p_width;
 		height = p_height;
+		setVerts();
 	}
 
 private:

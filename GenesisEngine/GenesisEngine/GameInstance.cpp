@@ -1,7 +1,8 @@
 #include "GameInstance.h"
 #include "Render.h"
 #include "Scene.h"
-#include "RectCollidableComponent.h"
+#include "CollidableComponent.h"
+#include "Collisions.h"
 
 GameInstance::GameInstance()
 {
@@ -154,19 +155,16 @@ bool GameInstance::UpdateActors()
 	{
 		stateChanged = stateChanged | (*actor)->Update((1.0 / m_Fps) * 1000);
 
-		/*shared_ptr<RectCollidableComponent> collider = (*actor)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
+		shared_ptr<RectCollidableComponent> collider = (*actor)->GetComponent<RectCollidableComponent>("CollidableComponent");
 		if (collider.get() != NULL) {
 			for (ActorList::iterator actorOther = m_ActorList.begin(); actorOther != m_ActorList.end(); ++actorOther) {
-				shared_ptr<RectCollidableComponent> colliderOther = (*actorOther)->GetComponent<RectCollidableComponent>("RectCollidableComponent");
+				shared_ptr<CollidableComponent> colliderOther = (*actorOther)->GetComponent<CollidableComponent>("CollidableComponent");
 
 				if (colliderOther.get() != NULL) {
-					if (collider->isColliding(*colliderOther.get())) {
-						printf("object collision\n %s \n", collider->getTransform().GetTranslation().toString().c_str()); fflush(stdout);
-						collider->resolveCollision(*colliderOther.get());
-					}
+					Collisions::hasCollision(collider.get(), colliderOther.get());
 				}
 			}
-		}*/
+		}
 	}
 
 	return stateChanged;

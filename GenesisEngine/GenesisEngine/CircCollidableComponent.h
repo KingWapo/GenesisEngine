@@ -24,7 +24,7 @@ public:
 	virtual void onOverlapBegin() {}
 	virtual void onOverlapEnd() {}
 
-	Circ2D getCirc() { m_circ; }
+	Circ2D getCirc() { return m_circ; }
 	float getRadius() { return m_circ.R(); }
 
 	void setCirc(Circ2D p_circ) { m_circ = p_circ; }

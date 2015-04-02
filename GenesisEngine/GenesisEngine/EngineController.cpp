@@ -84,11 +84,18 @@ bool EngineController::addAnimation(const char* p_fileLocation, Point2DF p_size,
 
 bool EngineController::addCircCollidable()
 {
+	CircCollidableComponent *p_circColl = new CircCollidableComponent();
+	StrongActorComponentPtr pCircComp = StrongActorComponentPtr(p_circColl);
+	selectedActor->AddComponent(pCircComp, false);
 	return false;
 }
 
-bool EngineController::addRectCollidable()
+bool EngineController::addRectCollidable(float w, float h, bool isStatic)
 {
+	Rect2D rect = Rect2D(selectedActor->GetComponent<Transform2dComponent>("Transform2dComponent")->GetTranslation(), w, h);
+	RectCollidableComponent *p_rectColl = new RectCollidableComponent(rect, isStatic);
+	StrongActorComponentPtr pRectComp = StrongActorComponentPtr(p_rectColl);
+	selectedActor->AddComponent(pRectComp, false);
 	return false;
 }
 
