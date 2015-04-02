@@ -17,40 +17,40 @@ bool Collisions::hasCollision(CollidableComponent *colA, CollidableComponent *co
 	printf("\n\t"); fflush(stdout);
 
 	switch (colA->getColType()) {
-	case ColliderType::Rect:
-		rectA = dynamic_cast<RectCollidableComponent*>(colA);
-
-		switch (colB->getColType()) {
 		case ColliderType::Rect:
-			printf("===RECT RECT==="); fflush(stdout);
-			rectB = dynamic_cast<RectCollidableComponent*>(colB);
-			return hasCollision(rectA->getRect(), rectB->getRect());
+			rectA = dynamic_cast<RectCollidableComponent*>(colA);
+
+			switch (colB->getColType()) {
+			case ColliderType::Rect:
+				printf("===RECT RECT==="); fflush(stdout);
+				rectB = dynamic_cast<RectCollidableComponent*>(colB);
+				return hasCollision(rectA->getRect(), rectB->getRect());
+				break;
+			case ColliderType::Circ:
+				printf("===RECT CIRC==="); fflush(stdout);
+				circB = dynamic_cast<CircCollidableComponent*>(colB);
+				return hasCollision(rectA->getRect(), circB->getCirc());
+				break;
+			}
+
 			break;
 		case ColliderType::Circ:
-			printf("===RECT CIRC==="); fflush(stdout);
-			circB = dynamic_cast<CircCollidableComponent*>(colB);
-			return hasCollision(rectA->getRect(), circB->getCirc());
-			break;
-		}
+			circA = dynamic_cast<CircCollidableComponent*>(colA);
 
-		break;
-	case ColliderType::Circ:
-		circA = dynamic_cast<CircCollidableComponent*>(colA);
+			switch (colB->getColType()) {
+			case ColliderType::Rect:
+				printf("===RECT CIRC==="); fflush(stdout);
+				rectB = static_cast<RectCollidableComponent*>(colB);
+				return hasCollision(rectB->getRect(), circA->getCirc());
+				break;
+			case ColliderType::Circ:
+				printf("===CIRC CIRC==="); fflush(stdout);
+				circB = static_cast<CircCollidableComponent*>(colB);
+				return hasCollision(circA->getCirc(), circB->getCirc());
+				break;
+			}
 
-		switch (colB->getColType()) {
-		case ColliderType::Rect:
-			printf("===RECT CIRC==="); fflush(stdout);
-			rectB = static_cast<RectCollidableComponent*>(colB);
-			return hasCollision(rectB->getRect(), circA->getCirc());
 			break;
-		case ColliderType::Circ:
-			printf("===CIRC CIRC==="); fflush(stdout);
-			circB = static_cast<CircCollidableComponent*>(colB);
-			return hasCollision(circA->getCirc(), circB->getCirc());
-			break;
-		}
-
-		break;
 	}
 
 	printf("===NO COLLIDER==="); fflush(stdout);

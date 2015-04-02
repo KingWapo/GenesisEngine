@@ -161,7 +161,10 @@ bool GameInstance::UpdateActors()
 				shared_ptr<CollidableComponent> colliderOther = (*actorOther)->GetComponent<CollidableComponent>("CollidableComponent");
 
 				if (colliderOther.get() != NULL) {
-					Collisions::hasCollision(collider.get(), colliderOther.get());
+					if (Collisions::hasCollision(collider.get(), colliderOther.get()) == true)
+					{
+						printf("My penis is on fire!!");
+					}
 				}
 			}
 		}
