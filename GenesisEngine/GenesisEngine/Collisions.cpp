@@ -12,9 +12,124 @@ Collisions::~Collisions()
 
 bool Collisions::hasCollision(Rect2D RectA, Rect2D RectB)
 {
+	Vector2 Axis[4];
+
+	Axis[0].x = RectA.CVert().x - RectA.BVert().x;
+	Axis[0].y = RectA.CVert().y - RectA.BVert().y;
+	Axis[1].x = RectA.CVert().x - RectA.DVert().x;
+	Axis[1].y = RectA.CVert().y - RectA.DVert().y;
+	Axis[2].x = RectB.BVert().x - RectB.AVert().x;
+	Axis[2].y = RectB.BVert().y - RectB.AVert().y;
+	Axis[3].x = RectB.BVert().x - RectB.CVert().x;
+	Axis[3].y = RectB.BVert().y - RectB.CVert().y;
+
+	for (int i = 0; i < 4; i++)
+	{
+		float minA, maxA, minB, maxB, temp;
+		Vector2 curAxis = Axis[i];
+
+		// Find min and max for RectA
+		minA = projection(RectA.AVert(), curAxis).dot(curAxis);
+		maxA = minA;
+
+		// Check if B is a max or min for RectA
+		temp = projection(RectA.BVert(), curAxis).dot(curAxis);
+		if (temp < minA)
+			minA = temp;
+		else if (temp > maxA)
+			maxA = temp;
+
+		// Check if C is a max or min for RectA
+		temp = projection(RectA.CVert(), curAxis).dot(curAxis);
+		if (temp < minA)
+			minA = temp;
+		else if (temp > maxA)
+			maxA = temp;
+
+		// Check if D is a max or min for RectA
+		temp = projection(RectA.DVert(), curAxis).dot(curAxis);
+		if (temp < minA)
+			minA = temp;
+		else if (temp > maxA)
+			maxA = temp;
+
+		// Find min or max for RectB
+		minB = projection(RectB.AVert(), curAxis).dot(curAxis);
+		maxB = minB;
+
+		// Check if B is a max or min for RectB
+		temp = projection(RectB.BVert(), curAxis).dot(curAxis);
+		if (temp < minB)
+			minB = temp;
+		else if (temp > maxB)
+			maxB = temp;
+
+		// Check if C is a max or min for RectB
+		temp = projection(RectB.CVert(), curAxis).dot(curAxis);
+		if (temp < minB)
+			minB = temp;
+		else if (temp > maxB)
+			maxB = temp;
+
+		// Check if D is a max or min for RectB
+		temp = projection(RectB.DVert(), curAxis).dot(curAxis);
+		if (temp < minB)
+			minB = temp;
+		else if (temp > maxB)
+			maxB = temp;
+
+		// Check for absence of overlap.
+		// If there's no overlap, than there cannot be
+		// a collision. Therefore return false. If there
+		// is an overlap on all axes, then return true.
+		if (minB > maxA ||
+			maxB < minA)
+		{
+			return false;
+		}
+	}
+
+	// Made it through forloop without finding an 
+	// axis that the rectangles DON'T overlap on.
+	// There is a collision.
+	return true;
 
 }
 
+Vector2 Collisions::projection(Vector2 p_point, Vector2 p_axis)
+{
+	return (p_point.dot(p_axis) / p_axis.mag2()) * p_axis;
+}
+
+
+/*	Adam - 4/1/2015
+	
+	Detecting collision between a circle and a rectangle
+
+	There are 8 different zones that the circle can exist in.
+			|				|
+		B	|		BC		|	C
+	________|_______________|________
+			|B			   C|
+			|				|
+		AB	|		.		|	CD
+			|				|
+	________|A_____________D|________
+			|				|
+		A	|		AD		|	D
+			|				|
+
+	The following checks will determine what zone
+	the circle exists in and then find if the 
+	circle intersects the line segment or vert of
+	that zone.
+
+	The single letter zones will only check if the
+	corresponding vertice is within the circle,
+	otherwise, it will use the corresponding
+	line segment and determine if it intersects
+	the circle.
+*/
 bool Collisions::hasCollision(Rect2D RectA, Circ2D CircB)
 {
 	// Quick checks to finish early
@@ -41,32 +156,6 @@ bool Collisions::hasCollision(Rect2D RectA, Circ2D CircB)
 	// More advanced checks
 	float xZone = circCenter.x - rectCenter.x;
 	float yZone = circCenter.y - rectCenter.y;
-
-	/*	Adam - 4/1/2015
-		There are 8 different zones that the circle can exist in.
-			|				|
-		B	|		BC		|	C
-	________|_______________|________
-			|B			   C|
-			|				|
-		AB	|		.		|	CD
-			|				|
-	________|A_____________D|________
-			|				|
-		A	|		AD		|	D
-			|				|
-
-		The following checks will determine what zone
-		the circle exists in and then find if the 
-		circle intersects the line segment or vert of
-		that zone.
-
-		The single letter zones will only check if the
-		corresponding vertice is within the circle,
-		otherwise, it will use the corresponding
-		line segment and determine if it intersects
-		the circle.
-	*/
 
 	// "tolerance" determines if the circ is within the x, y bounds
 	// of the rect, thus ending up in an "edge" zone rather than a
@@ -162,7 +251,7 @@ bool Collisions::hasCollision(Rect2D RectA, Circ2D CircB)
 
 bool Collisions::hasCollision(Circ2D CircA, Rect2D RectB)
 {
-	hasCollision(RectB, CircA);
+	return hasCollision(RectB, CircA);
 }
 
 bool Collisions::hasCollision(Circ2D CircA, Circ2D CircB)
@@ -173,7 +262,7 @@ bool Collisions::hasCollision(Circ2D CircA, Circ2D CircB)
 
 bool Collisions::checkIntersection(Circ2D CircA, Vector2 EndpointB, Vector2 EndpointC)
 {
-
+	
 }
 
 bool Collisions::checkContains(Circ2D CircA, Vector2 VertB)
