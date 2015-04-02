@@ -347,13 +347,56 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 	shared_ptr<Transform2dComponent> tA = colA->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 	shared_ptr<Transform2dComponent> tB = colB->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 
-	Vector2 direction = (tA->GetTranslation() - tB->GetTranslation()).norm() * 0.005;
+	RectCollidableComponent *rectA, *rectB;
+	CircCollidableComponent *circA, *circB;
 
-	if (!colA->isStatic()) {
-		tA->SetTranslation(tA->GetTranslation() + direction);
+	Vector2 minDist;
+	Vector2 actDist;
+
+	switch (colA->getColType()) {
+	case ColliderType::Rect:
+		rectA = dynamic_cast<RectCollidableComponent*>(colA);
+		minDist = Vector2(rectA->getRect().getWidth() / 2, rectA->getRect().getHeight() / 2);
+
+		break;
+	case ColliderType::Circ:
+		circA = dynamic_cast<CircCollidableComponent*>(colA);
+		minDist = (tA->GetTranslation() - tB->GetTranslation()).norm() * circA->getRadius();
+
+		break;
 	}
 
-	if (!colB->isStatic()) {
-		tB->SetTranslation(tB->GetTranslation() - direction);
+	switch (colB->getColType()) {
+	case ColliderType::Rect:
+		rectB = dynamic_cast<RectCollidableComponent*>(colB);
+		minDist += Vector2(rectB->getRect().getWidth() / 2, rectB->getRect().getHeight() / 2);
+
+		break;
+	case ColliderType::Circ:
+		circB = dynamic_cast<CircCollidableComponent*>(colB);
+		minDist += (tA->GetTranslation() - tB->GetTranslation()).norm() * circB->getRadius();
+
+		break;
+	}
+
+	actDist = tA->GetTranslation() - tB->GetTranslation();
+
+	Vector2 overlap = minDist - actDist;
+
+	if (overlap.x > overlap.y) {
+		overlap.y = 0.0f;
+	}
+	else {
+		overlap.x = 0.0f;
+	}
+
+	if (overlap.mag() > .1f) {
+		if (!colA->isStatic()) {
+			tA->SetTranslation(tA->GetTranslation() - overlap / 4);
+		}
+
+		if (!colB->isStatic()) {
+			tB->SetTranslation(tB->GetTranslation() + overlap / 4);
+		}
 	}
 }
