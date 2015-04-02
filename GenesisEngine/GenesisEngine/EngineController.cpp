@@ -82,9 +82,10 @@ bool EngineController::addAnimation(const char* p_fileLocation, Point2DF p_size,
 	return true;
 }
 
-bool EngineController::addCircCollidable()
+bool EngineController::addCircCollidable(float r, bool isStatic)
 {
-	CircCollidableComponent *p_circColl = new CircCollidableComponent();
+	Circ2D circ = Circ2D(selectedActor->GetComponent<Transform2dComponent>("Transform2dComponent")->GetTranslation(), r);
+	CircCollidableComponent *p_circColl = new CircCollidableComponent(circ, isStatic);
 	StrongActorComponentPtr pCircComp = StrongActorComponentPtr(p_circColl);
 	selectedActor->AddComponent(pCircComp, false);
 	return false;

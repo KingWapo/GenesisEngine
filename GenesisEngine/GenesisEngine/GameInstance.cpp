@@ -158,10 +158,14 @@ bool GameInstance::UpdateActors()
 		shared_ptr<RectCollidableComponent> collider = (*actor)->GetComponent<RectCollidableComponent>("CollidableComponent");
 		if (collider.get() != NULL) {
 			for (ActorList::iterator actorOther = m_ActorList.begin(); actorOther != m_ActorList.end(); ++actorOther) {
-				shared_ptr<CollidableComponent> colliderOther = (*actorOther)->GetComponent<CollidableComponent>("CollidableComponent");
+				if (actor != actorOther) {
+					shared_ptr<CollidableComponent> colliderOther = (*actorOther)->GetComponent<CollidableComponent>("CollidableComponent");
 
-				if (colliderOther.get() != NULL) {
-					Collisions::hasCollision(collider.get(), colliderOther.get());
+					if (colliderOther.get() != NULL) {
+						if (Collisions::hasCollision(collider.get(), colliderOther.get())) {
+							printf("HAS COLLISION"); fflush(stdout);
+						}
+					}
 				}
 			}
 		}

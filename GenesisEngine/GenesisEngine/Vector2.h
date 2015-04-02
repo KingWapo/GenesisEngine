@@ -71,6 +71,9 @@ public:
 	Vector2 CVert() { return m_c; }
 	Vector2 DVert() { return m_d; }
 
+	void setLocation(Vector2 p_c) { m_center = p_c; setVerts(); }
+	void setWidth(float p_w) { width = p_w; halfW = width / 2; setVerts(); }
+	void setHeight(float p_h) { height = p_h; halfH = height / 2; setVerts(); }
 	void setRect(Vector2 p_center, float p_width, float p_height)
 	{
 		m_center = p_center;
@@ -84,6 +87,8 @@ private:
 	float width;
 	float height;
 
+	float halfW;
+	float halfH;
 	// Vertices
 	Vector2 m_a;
 	Vector2 m_b;
@@ -94,16 +99,16 @@ private:
 	void setVerts()
 	{
 		// A is -, - (Bottom left)
-		m_a = Vector2(m_center.x - width / 2, m_center.y - height / 2);
+		m_a = Vector2(m_center.x - halfW, m_center.y - halfH);
 
 		// B is -, + (Top left)
-		m_b = Vector2(m_center.x - width / 2, m_center.y + height / 2);
+		m_b = Vector2(m_center.x - halfW, m_center.y + halfH);
 
 		// C is +, + (Top right)
-		m_c = Vector2(m_center.x + width / 2, m_center.y + height / 2);
+		m_c = Vector2(m_center.x + halfW, m_center.y + halfH);
 
 		// D is +, - (Bottom right)
-		m_d = Vector2(m_center.x + width / 2, m_center.y - height / 2);
+		m_d = Vector2(m_center.x + halfW, m_center.y - halfH);
 	}
 };
 
