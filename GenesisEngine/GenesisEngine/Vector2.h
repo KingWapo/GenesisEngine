@@ -47,31 +47,63 @@ private:
 
 class Rect2D {
 public:
-	Rect2D() { m_C = Vector2(); m_W = 0.0f; m_H = 0.0f; }
-	Rect2D(Vector2 p_C, float p_W, float p_H) 
+	Rect2D() { m_center = Vector2(); width = 0.0f; height = 0.0f; setVerts(); }
+	Rect2D(Vector2 p_center, float p_width, float p_height)
 	{
-		m_C = p_C;
-		m_W = p_W;
-		m_H = p_H;
+		m_center = p_center;
+		width = p_width;
+		height = p_height;
+		setVerts();
 	}
 
 	~Rect2D() { }
 
-	Vector2 getCenter() { return m_C; }
-	float getWidth() { return m_W; }
-	float getHeight() { return m_H; }
+	// Get the center focus of the rectangle
+	Vector2 getCenter() { return m_center; }
 
-	void setRect(Vector2 p_C, float p_W, float p_H)
+	// Get the width and height of the rectangle
+	float getWidth() { return width; }
+	float getHeight() { return height; }
+
+	// Get the Verts
+	Vector2 AVert() { return m_a; }
+	Vector2 BVert() { return m_b; }
+	Vector2 CVert() { return m_c; }
+	Vector2 DVert() { return m_d; }
+
+	void setRect(Vector2 p_center, float p_width, float p_height)
 	{
-		m_C = p_C;
-		m_W = p_W;
-		m_H = p_H;
+		m_center = p_center;
+		width = p_width;
+		height = p_height;
 	}
 
 private:
-	Vector2 m_C;
-	float m_W;
-	float m_H;
+	Vector2 m_center;
+	float width;
+	float height;
+
+	// Vertices
+	Vector2 m_a;
+	Vector2 m_b;
+	Vector2 m_c;
+	Vector2 m_d;
+
+	// Set the location of the four vertices of the rectangle.
+	void setVerts()
+	{
+		// A is -, - (Bottom left)
+		m_a = Vector2(m_center.x - width / 2, m_center.y - height / 2);
+
+		// B is -, + (Top left)
+		m_b = Vector2(m_center.x - width / 2, m_center.y + height / 2);
+
+		// C is +, + (Top right)
+		m_c = Vector2(m_center.x + width / 2, m_center.y + height / 2);
+
+		// D is +, - (Bottom right)
+		m_d = Vector2(m_center.x + width / 2, m_center.y - height / 2);
+	}
 };
 
 class Circ2D {
