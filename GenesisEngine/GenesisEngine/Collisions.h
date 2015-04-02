@@ -20,5 +20,6 @@ public:
 private:
 	static bool checkIntersection(Circ2D, Vector2, Vector2);
 	static bool checkContains(Circ2D, Vector2);
+	static Vector2 projection(Vector2, Vector2);
 };
 
