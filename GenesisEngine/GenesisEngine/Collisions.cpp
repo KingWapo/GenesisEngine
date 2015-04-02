@@ -347,13 +347,13 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 	shared_ptr<Transform2dComponent> tA = colA->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 	shared_ptr<Transform2dComponent> tB = colB->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 
-	Vector2 direction = (tA->GetTranslation() - tB->GetTranslation()).norm();
+	Vector2 direction = (tA->GetTranslation() - tB->GetTranslation()).norm() * 0.005;
 
 	if (!colA->isStatic()) {
-		tA->GetTranslation() += direction;
+		tA->SetTranslation(tA->GetTranslation() + direction);
 	}
 
 	if (!colB->isStatic()) {
-		tB->GetTranslation() -= direction;
+		tB->SetTranslation(tB->GetTranslation() - direction);
 	}
 }
