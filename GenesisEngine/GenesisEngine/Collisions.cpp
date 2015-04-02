@@ -299,7 +299,7 @@ bool Collisions::hasCollision(Rect2D RectA, Circ2D CircB)
 bool Collisions::hasCollision(Circ2D CircA, Circ2D CircB)
 {
 	float distance = (CircA.C() - CircB.C()).mag();
-	return distance <= abs(CircA.R() + CircB.R());
+	return distance <= CircA.R() + CircB.R();
 }
 
 bool Collisions::checkIntersection(Circ2D CircA, Vector2 EndpointB, Vector2 EndpointC)
