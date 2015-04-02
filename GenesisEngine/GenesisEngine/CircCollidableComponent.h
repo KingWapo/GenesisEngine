@@ -30,7 +30,10 @@ public:
 	void setCirc(Circ2D p_circ) { m_circ = p_circ; }
 	void setRadius(float p_r) { m_circ.setRadius(p_r); }
 
+	virtual ColliderType getColType() override { return colType; }
 private:
 	Circ2D m_circ;
+protected:
+	static ColliderType colType;
 };
 

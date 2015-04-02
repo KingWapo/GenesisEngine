@@ -29,9 +29,11 @@ public:
 
 	void setRect(Rect2D p_rect){ m_rect = p_rect; }
 
+	virtual ColliderType getColType() override { return colType; }
 private:
 	Rect2D m_rect;
 
 protected:
+	static ColliderType colType;
 };
 
