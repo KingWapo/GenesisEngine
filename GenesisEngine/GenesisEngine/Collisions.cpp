@@ -342,3 +342,18 @@ bool Collisions::checkContains(Circ2D CircA, Vector2 VertB)
 	float distance = (CircA.C() - VertB).mag();
 	return distance <= abs(CircA.R());
 }
+
+void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent *colB) {
+	shared_ptr<Transform2dComponent> tA = colA->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
+	shared_ptr<Transform2dComponent> tB = colB->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
+
+	Vector2 direction = (tA->GetTranslation() - tB->GetTranslation()).norm();
+
+	if (!colA->isStatic()) {
+		tA->GetTranslation() += direction;
+	}
+
+	if (!colB->isStatic()) {
+		tB->GetTranslation() -= direction;
+	}
+}

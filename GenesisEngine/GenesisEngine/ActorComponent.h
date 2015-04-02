@@ -37,6 +37,7 @@ public:
 		return reinterpret_cast<ComponentId>(rawId);
 	}
 
+	WeakActorPtr getOwner() { return m_pOwner; }
 private:
 	void SetOwner(WeakActorPtr pOwner) { m_pOwner = pOwner; }
 };
