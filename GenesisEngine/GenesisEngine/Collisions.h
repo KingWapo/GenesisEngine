@@ -4,6 +4,7 @@
 #include "CollidableComponent.h"
 #include "RectCollidableComponent.h"
 #include "CircCollidableComponent.h"
+#include "PhysicsComponent.h"
 
 class Collisions
 {

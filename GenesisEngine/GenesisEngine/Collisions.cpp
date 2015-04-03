@@ -347,10 +347,13 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 	shared_ptr<Transform2dComponent> tA = colA->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 	shared_ptr<Transform2dComponent> tB = colB->getOwner().lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 
+	PhysicsComponent *A_comp = colA->getOwner().lock()->GetComponent<PhysicsComponent>("PhysicsComponent").get();
+	PhysicsComponent *B_comp = colB->getOwner().lock()->GetComponent<PhysicsComponent>("PhysicsComponent").get();
+
 	RectCollidableComponent *rectA, *rectB;
 	CircCollidableComponent *circA, *circB;
 
-	Vector2 minDist;
+	/*Vector2 minDist;
 	Vector2 actDist;
 
 	switch (colA->getColType()) {
@@ -398,5 +401,48 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 		if (!colB->isStatic()) {
 			tB->SetTranslation(tB->GetTranslation() + overlap / 4);
 		}
+	}*/
+
+	// Determine velocities based on the Physics Comp
+	// or zero, if there is no Physics Comp.
+	Vector2 aVel = A_comp != nullptr ? A_comp->getVelocity() : Vector2(0, 0);
+	Vector2 bVel = B_comp != nullptr ? B_comp->getVelocity() : Vector2(0, 0);
+
+	float aMass = A_comp != nullptr ? A_comp->getMass() : 1000.0f;
+	float bMass = B_comp != nullptr ? B_comp->getMass() : 1000.0f;
+
+	// Calculate relative velocity
+	Vector2 relVel = bVel - aVel;
+
+	//Calculate the collision normal
+	Vector2 normal = Vector2(0, 0);
+	normal = (tB->GetTranslation() - tA->GetTranslation()).norm();
+
+	// Calculate relative velocity in terms of the normal direction
+	float velAlongNormal = relVel.dot(normal);
+
+	// Do not resolve if velocities are separating
+	if (velAlongNormal > 0)
+		return;
+
+	// Calculate restitution
+	float e = 0; // Grab restitution from PhysicsComp?
+
+	// Calculate impulse scalar
+	float j = -(1 + e) * velAlongNormal;
+	j /= 1 / aMass + 1 / bMass;
+
+	// Apply impulse
+	Vector2 impulse = j * normal;
+	Vector2 newAVel = aVel - 1 / aMass * impulse;
+	Vector2 newBVel = bVel + 1 / bMass * impulse;
+
+	if (A_comp != nullptr)
+	{
+		A_comp->setVelocity(newAVel);
+	}
+	if (B_comp != nullptr)
+	{
+		B_comp->setVelocity(newBVel);
 	}
 }
