@@ -24,27 +24,42 @@ private:
 	int rightStandEnd = 32;
 	int rightMoveStart = 70;
 	int rightMoveEnd = 79;
-	int rightJumpStart = 72;
-	int rightJumpEnd = 72;
+	int rightJumpStart = 74;
+	int rightJumpEnd = 77;
+	int rightFallStart = 73;
+	int rightFallEnd = 74;
 
 	int leftStandStart = 10;
 	int leftStandEnd = 12;
 	int leftMoveStart = 50;
 	int leftMoveEnd = 59;
-	int leftJumpStart = 52;
-	int leftJumpEnd = 52;
+	int leftJumpStart = 55;
+	int leftJumpEnd = 57;
+	int leftFallStart = 54;
+	int leftFallEnd = 55;
 
 	float preLocationX;
 	float preLocationY;
 
-	bool left = 0;
-	bool right = 1;
+	bool direction = 1;
 
 	int moveTimer = 0;
 	int standTimer = 0;
-	int moveDelay = 7;
+	int jumpTimer = 0;
+	int fallTimer = 0;
+
+	int moveDelay = 4;
 	int standDelay = 7;
-	int offset = 0;
+	int jumpDelay = 3;
+	int fallDelay = 20;
+
+	int moveOffset = 0;
+	int standOffset = 0;
+	int jumpOffset = 0;
+	int fallOffset = 0;
+
+	boolean jumping = 0;
+	boolean falling = 0;
 
 	SDL_Texture* m_sprite;
 	SDL_Surface* m_screen;
