@@ -6,6 +6,8 @@
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
 #include "CircCollidableComponent.h"
+#include "SideScrollerController.h"
+#include "TopDownController.h"
 #include "PhysicsComponent.h"
 #include <iostream>
 #include "Actor.h"
@@ -41,7 +43,8 @@ public:
 	bool addRectCollidable(float w, float h, bool isStatic);
 	bool addPhysics();
 	bool addInputManager();
-	bool addCustomScript();
+	bool addSideScrollerController();
+	bool addTopDownController();
 	bool addAnimation(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
 };
 

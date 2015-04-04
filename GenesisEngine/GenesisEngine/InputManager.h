@@ -5,6 +5,7 @@
 #include <unordered_map>
 
 enum KeyCode {
+	SPACE = 0x20,
 	LEFT  = 0x25,
 	UP    = 0x26,
 	RIGHT = 0x27,
@@ -50,8 +51,8 @@ public:
 	bool onKeyDown(unsigned int keyID);
 	bool onKeyUp(unsigned int keyID);
 	bool isKeyPressed(unsigned int keyID);
-	int horizontalAxis();
-	int verticalAxis();
+	float horizontalAxis();
+	float verticalAxis();
 
 	// component overrides
 	virtual const char* VGetName() const { return g_Name; }

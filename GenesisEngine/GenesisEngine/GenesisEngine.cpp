@@ -72,8 +72,11 @@ int GenesisEntry(int argc, char *argv[])
 		// Input Manager
 	p_controller->addInputManager(); //
 
-		// Custom Script
-	p_controller->addCustomScript(); //
+		// Side Scroller
+	//p_controller->addSideScrollerController(); //
+
+		// Top Down
+	p_controller->addTopDownController();
 
 	float x = .4f;
 	float y = .4f;

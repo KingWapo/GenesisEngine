@@ -37,35 +37,35 @@ void InputManager::checkNewKey(unsigned int keyID) {
 }
 
 /** RETURN -1 IF MOVING LEFT, 1 IF MOVING RIGHT, 0 IF NOT MOVING **/
-int InputManager::horizontalAxis() {
+float InputManager::horizontalAxis() {
 	bool left = isKeyPressed(KeyCode::A) || isKeyPressed(KeyCode::LEFT);
 	bool right = isKeyPressed(KeyCode::D) || isKeyPressed(KeyCode::RIGHT);
 
 	if (left && !right) {
-		return -1;
+		return -1.0f;
 	}
 
 	if (right && !left) {
-		return 1;
+		return 1.0f;
 	}
 
-	return 0;
+	return 0.0f;
 }
 
 /** RETURN 1 IF MOVING UP, -1 IF MOVING DOWN, 0 IF NOT MOVING **/
-int InputManager::verticalAxis() {
+float InputManager::verticalAxis() {
 	bool up = isKeyPressed(KeyCode::W) || isKeyPressed(KeyCode::UP);
 	bool down = isKeyPressed(KeyCode::S) || isKeyPressed(KeyCode::DOWN);
 
 	if (up && !down) {
-		return 1;
+		return 1.0f;
 	}
 
 	if (down && !up) {
-		return -1;
+		return -1.0f;
 	}
 
-	return 0;
+	return 0.0f;
 }
 
 /** RETURN TRUE IF KEY WAS JUST PRESSED **/

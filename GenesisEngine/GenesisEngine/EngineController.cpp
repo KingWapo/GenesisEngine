@@ -116,10 +116,17 @@ bool EngineController::addInputManager()
 	return true;
 }
 
-bool EngineController::addCustomScript()
+bool EngineController::addSideScrollerController()
 {
-	CustomScript *p_customScript = new CustomScript();
-	StrongActorComponentPtr pCustomScript = StrongActorComponentPtr(p_customScript);
-	selectedActor->AddComponent(pCustomScript, false);
+	SideScrollerController *p_sideScrollerComp = new SideScrollerController();
+	StrongActorComponentPtr pController = StrongActorComponentPtr(p_sideScrollerComp);
+	selectedActor->AddComponent(pController, false);
+	return true;
+}
+
+bool EngineController::addTopDownController() {
+	TopDownController *p_topDownComp = new TopDownController();
+	StrongActorComponentPtr pController = StrongActorComponentPtr(p_topDownComp);
+	selectedActor->AddComponent(pController, false);
 	return true;
 }

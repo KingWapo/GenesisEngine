@@ -109,6 +109,12 @@
     <ClCompile Include="Collisions.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
+    <ClCompile Include="SideScrollerController.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TopDownController.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -300,6 +306,12 @@
     </ClInclude>
     <ClInclude Include="Collisions.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SideScrollerController.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TopDownController.h">
+      <Filter>Actor\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

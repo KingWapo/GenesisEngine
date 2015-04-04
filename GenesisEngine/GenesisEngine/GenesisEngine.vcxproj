@@ -42,9 +42,11 @@
     <ClCompile Include="RenderableComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SDLRenderableComponent.cpp" />
+    <ClCompile Include="SideScrollerController.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="TestGameView.cpp" />
+    <ClCompile Include="TopDownController.cpp" />
     <ClCompile Include="Transform2dComponent.cpp" />
     <ClCompile Include="Transformation2d.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -88,11 +90,13 @@
     <ClInclude Include="RenderableComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLRenderableComponent.h" />
+    <ClInclude Include="SideScrollerController.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="Templates.h" />
     <ClInclude Include="TestGame.h" />
     <ClInclude Include="TestGameView.h" />
+    <ClInclude Include="TopDownController.h" />
     <ClInclude Include="Transformation2d.h" />
     <ClInclude Include="Transform2dComponent.h" />
     <ClInclude Include="Types.h" />
