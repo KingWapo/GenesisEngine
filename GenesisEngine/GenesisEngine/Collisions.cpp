@@ -57,8 +57,65 @@ bool Collisions::hasCollision(CollidableComponent *colA, CollidableComponent *co
 	return false;
 }
 
+bool Collisions::AABB(Rect2D RectA, Rect2D RectB)
+{
+	float xMinA = RectA.AVert().x;
+	float xMinB = RectB.AVert().x;
+	float xMaxA = RectA.DVert().x;
+	float xMaxB = RectB.DVert().x;
+	float yMinA = RectA.AVert().y;
+	float yMinB = RectB.AVert().y;
+	float yMaxA = RectA.BVert().y;
+	float yMaxB = RectB.BVert().y;
+
+	if (xMinA > xMaxB ||
+		xMaxA < xMinB ||
+		yMinA > yMaxB ||
+		yMaxA < yMinB)
+		return false;
+		
+	return true;
+}
+
 bool Collisions::hasCollision(Rect2D RectA, Rect2D RectB)
 {
+	Rect2D RectA_AABB, RectB_AABB;
+
+	Vector2 a_center, b_center;
+	float a_maxX, a_maxY, b_maxX, b_maxY;
+
+	a_center = RectA.getCenter();
+	b_center = RectB.getCenter();
+	a_maxX = max(fabs(RectA.AVert().x - RectA.getCenter().x),
+			 max(fabs(RectA.BVert().x - RectA.getCenter().x),
+			 max(fabs(RectA.CVert().x - RectA.getCenter().x),
+				 fabs(RectA.DVert().x - RectA.getCenter().x))));
+	a_maxY = max(fabs(RectA.AVert().y - RectA.getCenter().y),
+			 max(fabs(RectA.BVert().y - RectA.getCenter().y),
+			 max(fabs(RectA.CVert().y - RectA.getCenter().y),
+				 fabs(RectA.DVert().y - RectA.getCenter().y))));
+	b_maxX = max(fabs(RectB.AVert().x - RectB.getCenter().x),
+			 max(fabs(RectB.BVert().x - RectB.getCenter().x),
+			 max(fabs(RectB.CVert().x - RectB.getCenter().x),
+				 fabs(RectB.DVert().x - RectB.getCenter().x))));
+	b_maxY = max(fabs(RectB.AVert().y - RectB.getCenter().y),
+			 max(fabs(RectB.BVert().y - RectB.getCenter().y),
+			 max(fabs(RectB.CVert().y - RectB.getCenter().y),
+				 fabs(RectB.DVert().y - RectB.getCenter().y))));
+
+	RectA_AABB = Rect2D(a_center, a_maxX * 2, a_maxY * 2);
+	RectB_AABB = Rect2D(b_center, b_maxX * 2, b_maxY * 2);
+
+	if (!AABB(RectA_AABB, RectB_AABB))
+	{
+		return false;
+	}/*
+	else if (RectA.rotation == 0 && RectB.rotation == 0) // they are axis - aligned
+	{
+		return true;
+	}
+	 */
+	
 	Vector2 Axis[4];
 
 	Axis[0].x = RectA.CVert().x - RectA.BVert().x;
@@ -350,8 +407,8 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 	PhysicsComponent *A_comp = colA->getOwner().lock()->GetComponent<PhysicsComponent>("PhysicsComponent").get();
 	PhysicsComponent *B_comp = colB->getOwner().lock()->GetComponent<PhysicsComponent>("PhysicsComponent").get();
 
-	RectCollidableComponent *rectA, *rectB;
-	CircCollidableComponent *circA, *circB;
+	//RectCollidableComponent *rectA, *rectB;
+	//CircCollidableComponent *circA, *circB;
 
 	/*Vector2 minDist;
 	Vector2 actDist;
@@ -417,6 +474,44 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 	//Calculate the collision normal
 	Vector2 normal = Vector2(0, 0);
 	normal = (tB->GetTranslation() - tA->GetTranslation()).norm();
+
+	Vector2 leftNorm = Vector2(-1.0f, 0.0f);
+	Vector2 rightNorm = Vector2(1.0f, 0.0f);
+	Vector2 upNorm = Vector2(0.0f, 1.0f);
+	Vector2 downNorm = Vector2(0.0f, -1.0f);
+
+	if (colB->getColType() == ColliderType::Rect)
+	{
+		RectCollidableComponent *rectColB = dynamic_cast<RectCollidableComponent*>(colB);
+		Rect2D rectB = rectColB->getRect();
+		leftNorm = ((rectB.AVert() + rectB.BVert()) * 0.5f - rectB.getCenter()).norm();
+		rightNorm = ((rectB.CVert() + rectB.DVert()) * 0.5f - rectB.getCenter()).norm();
+		upNorm = ((rectB.BVert() + rectB.CVert()) * 0.5f - rectB.getCenter()).norm();
+		downNorm = ((rectB.AVert() + rectB.DVert()) * 0.5f - rectB.getCenter()).norm();
+	}
+
+	if (fabs(normal.x) > fabs(normal.y)) // Left or right
+	{
+		if (normal.x > 0)
+		{
+			normal = rightNorm;
+		}
+		else
+		{
+			normal = leftNorm;
+		}
+	}
+	else if (fabs(normal.y) > fabs(normal.x)) // Up or down
+	{
+		if (normal.y > 0)
+		{
+			normal = upNorm;
+		}
+		else
+		{
+			normal = downNorm;
+		}
+	}
 
 	// Calculate relative velocity in terms of the normal direction
 	float velAlongNormal = relVel.dot(normal);

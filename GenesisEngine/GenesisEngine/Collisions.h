@@ -12,6 +12,7 @@ public:
 	Collisions();
 	~Collisions();
 
+	static bool AABB(Rect2D, Rect2D);
 	static bool hasCollision(CollidableComponent *, CollidableComponent *);
 	static bool hasCollision(Rect2D, Rect2D);
 	static bool hasCollision(Rect2D, Circ2D);
