@@ -103,42 +103,56 @@ void AnimationComponent::vOnChanged(){
 }
 
 void AnimationComponent::checkDirection(){
-	if (preLocationX < m_location.x()) {
-		right = 1;
-		left = 0;
-	}
-	else if (preLocationX > m_location.x()) {
-		left = 1;
-		right = 0;
-	}
+	if (preLocationX < m_location.x())
+		direction = 1;
+	else if (preLocationX > m_location.x())
+		direction = 0;
+	if (preLocationY > m_location.y() || (preLocationY == m_location.y() && jumping))
+		falling = 1;
+	else
+		falling = 0;
+	if (preLocationY >= m_location.y())
+		jumping = 0;
 }
 
 void AnimationComponent::animations(){
-	if (right) {
-		if (preLocationY < m_location.y() || preLocationY > m_location.y()) {
-			currentFrame = rightJumpStart;
+	if (direction) { //right
+		if (preLocationY < m_location.y()) {
+			if (jumping == 0) {
+				jumping = 1;
+				jumpTimer = 0;
+				jumpOffset = 0;
+			}
+			if (jumpOffset < rightJumpEnd - rightJumpStart + 1)
+				currentFrame = rightJumpStart + jumpOffset;
+			else
+				currentFrame = rightJumpEnd;
 		}
-		else if (preLocationX < m_location.x())	{
-			if (moveTimer > moveDelay)
-				currentFrame = rightMoveStart + offset % (rightMoveEnd - rightMoveStart + 1);
-		}
-		else {
-			if (standTimer > standDelay)
-				currentFrame = rightStandStart + offset % (rightStandEnd - rightStandStart + 1);
-		}
+		else if (falling)
+			currentFrame = rightFallStart + fallOffset % (rightFallEnd - rightFallStart + 1);
+		else if (preLocationX < m_location.x())
+			currentFrame = rightMoveStart + moveOffset % (rightMoveEnd - rightMoveStart + 1);
+		else
+			currentFrame = rightStandStart + standOffset % (rightStandEnd - rightStandStart + 1);
 	}
-	else if (left) {
-		if (preLocationY < m_location.y() || preLocationY > m_location.y()) {
-			currentFrame = leftJumpStart;
+	else { //left
+		if (preLocationY < m_location.y()) {
+			if (jumping == 0) {
+				jumping = 1;
+				jumpTimer = 0;
+				jumpOffset = 0;
+			}
+			if (jumpOffset < leftJumpEnd - leftJumpStart + 1)
+				currentFrame = leftJumpStart + jumpOffset;
+			else
+				currentFrame = leftJumpEnd;
 		}
-		else if (preLocationX > m_location.x())	{
-			if (moveTimer > moveDelay)
-				currentFrame = leftMoveStart + offset % (leftMoveEnd - leftMoveStart + 1);
-		}
-		else {
-			if (standTimer > standDelay)
-				currentFrame = leftStandStart + offset % (leftStandEnd - leftStandStart + 1);
-		}
+		else if (falling)
+			currentFrame = leftFallStart + fallOffset % (leftFallEnd - leftFallStart + 1);
+		else if (preLocationX > m_location.x())
+			currentFrame = leftMoveStart + moveOffset % (leftMoveEnd - leftMoveStart + 1);
+		else
+			currentFrame = leftStandStart + standOffset % (leftStandEnd - leftStandStart + 1);
 	}
 }
 
@@ -154,15 +168,25 @@ void AnimationComponent::updateVariables(){
 	frameY2 = (1.0 + frameRow) / numberRows;
 
 	if (moveTimer > moveDelay) {
-		offset++;
+		moveOffset++;
 		moveTimer = 0;
 	}
 	if (standTimer > standDelay) {
-		offset++;
+		standOffset++;
 		standTimer = 0;
+	}
+	if (jumpTimer > jumpDelay) {
+		jumpOffset++;
+		jumpTimer = 0;
+	}
+	if (fallTimer > fallDelay) {
+		fallOffset++;
+		fallTimer = 0;
 	}
 	moveTimer++;
 	standTimer++;
+	jumpTimer++;
+	fallTimer++;
 }
 
 void AnimationComponent::vDraw(){
