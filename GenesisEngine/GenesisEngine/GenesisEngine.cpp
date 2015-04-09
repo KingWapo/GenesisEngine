@@ -68,6 +68,7 @@ int GenesisEntry(int argc, char *argv[])
 
 		// Rect Collider
 	p_controller->addRectCollidable(0.073f, 0.079f, false);
+	//p_controller->addCircCollidable(0.079f / 2, false);
 
 		// Input Manager
 	p_controller->addInputManager(); //
@@ -94,6 +95,7 @@ int GenesisEntry(int argc, char *argv[])
 
 		// Rect Collidable
 	p_controller->addRectCollidable(w, h, true);
+	//p_controller->addCircCollidable(h / 2, true);
 
 	// Run the controller
 	p_controller->run();
