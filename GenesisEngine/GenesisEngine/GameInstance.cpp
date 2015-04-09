@@ -127,7 +127,7 @@ void GameInstance::Update()
 		// Process Input
 		if (refreshInput || processMotion)
 		{
-			// InputManager.Update() or such
+			// KeyboardInput.Update() or such
 			refreshInput = processMotion = false;
 		}
 

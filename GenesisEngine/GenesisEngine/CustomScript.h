@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ActorComponent.h"
-#include "InputManager.h"
+#include "KeyboardInput.h"
 #include "Transform2dComponent.h"
 #include "PhysicsComponent.h"
 
@@ -18,7 +18,7 @@ public:
 	virtual bool vUpdate(int deltaMs) override;
 
 private:
-	shared_ptr<InputManager> m_input;
+	shared_ptr<KeyboardInput> m_input;
 	shared_ptr<Transform2dComponent> m_transform;
 	shared_ptr<PhysicsComponent> m_physics;
 };

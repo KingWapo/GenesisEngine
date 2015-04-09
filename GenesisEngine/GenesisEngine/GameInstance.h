@@ -6,7 +6,7 @@
 #include "GLSLProgram.h"
 #include "Window.h"
 #include "Camera2D.h"
-#include "InputManager.h"
+#include "KeyboardInput.h"
 
 #include "Actor.h"
 
@@ -45,7 +45,7 @@ private:
 	ActorList m_ActorList;
 
 	GLSLProgram m_ColorProgram;
-	InputManager m_InputManager;
+	KeyboardInput m_KeyboardInput;
 	Window *m_Window;
 	int m_ScreenWidth;
 	int m_ScreenHeight;

@@ -19,6 +19,7 @@
     <ClCompile Include="CircCollidableComponent.cpp" />
     <ClCompile Include="CollidableComponent.cpp" />
     <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="Controller360Input.cpp" />
     <ClCompile Include="CustomScript.cpp" />
     <ClCompile Include="EngineCode.cpp" />
     <ClCompile Include="EngineController.cpp" />
@@ -28,7 +29,7 @@
     <ClCompile Include="GLSLProgram.cpp" />
     <ClCompile Include="HumanView.cpp" />
     <ClCompile Include="Initialization.cpp" />
-    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="MathRandom.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="CircCollidableComponent.h" />
     <ClInclude Include="CollidableComponent.h" />
     <ClInclude Include="Collisions.h" />
+    <ClInclude Include="Controller360Input.h" />
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CustomScript.h" />
     <ClInclude Include="EngineCode.h" />
@@ -73,6 +75,7 @@
     <ClInclude Include="GLSLProgram.h" />
     <ClInclude Include="HumanView.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="MemoryMacros.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="Initialization.h" />

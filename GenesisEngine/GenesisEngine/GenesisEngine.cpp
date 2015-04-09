@@ -2,7 +2,7 @@
 
 #include "EngineCode.h"
 #include "TestGame.h"
-#include "InputManager.h"
+#include "KeyboardInput.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
@@ -76,7 +76,7 @@ int GenesisEntry(int argc, char *argv[])
 	//p_controller->addCircCollidable(0.079f / 2, false);
 
 		// Input Manager
-	p_controller->addInputManager(); //
+	p_controller->addKeyboardInput(); //
 
 		// Side Scroller
 	//p_controller->addSideScrollerController(); //
@@ -145,7 +145,7 @@ int GenesisEntry(int argc, char *argv[])
 	StrongActorComponentPtr pRectColComp = StrongActorComponentPtr(&rectColComp);
 	freddy->AddComponent(pRectColComp, false);
 
-	InputManager *p_inputComp = new InputManager();
+	KeyboardInput *p_inputComp = new KeyboardInput();
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(p_inputComp);
 	freddy->AddComponent(pInputComp, false);
 
