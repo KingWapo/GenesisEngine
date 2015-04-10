@@ -2,7 +2,7 @@
 
 #include "EngineCode.h"
 #include "TestGame.h"
-#include "InputManager.h"
+#include "KeyboardInput.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
@@ -52,6 +52,11 @@ int GenesisEntry(int argc, char *argv[])
 	// Creates instance and scene within the controller
 	EngineController *p_controller = new EngineController();
 
+	//Matt- adding background
+	p_controller->addActor();
+	p_controller->setActorTranslation(Vector2(0, 0));
+	p_controller->addSDLRenderable("Textures/skyGrassBackground.png", Point2DF(1.3333, 1), Point2DF(0, 0));
+
 	// Creates new Actor, and sets it as selectedActor
 	p_controller->addActor();
 
@@ -71,7 +76,7 @@ int GenesisEntry(int argc, char *argv[])
 	//p_controller->addCircCollidable(0.079f / 2, false);
 
 		// Input Manager
-	p_controller->addInputManager(); //
+	p_controller->addKeyboardInput(); //
 
 		// Side Scroller
 	//p_controller->addSideScrollerController(); //

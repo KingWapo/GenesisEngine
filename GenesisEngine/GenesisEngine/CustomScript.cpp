@@ -22,7 +22,7 @@ bool CustomScript::vInit() {
 	StrongActorPtr l_ownerPtr = m_pOwner.lock();
 	Actor* l_owner = static_cast<Actor*>(l_ownerPtr.get());
 
-	m_input = l_owner->GetComponent<InputManager>("InputManager");
+	m_input = l_owner->GetComponent<KeyboardInput>("KeyboardInput");
 	m_transform = l_owner->GetComponent<Transform2dComponent>("Transform2dComponent");
 	m_physics = l_owner->GetComponent<PhysicsComponent>("PhysicsComponent");
 
@@ -46,7 +46,7 @@ bool CustomScript::vUpdate(int deltaMs) {
 		m_physics->accelerate(Vector2(0.0f, 0.3f));
 	}
 
-	m_physics->setVelocity(Vector2(m_input->horizontalAxis() * .2f, m_physics->getVelocity().y));
+	m_physics->setVelocity(Vector2(m_input->horizontalAxis(AxisSource::WASD) * .2f, m_physics->getVelocity().y));
 
 	return true;
 }

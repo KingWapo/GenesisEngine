@@ -2,14 +2,12 @@
 
 #include "ActorComponent.h"
 
-#include <unordered_map>
-
 enum KeyCode {
 	SPACE = 0x20,
-	LEFT  = 0x25,
-	UP    = 0x26,
+	LEFT = 0x25,
+	UP = 0x26,
 	RIGHT = 0x27,
-	DOWN  = 0x28,
+	DOWN = 0x28,
 	A = 0x41,
 	B = 0x42,
 	C = 0x43,
@@ -38,47 +36,34 @@ enum KeyCode {
 	Z = 0x5A
 };
 
-class InputManager : public ActorComponent
-{
+enum ControllerButton {
+	A_BTN = 0x00,
+	B_BTN = 0x01,
+	X_BTN = 0x02,
+	Y_BTN = 0x03,
+	LB = 0x04,
+	LT = 0x05,
+	RB = 0x06,
+	RT = 0x07,
+	L_STICK = 0x08,
+	R_STICK = 0x09,
+	START = 0x0A,
+	BACK = 0x0B
+};
+
+
+enum AxisSource {
+	WASD,
+	ARROWS,
+	LEFT_STICK,
+	RIGHT_STICK
+};
+
+class InputManager : public ActorComponent {
 public:
-	InputManager();
-	~InputManager();
-
-	// called first each update
-	bool preUpdate();
-
-	// key calls
-	bool onKeyDown(unsigned int keyID);
-	bool onKeyUp(unsigned int keyID);
-	bool isKeyPressed(unsigned int keyID);
-	float horizontalAxis();
-	float verticalAxis();
-
-	// component overrides
-	virtual const char* VGetName() const { return g_Name; }
-
-	virtual bool vInit(void) override;
-	virtual bool vUpdate(int deltaMs) override;
-
-private:
-	static const char *g_Name;
-
-	// maintain state of key events
-	void updateKeyState(unsigned int keyID);
-
-	void checkNewKey(unsigned int keyID);
-
-	// map stores char in this format, 0xAB
-	// A represents state during this call, 1 down, 0 up
-	// B represents state during last call, 1 down, 0 up
-	std::unordered_map<unsigned int, unsigned char> m_keyMap;
-
-	// key is down now and was last update
-	static const unsigned char m_keyDown = 0x11;
-	// key is up now and was last update
-	static const unsigned char m_keyUp = 0x00;
-	// key is down now but wasn't last update
-	static const unsigned char m_keyOnDown = 0x10;
-	// key is up now but wasn't last update
-	static const unsigned char m_keyOnUp = 0x01;
+	virtual bool onKeyDown(unsigned int keyID) = 0;
+	virtual bool onKeyUp(unsigned int keyId) = 0;
+	virtual bool isKeyPressed(unsigned int keyID) = 0;
+	virtual float horizontalAxis(AxisSource axisSource) = 0;
+	virtual float verticalAxis(AxisSource axisSource) = 0;
 };

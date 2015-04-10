@@ -1,6 +1,6 @@
 #include "TestGame.h"
 #include "TestGameView.h"
-#include "InputManager.h"
+#include "KeyboardInput.h"
 #include <iostream>
 
 using namespace std;

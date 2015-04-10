@@ -1,7 +1,7 @@
 #pragma once
 #include "EngineCode.h"
 #include "TestGame.h"
-#include "InputManager.h"
+#include "KeyboardInput.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
@@ -42,7 +42,7 @@ public:
 	bool addCircCollidable(float r, bool isStatic);
 	bool addRectCollidable(float w, float h, bool isStatic);
 	bool addPhysics();
-	bool addInputManager();
+	bool addKeyboardInput();
 	bool addSideScrollerController();
 	bool addTopDownController();
 	bool addAnimation(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);

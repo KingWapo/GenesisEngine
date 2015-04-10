@@ -56,9 +56,6 @@
     <ClCompile Include="HumanView.cpp">
       <Filter>UserInterface</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="GenesisEngine.cpp" />
     <ClCompile Include="Camera2D.cpp">
       <Filter>Renderer</Filter>
@@ -117,6 +114,12 @@
     </ClCompile>
     <ClCompile Include="ScriptableComponent.cpp">
       <Filter>Actor\Components</Filter>
+	</ClCompile>
+    <ClCompile Include="KeyboardInput.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller360Input.cpp">
+      <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,9 +258,6 @@
     <ClInclude Include="HumanView.h">
       <Filter>UserInterface</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="Camera2D.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -321,6 +321,15 @@
     </ClInclude>
     <ClInclude Include="ScriptableComponent.h">
       <Filter>Actor\Components</Filter>
+	</ClInclude>
+    <ClInclude Include="KeyboardInput.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller360Input.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

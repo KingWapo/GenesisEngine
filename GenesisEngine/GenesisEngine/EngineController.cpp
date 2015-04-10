@@ -107,9 +107,9 @@ bool EngineController::addPhysics()
 	return true;
 }
 
-bool EngineController::addInputManager()
+bool EngineController::addKeyboardInput()
 {
-	InputManager *p_inputComp = new InputManager();
+	KeyboardInput *p_inputComp = new KeyboardInput();
 	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(p_inputComp);
 	selectedActor->AddComponent(pInputComp, false);
 	return true;
