@@ -115,6 +115,9 @@
     <ClCompile Include="TopDownController.cpp">
       <Filter>Actor\Components</Filter>
     </ClCompile>
+    <ClCompile Include="ScriptableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -164,6 +167,9 @@
     </Filter>
     <Filter Include="Controller">
       <UniqueIdentifier>{71fddb45-ab56-4ca7-85aa-7201a3ae72bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestScripts">
+      <UniqueIdentifier>{a4f68e40-19d4-4d03-ada5-096344422f33}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +319,9 @@
     <ClInclude Include="TopDownController.h">
       <Filter>Actor\Components</Filter>
     </ClInclude>
+    <ClInclude Include="ScriptableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">
@@ -320,6 +329,9 @@
     </None>
     <None Include="..\deps\bin\Shaders\colorShading.vert">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="GeneScript.cs">
+      <Filter>TestScripts</Filter>
     </None>
   </ItemGroup>
 </Project>

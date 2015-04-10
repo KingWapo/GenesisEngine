@@ -41,6 +41,7 @@
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="RenderableComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ScriptableComponent.cpp" />
     <ClCompile Include="SDLRenderableComponent.cpp" />
     <ClCompile Include="SideScrollerController.cpp" />
     <ClCompile Include="String.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="Render.h" />
     <ClInclude Include="RenderableComponent.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="ScriptableComponent.h" />
     <ClInclude Include="SDLRenderableComponent.h" />
     <ClInclude Include="SideScrollerController.h" />
     <ClInclude Include="Sprite.h" />
@@ -107,6 +109,7 @@
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag" />
     <None Include="..\deps\bin\Shaders\colorShading.vert" />
+    <None Include="GeneScript.cs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25AA5C2A-614B-4410-B66A-8B709BC3BF28}</ProjectGuid>

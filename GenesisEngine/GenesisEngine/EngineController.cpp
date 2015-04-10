@@ -1,5 +1,4 @@
 #include "EngineController.h"
-#include <mono\metadata\assembly.h>
 
 EngineController::EngineController()
 {
@@ -9,8 +8,6 @@ EngineController::EngineController()
 	p_instance->setScene(p_gameScene);
 
 	actorIndex = 0;
-
-	MonoAssembly* myAssemblyStuffs;
 }
 
 
