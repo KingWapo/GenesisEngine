@@ -68,10 +68,10 @@ bool EngineController::addSDLRenderable(const char* p_fileLocation, Point2DF p_s
 	return true;
 }
 
-bool EngineController::addAnimation(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell)
+bool EngineController::addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell)
 {
 	Point2DF location = selectedActor->GetComponent<Transform2dComponent>("Transform2dComponent")->GetTranslation().toPoint2DF();
-	AnimationComponent *p_animComp = new AnimationComponent(p_fileLocation,
+	AnimationComponent *p_animComp = new AnimationComponent(p_fileLocation, totalFrames, numberColumns,
 		location, p_size, p_cell, p_instance->getWindow());
 	StrongActorComponentPtr pAnimComp = StrongActorComponentPtr(p_animComp);
 	selectedActor->AddComponent(pAnimComp, true);

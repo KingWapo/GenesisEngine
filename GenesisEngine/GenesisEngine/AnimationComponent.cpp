@@ -7,24 +7,45 @@
 
 AnimationComponent::AnimationComponent() : RenderableComponent()
 {
+	totFrames = 80;
+	numColumns = 10;
+
 	m_renderer = NULL;
 	m_window = NULL;
 	m_screen = NULL;
 	m_sprite = NULL;
+
+	initVariables();
 }
 
-AnimationComponent::AnimationComponent(const char* p_fileLocation, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window)
+AnimationComponent::AnimationComponent(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window)
 	: RenderableComponent(p_fileLocation, p_location, p_size, p_cell){
+
+	totFrames = totalFrames;
+	numColumns = numberColumns;	
 
 	m_window = p_window->getSurface();
 	m_renderer = p_window->getRenderer();
 	m_screen = SDL_GetWindowSurface(m_window);
 	m_sprite = NULL;
+
+	initVariables();
 }
 
 
 AnimationComponent::~AnimationComponent()
 {
+}
+
+void AnimationComponent::initVariables(){
+	numberRows = totFrames / numColumns;
+	currentFrame = 0; // Matt: [0,totalFrames-1]
+	frameCol = (currentFrame) % numColumns;
+	frameRow = (int)(currentFrame / numColumns);
+	frameX = (0.0 + frameCol) / numColumns;
+	frameX2 = (1.0 + frameCol) / numColumns;
+	frameY = (0.0 + frameRow) / numberRows;
+	frameY2 = (1.0 + frameRow) / numberRows;
 }
 
 bool AnimationComponent::vInit(){
@@ -103,19 +124,37 @@ void AnimationComponent::vOnChanged(){
 }
 
 void AnimationComponent::checkDirection(){
+
+	//John - improve with animation states
+	//get direction info from controller
+
+	//check if facing left or right
 	if (preLocationX < m_location.x())
 		direction = 1;
 	else if (preLocationX > m_location.x())
-		direction = 0;
+		direction = 0;	
+	
+	//check if falling
 	if (preLocationY > m_location.y() || (preLocationY == m_location.y() && jumping))
 		falling = 1;
 	else
 		falling = 0;
+
+	//check if jumping
 	if (preLocationY >= m_location.y())
 		jumping = 0;
 }
 
 void AnimationComponent::animations(){
+	//new code:
+	//get direction and animation state
+	//check if animation state or direction has changed
+	//if yes...
+		//cycle through animation list
+		//draw animation that matches state and direction
+	//if no...
+		//continue drawing previous animation
+
 	if (direction) { //right
 		if (preLocationY < m_location.y()) {
 			if (jumping == 0) {
@@ -160,10 +199,10 @@ void AnimationComponent::updateVariables(){
 	preLocationX = m_location.x();
 	preLocationY = m_location.y();
 
-	frameCol = (currentFrame) % numberColumns;
-	frameRow = (int)floor(currentFrame / numberColumns);
-	frameX = (0.0 + frameCol) / numberColumns;
-	frameX2 = (1.0 + frameCol) / numberColumns;
+	frameCol = (currentFrame) % numColumns;
+	frameRow = (int)floor(currentFrame / numColumns);
+	frameX = (0.0 + frameCol) / numColumns;
+	frameX2 = (1.0 + frameCol) / numColumns;
 	frameY = (0.0 + frameRow) / numberRows;
 	frameY2 = (1.0 + frameRow) / numberRows;
 

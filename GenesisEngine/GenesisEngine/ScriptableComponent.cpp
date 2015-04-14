@@ -13,12 +13,12 @@ ScriptableComponent::~ScriptableComponent()
 
 bool ScriptableComponent::vInit()
 {
-
+	return true;
 }
 
 bool ScriptableComponent::vUpdate(int deltaMs)
 {
-
+	return true;
 }
 
 void ScriptableComponent::vOnChanged()

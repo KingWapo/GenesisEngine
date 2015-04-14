@@ -66,7 +66,7 @@ int GenesisEntry(int argc, char *argv[])
 	// Add on required components
 
 		// Animation
-	p_controller->addAnimation("Textures/linkSpriteSheet.png", Point2DF(0.073f, 0.079f), Point2DF(0, 0));
+	p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
 		//
 		// Physics
 	p_controller->addPhysics(); //

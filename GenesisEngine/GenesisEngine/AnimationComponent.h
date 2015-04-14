@@ -3,22 +3,28 @@
 #include "Transform2dComponent.h"
 #include "Actor.h"
 #include "Window.h"
+#include "Animation.h"
+#include "AnimationState.h"
 
 #include "SDL\SDL.h"
+
+typedef std::list<AnimationState> AnimationStateList;
 
 class AnimationComponent : public RenderableComponent
 {
 private:
-	int totalFrames = 80;
-	int numberColumns = 10;
-	int numberRows = totalFrames / numberColumns;
-	int currentFrame = 0; // Matt: [0,totalFrames-1]
-	int frameCol = (currentFrame) % numberColumns;
-	int frameRow = (int) (currentFrame / numberColumns); 
-	double frameX = (0.0 + frameCol) / numberColumns;
-	double frameX2 = (1.0 + frameCol) / numberColumns;
-	double frameY = (0.0 + frameRow) / numberRows;
-	double frameY2 = (1.0 + frameRow) / numberRows;
+	AnimationStateList m_animationStateList;
+
+	int totFrames;
+	int numColumns;
+	int numberRows;
+	int currentFrame; // Matt: [0,totalFrames-1]
+	int frameCol;
+	int frameRow; 
+	double frameX;
+	double frameX2;
+	double frameY;
+	double frameY2;
 
 	int rightStandStart = 30;
 	int rightStandEnd = 32;
@@ -74,7 +80,7 @@ private:
 	shared_ptr<Transform2dComponent> m_transform;
 public:
 	AnimationComponent();
-	AnimationComponent(const char* p_fileLocation, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window);
+	AnimationComponent(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window);
 	~AnimationComponent();
 
 	virtual bool vInit(void) override;
@@ -86,5 +92,6 @@ public:
 	void checkDirection();
 	void animations();
 	void updateVariables();
+	void initVariables();
 };
 

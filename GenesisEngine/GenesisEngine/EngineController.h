@@ -45,6 +45,6 @@ public:
 	bool addKeyboardInput();
 	bool addSideScrollerController();
 	bool addTopDownController();
-	bool addAnimation(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
+	bool addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell);
 };
 

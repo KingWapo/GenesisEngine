@@ -114,13 +114,17 @@
     </ClCompile>
     <ClCompile Include="ScriptableComponent.cpp">
       <Filter>Actor\Components</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="KeyboardInput.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
     <ClCompile Include="Controller360Input.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
@@ -321,7 +325,7 @@
     </ClInclude>
     <ClInclude Include="ScriptableComponent.h">
       <Filter>Actor\Components</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="KeyboardInput.h">
       <Filter>Utilities</Filter>
     </ClInclude>
@@ -331,6 +335,10 @@
     <ClInclude Include="InputManager.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag">
