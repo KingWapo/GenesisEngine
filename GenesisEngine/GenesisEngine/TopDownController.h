@@ -4,9 +4,9 @@
 #include "Vector2.h"
 #include "Transform2dComponent.h"
 #include "PhysicsComponent.h"
-#include "KeyboardInput.h"
 #include "AnimationComponent.h"
 #include "AnimationState.h"
+#include "InputManager.h"
 
 class TopDownController : public ActorComponent
 {
@@ -28,7 +28,7 @@ public:
 private:
 	shared_ptr<Transform2dComponent> m_transform;
 	shared_ptr<PhysicsComponent> m_physics;
-	shared_ptr<KeyboardInput> m_keyboardInput;
 	shared_ptr<AnimationComponent> m_animationComponent;
+	shared_ptr<InputManager> m_input;
 };
 

@@ -164,7 +164,7 @@ bool GameInstance::UpdateActors()
 					if (colliderOther.get() != NULL) {
 						if (Collisions::hasCollision(collider.get(), colliderOther.get())) {
 							Collisions::resolveCollision(collider.get(), colliderOther.get());
-							printf("\nHAS COLLISION"); fflush(stdout);
+							//printf("\nHAS COLLISION"); fflush(stdout);
 						}
 					}
 				}

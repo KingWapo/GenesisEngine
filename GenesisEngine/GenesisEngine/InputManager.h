@@ -37,26 +37,26 @@ enum KeyCode {
 };
 
 enum ControllerButton {
-	A_BTN = 0x00,
-	B_BTN = 0x01,
-	X_BTN = 0x02,
-	Y_BTN = 0x03,
-	LB = 0x04,
-	LT = 0x05,
-	RB = 0x06,
-	RT = 0x07,
-	L_STICK = 0x08,
-	R_STICK = 0x09,
-	START = 0x0A,
-	BACK = 0x0B
+	A_BTN = 0x1000,
+	B_BTN = 0x2000,
+	X_BTN = 0x4000,
+	Y_BTN = 0x8000,
+	UP_DPD    = 0x0001,
+	DOWN_DPD  = 0x0002,
+	LEFT_DPD  = 0x0004,
+	RIGHT_DPD = 0x0008,
+	LB = 0x0100,
+	RB = 0x0200,
+	START   = 0x0010,
+	BACK    = 0x0020,
+	L_STICK = 0x0040,
+	R_STICK = 0x0080
 };
 
 
+// left (wasd, left stick), right (arrows, right stick), trigger (controller)
 enum AxisSource {
-	WASD,
-	ARROWS,
-	LEFT_STICK,
-	RIGHT_STICK
+	LEFT_AXIS, RIGHT_AXIS, TRIGGER
 };
 
 class InputManager : public ActorComponent {
@@ -66,4 +66,7 @@ public:
 	virtual bool isKeyPressed(unsigned int keyID) = 0;
 	virtual float horizontalAxis(AxisSource axisSource) = 0;
 	virtual float verticalAxis(AxisSource axisSource) = 0;
+
+	static const char *g_name;
+	virtual const char *VGetName() const { return g_name; }
 };

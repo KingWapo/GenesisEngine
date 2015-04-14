@@ -115,6 +115,13 @@ bool EngineController::addKeyboardInput()
 	return true;
 }
 
+bool EngineController::addControllerInput() {
+	Controller360Input *p_inputComp = new Controller360Input();
+	StrongActorComponentPtr pInputComp = StrongActorComponentPtr(p_inputComp);
+	selectedActor->AddComponent(pInputComp, false);
+	return true;
+}
+
 bool EngineController::addSideScrollerController()
 {
 	SideScrollerController *p_sideScrollerComp = new SideScrollerController();

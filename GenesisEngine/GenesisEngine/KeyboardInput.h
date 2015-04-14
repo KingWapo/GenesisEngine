@@ -20,15 +20,10 @@ public:
 	virtual float horizontalAxis(AxisSource axisSource) override;
 	virtual float verticalAxis(AxisSource axisSource) override;
 
-	// component overrides
-	virtual const char* VGetName() const { return g_Name; }
-
 	virtual bool vInit(void) override;
 	virtual bool vUpdate(int deltaMs) override;
 
 private:
-	static const char *g_Name;
-
 	// maintain state of key events
 	void updateKeyState(unsigned int keyID);
 

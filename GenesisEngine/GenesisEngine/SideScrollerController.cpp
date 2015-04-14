@@ -16,12 +16,12 @@ SideScrollerController::~SideScrollerController()
 bool SideScrollerController::vInit() {
 	m_transform = m_pOwner.lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 	m_physics = m_pOwner.lock()->GetComponent<PhysicsComponent>("PhysicsComponent");
-	m_keyboardInput = m_pOwner.lock()->GetComponent<KeyboardInput>("KeyboardInput");
 	m_animationComponent = m_pOwner.lock()->GetComponent<AnimationComponent>("AnimationComponent");
+	m_input = m_pOwner.lock()->GetComponent<InputManager>("InputManager");
 
 	GCC_ASSERT(m_transform != nullptr);
 	GCC_ASSERT(m_physics != nullptr);
-	GCC_ASSERT(m_keyboardInput != nullptr);
+	GCC_ASSERT(m_input != nullptr);
 
 	if (m_animationComponent != nullptr){
 		m_animationComponent->setCurrentDirection(0);
@@ -36,7 +36,7 @@ bool SideScrollerController::vInit() {
 
 bool SideScrollerController::vUpdate(int deltaMs) {
 	Vector2 baseSpeed = Vector2(.5f, m_physics->getVelocity().y);
-	float hAxis = m_keyboardInput->horizontalAxis(AxisSource::WASD);
+	float hAxis = m_input->horizontalAxis(AxisSource::LEFT_AXIS);
 
 	if (m_animationComponent != nullptr){
 		updateAnimations(hAxis);
@@ -47,7 +47,7 @@ bool SideScrollerController::vUpdate(int deltaMs) {
 	m_physics->setVelocity(baseSpeed);
 
 	// add check to prevent multiple jumps
-	if (m_keyboardInput->onKeyDown(KeyCode::SPACE)) {
+	if (m_input->onKeyDown(KeyCode::SPACE) || m_input->onKeyDown(ControllerButton::A_BTN)) {
 		Vector2 jumpSpeed = Vector2(m_physics->getVelocity().x, .5f);
 
 		jumpSpeed.y = jumpSpeed.y * m_jumpHeight;
