@@ -76,13 +76,16 @@ int GenesisEntry(int argc, char *argv[])
 	//p_controller->addCircCollidable(0.079f / 2, false);
 
 		// Input Manager
-	p_controller->addKeyboardInput(); //
+	//p_controller->addKeyboardInput(); //
+
+		// Controller Input
+	p_controller->addControllerInput();
 
 		// Side Scroller
-	//p_controller->addSideScrollerController(); //
+	p_controller->addSideScrollerController(); //
 
 		// Top Down
-	p_controller->addTopDownController();
+	//p_controller->addTopDownController();
 
 	float x = .4f;
 	float y = .4f;

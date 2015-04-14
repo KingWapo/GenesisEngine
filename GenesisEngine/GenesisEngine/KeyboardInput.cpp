@@ -3,8 +3,6 @@
 #include <iostream>
 #include <utility>
 
-const char* KeyboardInput::g_Name = "KeyboardInput";
-
 KeyboardInput::KeyboardInput()
 {
 }
@@ -42,12 +40,12 @@ float KeyboardInput::horizontalAxis(AxisSource axisSource) {
 	bool right;
 
 	switch (axisSource) {
-	case AxisSource::WASD:
+	case AxisSource::LEFT_AXIS:
 		left = isKeyPressed(KeyCode::A);
 		right = isKeyPressed(KeyCode::D);
 		break;
 
-	case AxisSource::ARROWS:
+	case AxisSource::RIGHT_AXIS:
 		left = isKeyPressed(KeyCode::LEFT);
 		right = isKeyPressed(KeyCode::RIGHT);
 		break;
@@ -75,12 +73,12 @@ float KeyboardInput::verticalAxis(AxisSource axisSource) {
 	bool down;
 
 	switch (axisSource) {
-	case AxisSource::WASD:
+	case AxisSource::LEFT_AXIS:
 		up = isKeyPressed(KeyCode::W);
 		down = isKeyPressed(KeyCode::S);
 		break;
 
-	case AxisSource::ARROWS:
+	case AxisSource::RIGHT_AXIS:
 		up = isKeyPressed(KeyCode::UP);
 		down = isKeyPressed(KeyCode::DOWN);
 		break;

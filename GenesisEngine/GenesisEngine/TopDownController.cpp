@@ -16,19 +16,19 @@ TopDownController::~TopDownController()
 bool TopDownController::vInit() {
 	m_transform = m_pOwner.lock()->GetComponent<Transform2dComponent>("Transform2dComponent");
 	m_physics = m_pOwner.lock()->GetComponent<PhysicsComponent>("PhysicsComponent");
-	m_keyboardInput = m_pOwner.lock()->GetComponent<KeyboardInput>("KeyboardInput");
+	m_input = m_pOwner.lock()->GetComponent<InputManager>("InputManager");
 
 	GCC_ASSERT(m_transform != nullptr);
 	GCC_ASSERT(m_physics != nullptr);
-	GCC_ASSERT(m_keyboardInput != nullptr);
+	GCC_ASSERT(m_input != nullptr);
 
 	return true;
 }
 
 bool TopDownController::vUpdate(int deltaMs) {
 	Vector2 baseSpeed = Vector2(.2f, .2f);
-	float hAxis = m_keyboardInput->horizontalAxis(AxisSource::WASD);
-	float vAxis = m_keyboardInput->verticalAxis(AxisSource::WASD);
+	float hAxis = m_input->horizontalAxis(AxisSource::LEFT_AXIS);
+	float vAxis = m_input->verticalAxis(AxisSource::LEFT_AXIS);
 
 	baseSpeed.x = baseSpeed.x * hAxis;
 	baseSpeed.y = baseSpeed.y * vAxis;

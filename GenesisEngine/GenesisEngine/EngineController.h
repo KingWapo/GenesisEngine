@@ -2,6 +2,7 @@
 #include "EngineCode.h"
 #include "TestGame.h"
 #include "KeyboardInput.h"
+#include "Controller360Input.h"
 #include "CustomScript.h"
 #include "Transform2dComponent.h"
 #include "RectCollidableComponent.h"
@@ -43,6 +44,7 @@ public:
 	bool addRectCollidable(float w, float h, bool isStatic);
 	bool addPhysics();
 	bool addKeyboardInput();
+	bool addControllerInput();
 	bool addSideScrollerController();
 	bool addTopDownController();
 	bool addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell);

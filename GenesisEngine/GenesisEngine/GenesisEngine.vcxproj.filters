@@ -125,6 +125,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="AnimationState.cpp" />
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Initialization">
