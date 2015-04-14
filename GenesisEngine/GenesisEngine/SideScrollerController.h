@@ -4,6 +4,7 @@
 #include "Vector2.h"
 #include "Transform2dComponent.h"
 #include "PhysicsComponent.h"
+#include "AnimationComponent.h"
 #include "KeyboardInput.h"
 
 class SideScrollerController : public ActorComponent
@@ -21,9 +22,17 @@ public:
 	static const char *g_name;
 	virtual const char *VGetName() const { return g_name; }
 
+	void initAnimations();
+	void updateAnimations(float hAxis);
+
+	bool isJumping = false;
+	bool isFalling = false;
+	bool isLanding = false;
+
 private:
 	shared_ptr<Transform2dComponent> m_transform;
 	shared_ptr<PhysicsComponent> m_physics;
 	shared_ptr<KeyboardInput> m_keyboardInput;
+	shared_ptr<AnimationComponent> m_animationComponent;
 };
 

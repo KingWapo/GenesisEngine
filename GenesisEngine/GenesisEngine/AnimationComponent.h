@@ -1,6 +1,7 @@
 #pragma once
 #include "RenderableComponent.h"
 #include "Transform2dComponent.h"
+#include "ActorComponent.h"
 #include "Actor.h"
 #include "Window.h"
 #include "Animation.h"
@@ -26,46 +27,7 @@ private:
 	double frameY;
 	double frameY2;
 
-	int rightStandStart = 30;
-	int rightStandEnd = 32;
-	int rightMoveStart = 70;
-	int rightMoveEnd = 79;
-	int rightJumpStart = 74;
-	int rightJumpEnd = 77;
-	int rightFallStart = 73;
-	int rightFallEnd = 74;
-
-	int leftStandStart = 10;
-	int leftStandEnd = 12;
-	int leftMoveStart = 50;
-	int leftMoveEnd = 59;
-	int leftJumpStart = 55;
-	int leftJumpEnd = 57;
-	int leftFallStart = 54;
-	int leftFallEnd = 55;
-
-	float preLocationX;
-	float preLocationY;
-
-	bool direction = 1;
-
-	int moveTimer = 0;
-	int standTimer = 0;
-	int jumpTimer = 0;
-	int fallTimer = 0;
-
-	int moveDelay = 4;
-	int standDelay = 7;
-	int jumpDelay = 3;
-	int fallDelay = 20;
-
-	int moveOffset = 0;
-	int standOffset = 0;
-	int jumpOffset = 0;
-	int fallOffset = 0;
-
-	boolean jumping = 0;
-	boolean falling = 0;
+	int currentDirection = 0;
 
 	SDL_Texture* m_sprite;
 	SDL_Surface* m_screen;
@@ -83,15 +45,22 @@ public:
 	AnimationComponent(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_location, Point2DF p_size, Point2DF p_cell, Window* p_window);
 	~AnimationComponent();
 
+	static const char* g_Name;
+
 	virtual bool vInit(void) override;
 	virtual void vPostInit(void) override;
 	virtual bool vUpdate(int deltaMs) override;
 	virtual void vOnChanged(void) override;
 	virtual void vDraw(void) override;
+	virtual const char* VGetName() const { return g_Name; }
 
-	void checkDirection();
-	void animations();
+	void animate();
+	void addAnimationState(AnimationState animState);
+	AnimationState getAnimationState(std::string name);
+	void activateAnimationState(std::string name);
 	void updateVariables();
-	void initVariables();
+
+	void setCurrentDirection(int dir){ currentDirection = dir; }
+	int getCurrentDirection(){ return currentDirection; }
 };
 

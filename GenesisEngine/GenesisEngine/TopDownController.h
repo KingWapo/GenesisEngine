@@ -5,6 +5,8 @@
 #include "Transform2dComponent.h"
 #include "PhysicsComponent.h"
 #include "KeyboardInput.h"
+#include "AnimationComponent.h"
+#include "AnimationState.h"
 
 class TopDownController : public ActorComponent
 {
@@ -20,9 +22,13 @@ public:
 	static const char *g_name;
 	virtual const char *VGetName() const { return g_name; }
 
+	void initAnimations();
+	void updateAnimations(float hAxis, float vAxis);
+
 private:
 	shared_ptr<Transform2dComponent> m_transform;
 	shared_ptr<PhysicsComponent> m_physics;
 	shared_ptr<KeyboardInput> m_keyboardInput;
+	shared_ptr<AnimationComponent> m_animationComponent;
 };
 
