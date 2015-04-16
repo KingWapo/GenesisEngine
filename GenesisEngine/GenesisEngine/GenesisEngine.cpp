@@ -87,10 +87,46 @@ int GenesisEntry(int argc, char *argv[])
 		// Top Down
 	//p_controller->addTopDownController();
 
+	bool presenting = true;
+
+	if (presenting) {
+		p_controller->addActor();
+		p_controller->setActorTranslation(Vector2(.2f, .8f));
+		p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
+		p_controller->addRectCollidable(0.073f, 0.079f, false);
+		p_controller->addPhysics();
+		p_controller->addControllerInput();
+		p_controller->addTopDownController();
+		/*
+		p_controller->addActor();
+		p_controller->setActorTranslation(Vector2(.8f, .4f));
+		p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
+		p_controller->addRectCollidable(0.073f, 0.079f, false);
+		p_controller->addPhysics();
+		p_controller->addKeyboardInput();
+		p_controller->addSideScrollerController();
+
+		p_controller->addActor();
+		p_controller->setActorTranslation(Vector2(.8f, .8f));
+		p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
+		p_controller->addRectCollidable(0.073f, 0.079f, false);
+		p_controller->addPhysics();
+		p_controller->addKeyboardInput();
+		p_controller->addTopDownController();
+		*/
+	}
+
 	float x = .4f;
 	float y = .4f;
-	float w = .052f;
+	float w = .103f;
 	float h = .052f;
+
+	for (int i = 0; i < 12; i++) {
+		p_controller->addActor();
+		p_controller->setActorTranslation(Vector2(w * i, h * fabs(6.0f - i)));
+		p_controller->addSDLRenderable("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png", Point2DF(w, h), Point2DF(0, 0));
+		p_controller->addRectCollidable(w, h, true);
+	}
 
 	// Add second actor and set it to selectedActor
 	p_controller->addActor();
