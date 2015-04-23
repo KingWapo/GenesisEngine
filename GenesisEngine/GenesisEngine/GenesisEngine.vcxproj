@@ -118,6 +118,8 @@
     <None Include="..\deps\bin\Shaders\colorShading.frag" />
     <None Include="..\deps\bin\Shaders\colorShading.vert" />
     <None Include="GeneScript.cs" />
+    <None Include="packages.config" />
+    <None Include="SimpleHelpers\ScriptEvaluator.cs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25AA5C2A-614B-4410-B66A-8B709BC3BF28}</ProjectGuid>
@@ -153,6 +155,7 @@
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
     <LibraryWPath>$(WindowsSDK_MetadataPath);</LibraryWPath>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

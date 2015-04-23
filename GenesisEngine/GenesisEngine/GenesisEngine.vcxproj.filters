@@ -181,6 +181,9 @@
     <Filter Include="TestScripts">
       <UniqueIdentifier>{a4f68e40-19d4-4d03-ada5-096344422f33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SimpleHelpers">
+      <UniqueIdentifier>{86e8eaa5-475d-4535-8886-f271ec0e66f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Initialization.h">
@@ -353,5 +356,9 @@
     <None Include="GeneScript.cs">
       <Filter>TestScripts</Filter>
     </None>
+    <None Include="SimpleHelpers\ScriptEvaluator.cs">
+      <Filter>SimpleHelpers</Filter>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
