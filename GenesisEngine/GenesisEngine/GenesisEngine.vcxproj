@@ -117,9 +117,7 @@
   <ItemGroup>
     <None Include="..\deps\bin\Shaders\colorShading.frag" />
     <None Include="..\deps\bin\Shaders\colorShading.vert" />
-    <None Include="GeneScript.cs" />
     <None Include="packages.config" />
-    <None Include="SimpleHelpers\ScriptEvaluator.cs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25AA5C2A-614B-4410-B66A-8B709BC3BF28}</ProjectGuid>
