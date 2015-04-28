@@ -7,8 +7,8 @@
     <ProjectGuid>{2BAAE0C6-8BA6-41E5-AF28-7D2BF882AC8C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScriptEngineInterface</RootNamespace>
-    <AssemblyName>ScriptEngineInterface</AssemblyName>
+    <RootNamespace>ScriptEngine</RootNamespace>
+    <AssemblyName>ScriptEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
