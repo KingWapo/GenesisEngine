@@ -1,4 +1,6 @@
-public class GeneScript
+using System;
+
+public class GeneScript : ScriptEngineInterface.IGeneScript
 {
     public GeneScript()
     {
@@ -12,6 +14,6 @@ public class GeneScript
 
     public virtual void OnUpdate()
     {
-        Console.Debug("Hello World");
+        Console.Write("Hello World\n");
     }
 }
