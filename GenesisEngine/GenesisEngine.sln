@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptEngine", "ScriptEngin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScriptEngineConnector", "ScriptEngineConnector\ScriptEngineConnector.vcxproj", "{FC14C54B-95B1-43F3-A5F5-AE4AD03D553B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenesisEngineLib", "GenesisEngineLib\GenesisEngineLib.vcxproj", "{E183D079-0C2C-4EBD-AD06-10728F44BD43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,16 @@ Global
 		{FC14C54B-95B1-43F3-A5F5-AE4AD03D553B}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{FC14C54B-95B1-43F3-A5F5-AE4AD03D553B}.Release|Win32.ActiveCfg = Release|Win32
 		{FC14C54B-95B1-43F3-A5F5-AE4AD03D553B}.Release|Win32.Build.0 = Release|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Debug|Win32.Build.0 = Debug|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Release|Win32.ActiveCfg = Release|Win32
+		{E183D079-0C2C-4EBD-AD06-10728F44BD43}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

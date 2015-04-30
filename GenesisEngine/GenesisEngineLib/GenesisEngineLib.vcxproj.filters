@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{cb82e899-e1c1-442f-8fb9-7094c5ab5281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{0a9909a6-69c9-4f7c-92ea-410d97111ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Components">
+      <UniqueIdentifier>{cf04802e-7d3d-4e4c-b78b-13931ef53084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debugger">
+      <UniqueIdentifier>{475bb8ed-897c-4869-931a-3ee911f35f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{7d96c0f6-15d0-4424-b4bc-0e4af6beabaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Initialization">
+      <UniqueIdentifier>{b3f68e86-e520-4e70-8a0f-5fa3d0c9f085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{9be51b84-48db-445e-ae98-d7a6f307da28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{711c36e4-67cf-44ff-8990-1ed074e33bfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Multicore">
+      <UniqueIdentifier>{c15c17a0-ef3a-44f3-bcd1-8ef2a2c8f0c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProcessManager">
+      <UniqueIdentifier>{e9aeca78-f101-44d5-b789-1f7610c34366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{74576ea2-6ab4-4aff-bbbf-db7dbb4781a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{71d388b6-541a-43d8-b353-5b445515f41d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test Game">
+      <UniqueIdentifier>{a3fa49d2-1524-4aa5-8cc6-7004546d090d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UserInterface">
+      <UniqueIdentifier>{f656be0f-fdb3-4c19-af47-03b202885282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{088cbfa4-f359-45f1-b901-0bfc36ece8ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\GenesisEngine\Actor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\ActorFactory.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\AnimationComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\CircCollidableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\CollidableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\RectCollidableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\RenderableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\ScriptableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\SDLRenderableComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\SideScrollerController.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\TopDownController.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Transform2dComponent.cpp">
+      <Filter>Actor\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\EngineController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Logger.cpp">
+      <Filter>Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Animation.cpp">
+      <Filter>Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\BaseGameLogic.cpp">
+      <Filter>Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Initialization.cpp">
+      <Filter>Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\MemoryPool.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Collisions.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\PhysicsComponent.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Transformation2d.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Vector2.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Process.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\ProcessManager.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Camera2D.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\GLSLProgram.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Render.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Scene.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Window.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\CustomScript.cpp">
+      <Filter>Test Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\TestGame.cpp">
+      <Filter>Test Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\TestGameView.cpp">
+      <Filter>Test Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\HumanView.cpp">
+      <Filter>UserInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\MessageBox.cpp">
+      <Filter>UserInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Controller360Input.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Errors.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\InputManager.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\KeyboardInput.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\Math.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\MathRandom.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\String.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GenesisEngine\AnimationState.cpp" />
+    <ClCompile Include="..\GenesisEngine\GameInstance.cpp" />
+    <ClCompile Include="..\GenesisEngine\EngineCode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\GenesisEngine\Actor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\ActorComponent.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\ActorFactory.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\AnimationComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\CircCollidableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\CollidableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\RectCollidableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\RenderableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\ScriptableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\SDLRenderableComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\SideScrollerController.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\TopDownController.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Transform2dComponent.h">
+      <Filter>Actor\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\EngineController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Logger.h">
+      <Filter>Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\EventManager.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Events.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\BaseGameLogic.h">
+      <Filter>Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Initialization.h">
+      <Filter>Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\MemoryMacros.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\MemoryPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\CriticalSection.h">
+      <Filter>Multicore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Collisions.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\PhysicsComponent.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Transformation2d.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Vector2.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Process.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\ProcessManager.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Animation.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Camera2D.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\GLSLProgram.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Point2D.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Render.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Scene.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Sprite.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Window.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\CustomScript.h">
+      <Filter>Test Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\TestGame.h">
+      <Filter>Test Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\TestGameView.h">
+      <Filter>Test Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\HumanView.h">
+      <Filter>UserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\MessageBox.h">
+      <Filter>UserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\UserInterface.h">
+      <Filter>UserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Controller360Input.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Errors.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Includes.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\InputManager.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\interfaces.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\KeyboardInput.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Math.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\String.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Templates.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\Types.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GenesisEngine\AnimationState.h" />
+    <ClInclude Include="..\GenesisEngine\EngineCode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\deps\bin\Shaders\colorShading.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\deps\bin\Shaders\colorShading.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

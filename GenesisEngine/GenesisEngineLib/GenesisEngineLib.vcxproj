@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E183D079-0C2C-4EBD-AD06-10728F44BD43}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>GenesisEngineLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GENESISENGINELIB_EXPORTS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;GLEW_STATIC</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\deps\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\deps\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);winmm.lib;zlibstat.lib;glew32s.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;opengl32.lib;SDL2_image.lib;advapi32.lib;libogg_static.lib;libvorbis_static.lib;libvorbisfile_static.lib;mono-2.0.lib;xinput9_1_0.lib;</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt</IgnoreSpecificDefaultLibraries>
+      <MinimumRequiredVersion>5.01</MinimumRequiredVersion>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GENESISENGINELIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\GenesisEngine\Actor.cpp" />
+    <ClCompile Include="..\GenesisEngine\ActorFactory.cpp" />
+    <ClCompile Include="..\GenesisEngine\Animation.cpp" />
+    <ClCompile Include="..\GenesisEngine\AnimationComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\AnimationState.cpp" />
+    <ClCompile Include="..\GenesisEngine\BaseGameLogic.cpp" />
+    <ClCompile Include="..\GenesisEngine\Camera2D.cpp" />
+    <ClCompile Include="..\GenesisEngine\CircCollidableComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\CollidableComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\Collisions.cpp" />
+    <ClCompile Include="..\GenesisEngine\Controller360Input.cpp" />
+    <ClCompile Include="..\GenesisEngine\CustomScript.cpp" />
+    <ClCompile Include="..\GenesisEngine\EngineCode.cpp" />
+    <ClCompile Include="..\GenesisEngine\EngineController.cpp" />
+    <ClCompile Include="..\GenesisEngine\Errors.cpp" />
+    <ClCompile Include="..\GenesisEngine\GameInstance.cpp" />
+    <ClCompile Include="..\GenesisEngine\GLSLProgram.cpp" />
+    <ClCompile Include="..\GenesisEngine\HumanView.cpp" />
+    <ClCompile Include="..\GenesisEngine\Initialization.cpp" />
+    <ClCompile Include="..\GenesisEngine\InputManager.cpp" />
+    <ClCompile Include="..\GenesisEngine\KeyboardInput.cpp" />
+    <ClCompile Include="..\GenesisEngine\Logger.cpp" />
+    <ClCompile Include="..\GenesisEngine\Math.cpp" />
+    <ClCompile Include="..\GenesisEngine\MathRandom.cpp" />
+    <ClCompile Include="..\GenesisEngine\MemoryPool.cpp" />
+    <ClCompile Include="..\GenesisEngine\MessageBox.cpp" />
+    <ClCompile Include="..\GenesisEngine\PhysicsComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\Process.cpp" />
+    <ClCompile Include="..\GenesisEngine\ProcessManager.cpp" />
+    <ClCompile Include="..\GenesisEngine\RectCollidableComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\Render.cpp" />
+    <ClCompile Include="..\GenesisEngine\RenderableComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\Scene.cpp" />
+    <ClCompile Include="..\GenesisEngine\ScriptableComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\SDLRenderableComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\SideScrollerController.cpp" />
+    <ClCompile Include="..\GenesisEngine\String.cpp" />
+    <ClCompile Include="..\GenesisEngine\TestGame.cpp" />
+    <ClCompile Include="..\GenesisEngine\TestGameView.cpp" />
+    <ClCompile Include="..\GenesisEngine\TopDownController.cpp" />
+    <ClCompile Include="..\GenesisEngine\Transform2dComponent.cpp" />
+    <ClCompile Include="..\GenesisEngine\Transformation2d.cpp" />
+    <ClCompile Include="..\GenesisEngine\Vector2.cpp" />
+    <ClCompile Include="..\GenesisEngine\Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\GenesisEngine\Actor.h" />
+    <ClInclude Include="..\GenesisEngine\ActorComponent.h" />
+    <ClInclude Include="..\GenesisEngine\ActorFactory.h" />
+    <ClInclude Include="..\GenesisEngine\Animation.h" />
+    <ClInclude Include="..\GenesisEngine\AnimationComponent.h" />
+    <ClInclude Include="..\GenesisEngine\AnimationState.h" />
+    <ClInclude Include="..\GenesisEngine\BaseGameLogic.h" />
+    <ClInclude Include="..\GenesisEngine\Camera2D.h" />
+    <ClInclude Include="..\GenesisEngine\CircCollidableComponent.h" />
+    <ClInclude Include="..\GenesisEngine\CollidableComponent.h" />
+    <ClInclude Include="..\GenesisEngine\Collisions.h" />
+    <ClInclude Include="..\GenesisEngine\Controller360Input.h" />
+    <ClInclude Include="..\GenesisEngine\CriticalSection.h" />
+    <ClInclude Include="..\GenesisEngine\CustomScript.h" />
+    <ClInclude Include="..\GenesisEngine\EngineCode.h" />
+    <ClInclude Include="..\GenesisEngine\EngineController.h" />
+    <ClInclude Include="..\GenesisEngine\Errors.h" />
+    <ClInclude Include="..\GenesisEngine\EventManager.h" />
+    <ClInclude Include="..\GenesisEngine\Events.h" />
+    <ClInclude Include="..\GenesisEngine\GLSLProgram.h" />
+    <ClInclude Include="..\GenesisEngine\HumanView.h" />
+    <ClInclude Include="..\GenesisEngine\Includes.h" />
+    <ClInclude Include="..\GenesisEngine\Initialization.h" />
+    <ClInclude Include="..\GenesisEngine\InputManager.h" />
+    <ClInclude Include="..\GenesisEngine\interfaces.h" />
+    <ClInclude Include="..\GenesisEngine\KeyboardInput.h" />
+    <ClInclude Include="..\GenesisEngine\Logger.h" />
+    <ClInclude Include="..\GenesisEngine\Math.h" />
+    <ClInclude Include="..\GenesisEngine\MemoryMacros.h" />
+    <ClInclude Include="..\GenesisEngine\MemoryPool.h" />
+    <ClInclude Include="..\GenesisEngine\MessageBox.h" />
+    <ClInclude Include="..\GenesisEngine\PhysicsComponent.h" />
+    <ClInclude Include="..\GenesisEngine\Point2D.h" />
+    <ClInclude Include="..\GenesisEngine\Process.h" />
+    <ClInclude Include="..\GenesisEngine\ProcessManager.h" />
+    <ClInclude Include="..\GenesisEngine\RectCollidableComponent.h" />
+    <ClInclude Include="..\GenesisEngine\Render.h" />
+    <ClInclude Include="..\GenesisEngine\RenderableComponent.h" />
+    <ClInclude Include="..\GenesisEngine\Scene.h" />
+    <ClInclude Include="..\GenesisEngine\ScriptableComponent.h" />
+    <ClInclude Include="..\GenesisEngine\SDLRenderableComponent.h" />
+    <ClInclude Include="..\GenesisEngine\SideScrollerController.h" />
+    <ClInclude Include="..\GenesisEngine\Sprite.h" />
+    <ClInclude Include="..\GenesisEngine\String.h" />
+    <ClInclude Include="..\GenesisEngine\Templates.h" />
+    <ClInclude Include="..\GenesisEngine\TestGame.h" />
+    <ClInclude Include="..\GenesisEngine\TestGameView.h" />
+    <ClInclude Include="..\GenesisEngine\TopDownController.h" />
+    <ClInclude Include="..\GenesisEngine\Transform2dComponent.h" />
+    <ClInclude Include="..\GenesisEngine\Transformation2d.h" />
+    <ClInclude Include="..\GenesisEngine\Types.h" />
+    <ClInclude Include="..\GenesisEngine\UserInterface.h" />
+    <ClInclude Include="..\GenesisEngine\Vector2.h" />
+    <ClInclude Include="..\GenesisEngine\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\deps\bin\Shaders\colorShading.frag" />
+    <None Include="..\deps\bin\Shaders\colorShading.vert" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

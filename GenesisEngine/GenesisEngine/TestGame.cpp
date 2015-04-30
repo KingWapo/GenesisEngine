@@ -8,12 +8,12 @@ using namespace std;
 TestGameApp *g_TestGameApp;
 
 // Main? Call the Engine Code main
-int main(int argc, char *argv[])
+/*int main(int argc, char *argv[])
 {
 	GenesisEntry(argc, argv);
 
 	return 0;
-}
+}*/
 
 HICON TestGameApp::VGetIcon()
 {
