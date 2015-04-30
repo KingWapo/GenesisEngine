@@ -10,7 +10,7 @@ namespace ScriptEngineInterface
     {
         static void Main(string[] args)
         {
-            System.IO.StreamReader myFile = new System.IO.StreamReader("D:/Student Data/My Documents/Visual Studio 2013/Projects/GenesisEngine/GenesisEngine/ScriptEngineInterface/GeneScript.cs");
+            System.IO.StreamReader myFile = new System.IO.StreamReader("../../../ScriptEngineInterface/GeneScript.cs");
             string myString = myFile.ReadToEnd();
 
             Evaluator myEval = new Evaluator(

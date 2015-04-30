@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="Mono.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SimpleHelpers.ScriptEvaluator.1.1.0\lib\Mono.CSharp.dll</HintPath>
+      <HintPath>..\deps\bin\Mono.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
