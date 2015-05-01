@@ -6,6 +6,8 @@ using namespace System;
 
 int main(array<System::String ^> ^args)
 {
-    Console::WriteLine(L"Hello World");
+    // Initiate the native handler
+	
+
     return 0;
 }
