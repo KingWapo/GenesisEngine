@@ -30,23 +30,23 @@ private:
 	int actorIndex;
 
 public:
-	EngineController();
-	~EngineController();
+	 EngineController();
+	 ~EngineController();
 
-	void run();
+	 void run();
 
-	void addActor();
-	void selectActor(int actorId);
-	void setActorTranslation(Vector2 newLocation);
+	 void addActor();
+	 void selectActor(int actorId);
+	 void setActorTranslation(Vector2 newLocation);
 
-	bool addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
-	bool addCircCollidable(float r, bool isStatic);
-	bool addRectCollidable(float w, float h, bool isStatic);
-	bool addPhysics();
-	bool addKeyboardInput();
-	bool addControllerInput();
-	bool addSideScrollerController();
-	bool addTopDownController();
-	bool addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell);
+	 bool addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
+	 bool addCircCollidable(float r, bool isStatic);
+	 bool addRectCollidable(float w, float h, bool isStatic);
+	 bool addPhysics();
+	 bool addKeyboardInput();
+	 bool addControllerInput();
+	 bool addSideScrollerController();
+	 bool addTopDownController();
+	 bool addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell);
 };
 
