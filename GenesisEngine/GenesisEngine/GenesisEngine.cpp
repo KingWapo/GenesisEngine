@@ -105,6 +105,10 @@ int GenesisEntry(int argc, char *argv[])
 		}
 	}
 
+	p_controller->addActor();
+	p_controller->setActorTranslation(Vector2(0, 1.0f - .106f));
+	p_controller->addSDLRenderable("Textures/flappyLink.png", Point2DF(.206f, .106f), Point2DF(0, 0));
+
 	// Run the controller
 	p_controller->run();
 
