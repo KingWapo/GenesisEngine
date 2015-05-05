@@ -36,19 +36,19 @@ bool SideScrollerController::vInit() {
 
 bool SideScrollerController::vUpdate(int deltaMs) {
 	Vector2 baseSpeed = Vector2(.5f, m_physics->getVelocity().y);
-	float hAxis = m_input->horizontalAxis(AxisSource::LEFT_AXIS);
+	//float hAxis = m_input->horizontalAxis(AxisSource::LEFT_AXIS);
 
 	if (m_animationComponent != nullptr){
-		updateAnimations(hAxis);
+		updateAnimations(1.0f);
 	}
 
-	baseSpeed.x = baseSpeed.x * hAxis * m_moveSpeed;
+	baseSpeed.x = m_moveSpeed / 5.0f;
 
 	m_physics->setVelocity(baseSpeed);
 
 	// add check to prevent multiple jumps
 	if (m_input->onKeyDown(KeyCode::SPACE) || m_input->onKeyDown(ControllerButton::A_BTN)) {
-		Vector2 jumpSpeed = Vector2(m_physics->getVelocity().x, .5f);
+		Vector2 jumpSpeed = Vector2(m_physics->getVelocity().x, .3f);
 
 		jumpSpeed.y = jumpSpeed.y * m_jumpHeight;
 

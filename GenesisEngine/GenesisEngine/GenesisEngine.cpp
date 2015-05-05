@@ -61,7 +61,7 @@ int GenesisEntry(int argc, char *argv[])
 	p_controller->addActor();
 
 	// Set actor location
-	p_controller->setActorTranslation(Vector2(.2f, .4f)); //
+	p_controller->setActorTranslation(Vector2(.1f, .6f)); //
 
 	// Add on required components
 
@@ -79,7 +79,7 @@ int GenesisEntry(int argc, char *argv[])
 	//p_controller->addKeyboardInput(); //
 
 		// Controller Input
-	p_controller->addControllerInput();
+	p_controller->addKeyboardInput();
 
 		// Side Scroller
 	p_controller->addSideScrollerController(); //
@@ -87,59 +87,23 @@ int GenesisEntry(int argc, char *argv[])
 		// Top Down
 	//p_controller->addTopDownController();
 
-	bool presenting = true;
-
-	if (presenting) {
-		p_controller->addActor();
-		p_controller->setActorTranslation(Vector2(.2f, .8f));
-		p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
-		p_controller->addRectCollidable(0.073f, 0.079f, false);
-		p_controller->addPhysics();
-		p_controller->addControllerInput();
-		p_controller->addTopDownController();
-		/*
-		p_controller->addActor();
-		p_controller->setActorTranslation(Vector2(.8f, .4f));
-		p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
-		p_controller->addRectCollidable(0.073f, 0.079f, false);
-		p_controller->addPhysics();
-		p_controller->addKeyboardInput();
-		p_controller->addSideScrollerController();
-
-		p_controller->addActor();
-		p_controller->setActorTranslation(Vector2(.8f, .8f));
-		p_controller->addAnimation("Textures/linkSpriteSheet.png", 80, 10, Point2DF(0.073f, 0.079f), Point2DF(0, 0));
-		p_controller->addRectCollidable(0.073f, 0.079f, false);
-		p_controller->addPhysics();
-		p_controller->addKeyboardInput();
-		p_controller->addTopDownController();
-		*/
-	}
-
-	float x = .4f;
-	float y = .4f;
+	float x = .206f;
+	float yOff = .3f;
+	float h = .053f;
 	float w = .103f;
-	float h = .052f;
 
-	for (int i = 0; i < 12; i++) {
-		p_controller->addActor();
-		p_controller->setActorTranslation(Vector2(w * i, h * fabs(6.0f - i)));
-		p_controller->addSDLRenderable("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png", Point2DF(w, h), Point2DF(0, 0));
-		p_controller->addRectCollidable(w, h, true);
+	for (int i = 0; i < 3; i++) {
+		int hole = (((i + 1) % 2) + 1) * 3;
+
+		for (int j = 0; j < 10; j++) {
+			if (j < hole || j > hole + 1) {
+				p_controller->addActor();
+				p_controller->setActorTranslation(Vector2(x * (2 * i + 2), h * 2 * j));
+				p_controller->addSDLRenderable("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png", Point2DF(w, h * 2), Point2DF(0, 0));
+				p_controller->addRectCollidable(w, h * 2, true);
+			}
+		}
 	}
-
-	// Add second actor and set it to selectedActor
-	p_controller->addActor();
-	p_controller->setActorTranslation(Vector2(x, y));
-
-	// Add components to selectedActor
-
-		// SDL Render
-	p_controller->addSDLRenderable("Textures/jimmyJump_pack/PNG/LandPiece_LightGreen.png", Point2DF(w, h), Point2DF(0, 0));
-
-		// Rect Collidable
-	p_controller->addRectCollidable(w, h, true);
-	//p_controller->addCircCollidable(h / 2, true);
 
 	// Run the controller
 	p_controller->run();

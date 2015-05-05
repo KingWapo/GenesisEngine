@@ -1,4 +1,5 @@
 #include "Collisions.h"
+#include "SideScrollerController.h"
 
 
 Collisions::Collisions()
@@ -406,6 +407,10 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 
 	PhysicsComponent *A_comp = colA->getOwner().lock()->GetComponent<PhysicsComponent>("PhysicsComponent").get();
 	PhysicsComponent *B_comp = colB->getOwner().lock()->GetComponent<PhysicsComponent>("PhysicsComponent").get();
+
+	if (colA->getOwner().lock()->GetComponent<SideScrollerController>("SideScrollerController") != nullptr) {
+		tA->SetTranslation(Vector2(.1f, .6f));
+	}
 
 	//RectCollidableComponent *rectA, *rectB;
 	//CircCollidableComponent *circA, *circB;

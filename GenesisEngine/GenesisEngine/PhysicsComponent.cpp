@@ -34,7 +34,7 @@ Vector2 PhysicsComponent::netForce() {
 
 void PhysicsComponent::move(Vector2 deltaPos) {
 	Vector2 newPos = m_transform->GetTranslation() + deltaPos;
-	newPos.x = max(0.0f, min(1.0f, newPos.x));
+	newPos.x = max(0.0f, min(1.267f, newPos.x));
 	newPos.y = max(0.0f, min(.921f, newPos.y));
 	m_transform->SetTranslation(newPos);
 }
