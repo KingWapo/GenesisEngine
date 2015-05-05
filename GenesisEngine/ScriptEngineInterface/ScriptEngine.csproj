@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneScript.cs" />
+    <Compile Include="GeneScript2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleHelpers\ScriptEvaluator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

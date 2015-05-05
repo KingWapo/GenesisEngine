@@ -1,10 +1,10 @@
 using System;
 
-public class GeneScript : ScriptEngineInterface.IGeneScript
+public class GeneScript
 {
     public GeneScript()
     {
-
+        OnUpdate();
     }
 
     public virtual void OnStart()
