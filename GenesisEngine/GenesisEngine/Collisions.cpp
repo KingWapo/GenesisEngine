@@ -410,6 +410,7 @@ void Collisions::resolveCollision(CollidableComponent *colA, CollidableComponent
 
 	if (colA->getOwner().lock()->GetComponent<SideScrollerController>("SideScrollerController") != nullptr) {
 		tA->SetTranslation(Vector2(.1f, .6f));
+		A_comp->setVelocity(Vector2(.5f, 0));
 	}
 
 	//RectCollidableComponent *rectA, *rectB;
