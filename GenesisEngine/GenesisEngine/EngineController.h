@@ -18,6 +18,7 @@
 #include "Scene.h"
 #include "AnimationComponent.h"
 
+#define DLLEXP   __declspec( dllexport )
 
 class EngineController
 {
@@ -30,23 +31,23 @@ private:
 	int actorIndex;
 
 public:
-	 EngineController();
-	 ~EngineController();
+	 DLLEXP EngineController();
+	 DLLEXP ~EngineController();
 
-	 void run();
+	 DLLEXP void run();
 
-	 void addActor();
-	 void selectActor(int actorId);
-	 void setActorTranslation(Vector2 newLocation);
+	 DLLEXP void addActor();
+	 DLLEXP void selectActor(int actorId);
+	 DLLEXP void setActorTranslation(Vector2 newLocation);
 
-	 bool addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
-	 bool addCircCollidable(float r, bool isStatic);
-	 bool addRectCollidable(float w, float h, bool isStatic);
-	 bool addPhysics();
-	 bool addKeyboardInput();
-	 bool addControllerInput();
-	 bool addSideScrollerController();
-	 bool addTopDownController();
-	 bool addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell);
+	 DLLEXP bool addSDLRenderable(const char* p_fileLocation, Point2DF p_size, Point2DF p_cell);
+	 DLLEXP bool addCircCollidable(float r, bool isStatic);
+	 DLLEXP bool addRectCollidable(float w, float h, bool isStatic);
+	 DLLEXP bool addPhysics();
+	 DLLEXP bool addKeyboardInput();
+	 DLLEXP bool addControllerInput();
+	 DLLEXP bool addSideScrollerController();
+	 DLLEXP bool addTopDownController();
+	 DLLEXP bool addAnimation(const char* p_fileLocation, int totalFrames, int numberColumns, Point2DF p_size, Point2DF p_cell);
 };
 

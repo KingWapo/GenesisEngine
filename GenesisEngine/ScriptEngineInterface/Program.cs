@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections;
 using Mono.CSharp;
+using Wrapper;
 
 namespace ScriptEngineInterface
 {
@@ -52,6 +53,8 @@ namespace ScriptEngineInterface
 
         static void Main(string[] args)
         {
+            EngineConnector m_engineConnector = new EngineConnector();
+
             String[] exceptions = { "Program", "AssemblyInfo" };
 
             Evaluator myEval = new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter()));
